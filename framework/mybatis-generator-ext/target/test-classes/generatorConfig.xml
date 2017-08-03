@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<properties resource="application.properties" />
+	<classPathEntry
+		location="/Users/guoyuhua/tools/mysql-connector-java-5.1.35/mysql-connector-java-5.1.35-bin.jar" />
+	
+
+	<context id="context"
+		targetRuntime="com.framework.mybatis.plugin.MyIntrospectedTableMyBatis3Impl">
+
+		<plugin type="com.framework.mybatis.plugin.PaginationPlugin"></plugin>
+		<plugin type="com.framework.mybatis.plugin.OtherMapperMethodPlugin"></plugin>
+
+		<jdbcConnection driverClass="${jdbc.driverClassName}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
+		<javaModelGenerator targetPackage="com.lpcode.modules.coi.entity"
+			targetProject="src/main/java">
+			<property name="rootClass" value="com.framework.mybatis.interceptor.Identity" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.lpcode.modules.coi.mapper"
+			targetProject="src/main/resources" />
+
+		<javaClientGenerator targetPackage="com.lpcode.modules.coi.mapper"
+			targetProject="src/main/java" type="XMLMAPPER"> <!--XMLMAPPER SPRING -->
+			<!-- <property name="rootInterface" value="com.framework.mybatis.intf.Test"/> -->
+		</javaClientGenerator>
+
+
+		<table tableName="coi_apply_system" domainObjectName="CoiApplySystem" />
+		<table tableName="coi_attr_define" domainObjectName="CoiAttrDefine" />
+		<table tableName="coi_category_attrrel" domainObjectName="CoiCategoryAttrRel" />
+		<table tableName="coi_ext_user" domainObjectName="CoiExtUser" />
+		<table tableName="coi_goods" domainObjectName="CoiGoods" />
+		<table tableName="coi_goods_category" domainObjectName="CoiGoodsCategory" />
+		<table tableName="coi_goods_category_attr" domainObjectName="CoiGoodsCategoryAttr" />
+		<table tableName="coi_goods_ext_attr" domainObjectName="CoiGoodsExtAttr" />
+		<table tableName="coi_goods_model" domainObjectName="CoiGoodsModel" />
+		<table tableName="coi_goods_upload_data" domainObjectName="CoiGoodsUploadData" />
+		<table tableName="coi_model_appl" domainObjectName="CoiModelAppl" />
+		<table tableName="coi_model_attr" domainObjectName="CoiModelAttr" />
+		<table tableName="coi_model_attr_appl" domainObjectName="CoiModelAttrAppl" />
+		<table tableName="coi_model_pic" domainObjectName="CoiModelPic" />
+		<table tableName="coi_model_pic_appl" domainObjectName="CoiModelPicAppl" />
+		<table tableName="coi_modify_his" domainObjectName="CoiModifyHis" />
+		<table tableName="coi_query_record" domainObjectName="CoiQueryRecord" />
+		<table tableName="coi_signed" domainObjectName="CoiSigned" />
+		<table tableName="coi_transfer" domainObjectName="CoiTransfer" />
+		<table tableName="coi_visit_his" domainObjectName="CoiVisitHis" />
+		<table tableName="coi_category_attr_rel" domainObjectName="CoiCategoryAttrRel" />
+	</context>
+
+</generatorConfiguration>

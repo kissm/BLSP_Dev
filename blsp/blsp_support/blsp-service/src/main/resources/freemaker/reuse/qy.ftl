@@ -1,0 +1,14 @@
+{<#rt>
+"sqrZjlx":"${serviceReuseDto.zjlx!""}",<#rt>
+"sqrZjhm":"${serviceReuseDto.zjhm!""}",<#rt>
+"sbName":"${serviceReuseDto.qymc!""}",<#rt>
+"address":"${serviceReuseDto.dz!""}",<#rt>
+"lxrTelphone":"${serviceReuseDto.gddh!""}",<#rt>
+"lxrMobile":"${serviceReuseDto.sj!""}",<#rt>
+"email":"${serviceReuseDto.dzyx!""}",<#rt>
+"zipcode":"${serviceReuseDto.yb!""}",<#rt>
+"certId":"${serviceReuseDto.frzjlx!""}",<#rt>
+"legalNo":"${serviceReuseDto.frzjhm!""}",<#rt>
+"legalRepresentativeName":"${serviceReuseDto.frxm!""}",<#rt>
+"companyName":"${serviceReuseDto.djjg!""}"<#rt>
+}<#rt>

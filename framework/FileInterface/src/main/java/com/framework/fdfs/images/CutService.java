@@ -1,0 +1,8 @@
+package com.framework.fdfs.images;
+
+/**
+ * Created by wangjunwei on 15-5-14.
+ */
+public interface CutService<T extends Image> {
+    T cut(T src, int width, int height);
+}

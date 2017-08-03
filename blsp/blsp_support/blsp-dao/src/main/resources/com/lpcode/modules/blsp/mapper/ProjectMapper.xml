@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lpcode.modules.blsp.mapper.ProjectMapper">
+	<resultMap id="BaseResultMap" type="com.lpcode.modules.blsp.vo.ProjectVo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CREAT_TIME" property="applyDate" jdbcType="VARCHAR" />
+    <result column="PRJ_NAME" property="projectName" jdbcType="VARCHAR" />
+   <result column="PRJ_CODE" property="projectCode" jdbcType="VARCHAR" />
+     <result column="STAGE_NAME" property="stageName" jdbcType="VARCHAR" />
+  </resultMap>
+	<sql id="base">
+		a.ID, a.REAL_START_TIME as CREAT_TIME,a.PRJ_NAME,a.prj_code,d.STAGE_NAME
+	</sql>
+	<sql id="tableJoins">
+     	 left JOIN prj_stage_define d on a.STAGE_ID=d.ID
+	</sql>
+	<select id="select" resultMap="BaseResultMap">
+		select
+		a.ID, a.CREAT_TIME,a.PRJ_NAME,a.prj_code,d.STAGE_NAME
+		from prj_instance a
+		<include refid="tableJoins" />
+		WHERE a.CREAT_TIME between #{from} and #{to} and prj_type=#{type} and a.Channel='0' and a.IS_DELETE = '0' and a.REAL_START_TIME is not NULL
+		<if test="start!=null and start>=0">
+			limit #{start} , #{pageSize}
+		</if>
+	</select>
+	<select id="selectProcessPrj" resultMap="BaseResultMap">
+		select
+		<include refid="base" />
+		from prj_instance a
+		<include refid="tableJoins" />
+		WHERE a.REAL_START_TIME between #{from} and #{to} and prj_type=#{type} and a.Channel='0' and a.IS_DELETE = '0'
+		<if test="start!=null and start>=0">
+			limit #{start} , #{pageSize}
+		</if>
+	</select>
+	<select id="selectCount" resultType="java.lang.Integer">
+		select count(*)	from prj_instance a right join (select w.* from prj_stage_define c right join prj_stage w on c.ID=w.STAGE_ID where c.PRE_STAGE_ID!=0) b on a.id=b.prj_id
+		WHERE b.STAGE_START_TIME between #{from} and #{to} and a.prj_type=#{type} and b.STAGE_STATUS in (1,4)
+	</select>
+	<select id="selectProcessCount" resultType="java.lang.Integer">
+		select count(*)	from prj_instance a right join (select w.* from prj_stage_define c right join prj_stage w on c.ID=w.STAGE_ID where c.PRE_STAGE_ID = 0) b on a.id=b.prj_id
+		WHERE a.prj_type=#{type} and a.Channel='0' and a.IS_DELETE = '0' and b.STAGE_STATUS = 1
+	</select>
+	<select id="selectList" resultMap="BaseResultMap">
+		select a.ID, b.STAGE_START_TIME as CREAT_TIME,a.PRJ_NAME,a.prj_code,b.STAGE_NAME from prj_instance a right join (select w.*,c.STAGE_NAME from prj_stage_define c right join prj_stage w on c.ID=w.STAGE_ID where c.PRE_STAGE_ID!=0) b on a.id=b.prj_id
+		WHERE b.STAGE_START_TIME between #{from} and #{to} and a.prj_type=#{type} and b.STAGE_STATUS in (1,4)
+		<if test="start!=null and start>=0">
+			limit #{start} , #{pageSize}
+		</if>
+	</select>
+	<select id="selectAllproject" resultMap="BaseResultMap">
+		select
+		<include refid="base" />
+		from prj_instance a
+		<include refid="tableJoins" />
+		WHERE a.creat_time between #{from} and #{to} and prj_type=#{type} and a.Channel='0' and a.IS_DELETE = '0'
+		<if test="start!=null and start>=0">
+			limit #{start} , #{pageSize}
+		</if>
+	</select>
+
+</mapper>

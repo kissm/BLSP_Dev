@@ -1,0 +1,23 @@
+{<#rt>
+'sblsh':'${serviceReport.sblsh!""}',<#rt>
+'sxbm':'${serviceReport.sxbm!""}',<#rt>
+'blsx':'${serviceReport.blsx!""}',<#rt>
+'ywlsh':'${serviceReport.ywlsh!""}',<#rt>
+'slbmmc':'${serviceReport.slbmmc!""}',<#rt>
+'slbmzzjddm':'${serviceReport.slbmzzjddm!""}',<#rt>
+'xzqhdm':'${serviceReport.xzqhdm!""}',<#rt>
+'blrxm':'${serviceReport.blrxm!""}',<#rt>
+'blrgh':'${serviceReport.blrgh!""}',<#rt>
+'slztdm':'1',<#rt>
+'bslyy':'',<#rt>
+'slhzh':'${serviceReport.slhzh!""}',<#rt>
+<#if serviceReport.slsj??><#rt>
+'slsj':'${serviceReport.slsj}',<#rt>
+<#else><#rt>
+'slsj':'',<#rt>
+</#if><#rt>
+'gxdxzqhdm':'440404',<#rt>
+'transactor':'${serviceReport.transactorname!""}',<#rt>
+'bz':'',<#rt>
+'byzd':''<#rt>
+}<#rt>

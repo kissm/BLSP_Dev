@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>珠海市金湾区网上办事大厅</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/wsbs.css" rel="stylesheet" type="text/css" />
+		<link href="css/cjmain.css" rel="stylesheet" type="text/css" />
+		<link href="css/gimages/grid.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-1.4.2.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+		<script type=text/javascript>
+			var defaultValue = '请输入事项名称';
+			$(function() {
+				$(".bottom_btn").toggle(
+					function () {
+						$(this).addClass("hide");
+						$(".zjfw-list1").height(120);
+					},
+					function () {
+						$(this).removeClass("hide");
+						$(".zjfw-list1").height(28);
+					}
+				);
+				if ($('#searchKey').val() == null || $('#searchKey').val() == '') {
+					$('#searchKey').val(defaultValue);
+					$('#searchKey').css("color", "#666");
+				}
+			});
+			function keyInputFocus(inputObj) {
+				if (inputObj.value == defaultValue) {
+					inputObj.value = '';
+					inputObj.style.color = '#000000';
+					inputObj.style.fontStyle = 'normal';
+				}
+			}
+			function keyInputBlur(inputObj) {
+				if (inputObj.value == '') {
+					inputObj.style.color = '#666';
+					inputObj.style.fontStyle = 'normal';
+					inputObj.value = defaultValue;
+				} else {
+					inputObj.style.color = '#000000';
+					inputObj.style.fontStyle = 'normal';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+					<tr>
+						<td width="17%" align="left">
+							<a href="http://www.zhwsbs.gov.cn" class="h-perv">返回市办事大厅</a>
+						</td>
+						<td width="3%">
+							&nbsp;
+						</td>
+						<td width="67%" class="h-link">
+							<a href="http://www.jinwan.gov.cn" target="_blank" >区府首页</a>
+							<a href="zwgk.html" >政务公开</a>
+							<a href="legalIndex.html" >法人事项</a>
+							<a href="index.html" class="selected" >个人事项</a>
+							<a href="zmhd.html" >政民互动</a>
+							<a href="xnjcFwsxjzqk.html" >效能监督</a>
+						</td>
+						<td width="13%" align="right" class="h-info">
+								<a href="###" class="loginButton" style="color: White">
+									<span style="font-size: 16px">用户登录</span>
+								</a>
+								<!--
+								<span style="color:white">
+									欢迎您！<strong></strong>
+									<a href="#" class="h-exit" onclick="doExit();return false;">退出</a>
+								</span>
+								-->
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="logo"></div>
+			<div class="weizi">
+				<div class="w-left">
+					<strong>您现在的位置：</strong><a href="default.html">首页</a> > 个人事项</div>
+				<div class="w-right"></div>
+			</div>
+		</div>
+		
+		<div class="mid-warp1">
+			<div class="mid-title">
+				红旗镇办事站
+			</div>
+			<div align="right">
+				<a href="zjbs.html"><img id="back" src="img/but-bg6.jpg" style="cursor: pointer;" /></a><br />
+			</div>
+			<div class="zjfw" style="width:100%">
+				<div class="zjfw-tit" style="text-align: left">
+					村居办事点
+				</div>
+				<div class="zjfw-list1">
+					<ul>
+						<li>
+							<a href="villageList.html?Type=72293231X&amp;code=737563246">
+                                三板村委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=737563254">
+								广发村委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=K30289349">
+                                沙脊村委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=560839293">
+                                八一居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=560839429">
+                                大林居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=584650508">
+                                湖东居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=584650532">
+                                广安居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=584650540">
+                                矿山居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=734109670">
+                                小林村委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=440404003">
+                                小林社区居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=440404002">
+                                三板社区居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=440404001">
+                                藤山社区居委会
+							</a>
+						</li>
+                        <li>
+							<a href="villageList.html?Type=72293231X&amp;code=737563238">
+                                广益村委会
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="bottom_btn"></div>
+				<div class="spacing"></div>
+			</div>
+				
+			<div class="tab">
+				<ul class="tag">
+					<span>镇街服务事项</span>
+					<li class="selectTag">
+						<a onclick="selectTag('0',this)" href="javascript:void(0)">全部</a>
+					</li>
+					<li>
+						<a onclick="selectTag('2',this)" href="javascript:void(0)">民政事务</a>
+					</li>
+					<li>
+						<a onclick="selectTag('4',this)" href="javascript:void(0)">社会保障</a>
+					</li>
+					<li>
+						<p class="zjfw-tit-input1">
+							<input name="searchKey" type="text" id="searchKey" onblur="keyInputBlur(this);" class="but" onfocus="keyInputFocus(this)">
+						</p>
+					</li>
+					<li>
+						<p class="zjfw-tit-input2">
+							<input type="submit" name="btnSearch" value="" id="btnSearch" class="but2" style="border-style:None;">
+						</p>
+					</li>
+				</ul>
+				<div id="tagContent">
+					<div class="tagContent selectTag">
+						<div class="zjfw-list">
+							<div align="left" style="font-size:17px">
+								共21个服务事项，其中21项可在线申办
+							</div>
+							<div class="tab1">
+								<table class="table_fwlist guideBox" cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<th style="width: 85%;">
+												<a href="javascript:jsSort('name')" style="color: #6688CC; font-size: 14px; font-weight: bold">
+													服务事项名称（点击按拼音首字母排序）</a>
+											</th>
+											<th style="width: 15%">
+												<span style="color: #000000; font-size: 14px; font-weight: bold">网上办理</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody id="rptList_Tbody1_0">
+                                        <tr>
+                                            <td class="tLeft" align="left">
+                                                <div class="h1">
+                                                    <a href="subjectDetail.html?ID=15091800055166866414440404" title="金湾区《植物产地检疫合格证》的核发" target="_blank" style="font-size: 14px">
+                                                        金湾区《植物产地检疫合格证》的核发
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td class="tCenter" align="left">
+                                                <span style="display:none">
+													<img src="img/portal/onlineApply_small1.gif" align="absmiddle">
+												</span>
+												<span>
+													<a href="" target="_blank">
+													<img src="img/portal/onlineApply_small.gif" align="absmiddle"></a>
+												</span>
+												<img src="img/portal/tb_security.gif" id="rptList_Img1_0" title="在线申办此事项，需要身份验证">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td class="tLeft" align="left">
+                                                <div class="h1">
+                                                    <a href="subjectDetail.html?ID=15091800055166866414440404" title="金湾区《植物产地检疫合格证》的核发" target="_blank" style="font-size: 14px">
+                                                        金湾区《植物产地检疫合格证》的核发
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td class="tCenter" align="left">
+                                                <span style="display:none">
+													<img src="img/portal/onlineApply_small1.gif" align="absmiddle">
+												</span>
+												<span>
+													<a href="" target="_blank">
+													<img src="img/portal/onlineApply_small.gif" align="absmiddle"></a>
+												</span>
+												<img src="img/portal/tb_security.gif" id="rptList_Img1_0" title="在线申办此事项，需要身份验证">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td class="tLeft" align="left">
+                                                <div class="h1">
+                                                    <a href="subjectDetail.html?ID=15091800055166866414440404" title="金湾区《植物产地检疫合格证》的核发" target="_blank" style="font-size: 14px">
+                                                        金湾区《植物产地检疫合格证》的核发
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td class="tCenter" align="left">
+                                                <span style="display:none">
+													<img src="img/portal/onlineApply_small1.gif" align="absmiddle">
+												</span>
+												<span>
+													<a href="" target="_blank">
+													<img src="img/portal/onlineApply_small.gif" align="absmiddle"></a>
+												</span>
+												<img src="img/portal/tb_security.gif" id="rptList_Img1_0" title="在线申办此事项，需要身份验证">
+                                            </td>
+                                        </tr>
+										<tr>
+											<td class="tLeft" colspan="3">
+											</td>
+										</tr>
+                                    </tbody>
+								</table>
+							</div>
+							<div style="padding-top: 10px" align="center">
+								<table class="PagerWepart" border="0" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td align="middle">
+												第
+													<b>
+														<span id="cNavBar_lbPageSize">1</span>
+															/
+														<span id="cNavBar_cTotalPages">3</span>
+													</b>
+												页 
+												<a href="javascript:cNavBar.first()" id="cNavBar_cFirst">
+													【首页】
+												</a>
+												<a href="javascript:cNavBar.forward()" id="cNavBar_cForward">
+													【上一页】
+												</a>
+												<a href="javascript:cNavBar.next()" id="cNavBar_cNext">
+													【下一页】
+												</a>
+												<a href="javascript:cNavBar.last()" id="cNavBar_cLast">
+													【尾页】
+												</a> 
+												转到第
+												<input name="cNavBar$cPageIndex" type="text" value="1" id="cNavBar_cPageIndex" class="gogo" style="width:20px;text-align: left">
+												页
+												<a href="javascript:cNavBar.refresh()" id="cNavBar_cRefresh">
+													【GO】
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="contents">
+			<img src="img/kf.gif" width="1000" height="115"  border="0" usemap="#Mapfoot" />
+			<map name="Mapfoot" id="Mapfoot">
+				<area shape="rect" coords="4,3,256,109" href="wszx.html"  />
+				<area shape="rect" coords="259,4,506,109" href="http://www.zhwsbs.gov.cn/sblsh/index.action" target="_blank" />
+				<area shape="rect" coords="512,5,754,111" href="http://61.145.231.107/star/" target="_blank" />
+				<area shape="rect" coords="758,5,994,109" href="http://www.jinwan.gov.cn/ConsultingInfo.aspx?flag=1" target="_blank" />
+			</map>
+		</div>
+		<div class="footer">
+			<span class="f-left">版权所有 &copy;珠海市金湾区人民政府<br>备案号：粤ICP备05026025-1</span>
+		</div>
+	</body>
+</html>

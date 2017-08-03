@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+    
+  <description>JSTL 1.1 functions library</description>
+  <display-name>JSTL functions sys</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>fns</short-name>
+  <uri>http://java.sun.com/jsp/jstl/functionss</uri>
+
+  <function>
+    <description>获取管理路径</description>
+    <name>getAdminPath</name>
+    <function-class>com.framework.osp.common.config.Global</function-class>
+    <function-signature>java.lang.String getAdminPath()</function-signature>
+    <example>${fns:getAdminPath()}</example>
+  </function>
+  <function>
+    <description>获取网站路径</description>
+    <name>getFrontPath</name>
+    <function-class>com.framework.osp.common.config.Global</function-class>
+    <function-signature>java.lang.String getFrontPath()</function-signature>
+    <example>${fns:getFrontPath()}</example>
+  </function>
+  <function>
+    <description>获取网站URL后缀</description>
+    <name>getUrlSuffix</name>
+    <function-class>com.framework.osp.common.config.Global</function-class>
+    <function-signature>java.lang.String getUrlSuffix()</function-signature>
+    <example>${fns:getUrlSuffix()}</example>
+  </function>
+  <function>
+    <description>获取配置</description>
+    <name>getConfig</name>
+    <function-class>com.framework.osp.common.config.Global</function-class>
+    <function-signature>java.lang.String getConfig(java.lang.String)</function-signature>
+    <example>${fns:getConfig(key)}</example>
+  </function>
+  <function>
+    <description>获取常量</description>
+    <name>getConst</name>
+    <function-class>com.framework.osp.common.config.Global</function-class>
+    <function-signature>java.lang.Object getConst(java.lang.String)</function-signature>
+    <example>${fns:getConst(key)}</example>
+  </function>
+  
+  <!-- UserUtils -->
+  <function>
+    <description>获取当前用户对象</description>
+    <name>getUser</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.framework.osp.modules.sys.entity.User getUser()</function-signature>
+    <example>${fns:getUser()}</example>  
+  </function>
+  
+  <function>
+    <description>根据编码获取用户对象</description>
+    <name>getUserById</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.framework.osp.modules.sys.entity.User get(java.lang.String)</function-signature>
+    <example>${fns:getUserById(id)}</example>  
+  </function>
+  
+  <function>
+    <description>获取授权用户信息</description>
+    <name>getPrincipal</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.framework.osp.modules.sys.security.SystemAuthorizingRealm.Principal getPrincipal()</function-signature>
+    <example>${fns:getPrincipal()}</example>  
+  </function>
+  
+  <function>
+    <description>获取当前用户的菜单对象列表</description>
+    <name>getMenuList</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getMenuList()</function-signature>
+    <example>${fns:getMenuList()}</example>  
+  </function>
+  
+  <function>
+    <description>获取当前用户的区域对象列表</description>
+    <name>getAreaList</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getAreaList()</function-signature>
+    <example>${fns:getAreaList()}</example>  
+  </function>
+  
+  <function>
+    <description>获取当前用户的部门对象列表</description>
+    <name>getOfficeList</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getOfficeList()</function-signature>
+    <example>${fns:getOfficeList()}</example>  
+  </function>
+  
+  <function>
+    <description>获取当前用户缓存</description>
+    <name>getCache</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.lang.Object getCache(java.lang.String, java.lang.Object)</function-signature>
+    <example>${fns:getCache(cacheName, defaultValue)}</example>  
+  </function>
+
+  <function>
+    <description>通过部门的ID获取部门下的用户列表</description>
+    <name>getUsersByOfficeId</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getUsersByOfficeId(java.lang.String)</function-signature>
+    <example>${fns:getUsersByOfficeId(officeId)}</example>
+  </function>
+
+  <function>
+    <description>通过父节点部门的ID获取部门列表</description>
+    <name>findOfficeByParent</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List findOfficeByParent(java.lang.String)</function-signature>
+    <example>${fns:findOfficeByParent(parentId)}</example>
+  </function>
+  <function>
+    <description>根据depid 获取部门机构</description>
+    <name>getOffice</name>
+    <function-class>com.framework.osp.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.framework.osp.modules.sys.entity.Office getOffice(java.lang.String)</function-signature>
+    <example>${fns:getOffice(depid)}</example>
+  </function>
+   <!-- projectUtils -->
+    <function>
+    <description>根据getPrjTaskDefineVo </description>
+    <name>getPrjTaskVo</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>com.lpcode.modules.service.project.dto.pinstance.PrjTaskVo getPrjTaskVo(java.lang.Long,java.lang.Long,java.lang.Long)</function-signature>
+    <example>${fns:getPrjTaskVo(id)}</example>
+  </function>
+  <function>
+    <description>根据getPrjTaskDefineVo </description>
+    <name>getPrjTaskDefineVo</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>com.lpcode.modules.service.project.dto.pinstance.PrjTaskDefineVo getPrjTaskDefineVo(java.lang.String)</function-signature>
+    <example>${fns:getPrjTaskDefineVo(id)}</example>
+  </function>
+  <function>
+    <description>根据getPrjTaskDefineVo 获取阶段</description>
+    <name>getStageDefineByProId</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>com.lpcode.modules.service.project.dto.pinstance.PrjStageDefineVo getStageByProId(java.lang.String)</function-signature>
+    <example>${fns:getStageDefineByProId(id)}</example>
+  </function>
+  <function>
+    <description>根据getPrjTaskDefineVo 获取阶段</description>
+    <name>getStageDefineById</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>com.lpcode.modules.service.project.dto.pinstance.PrjStageDefineVo getStageDefineById(java.lang.String)</function-signature>
+    <example>${fns:getStageDefineById(id)}</example>
+  </function>
+  
+   <function>
+    <description>根据getPrjTaskDefineVo 获取阶段事项实例</description>
+    <name>getAllTaskByInstanceStage</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.util.List getAllTaskByInstanceStage(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getAllTaskByInstanceStage(id,id)}</example>
+  </function>
+  <function>
+    <description>获取审批记录</description>
+    <name>getHandleBytaskId</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>com.framework.core.result.ListResult getHandleBytaskId(java.lang.String)</function-signature>
+    <example>${fns:getHandleBytaskId(id)}</example>
+  </function>
+  <!-- DictUtils -->
+  <function>
+    <description>获取字典标签</description>
+    <name>getDictLabel</name>
+    <function-class>com.framework.osp.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictLabel(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictLabel(value, type, defaultValue)}</example>  
+  </function>
+  
+  <function>
+    <description>获取字典标签(多个)</description>
+    <name>getDictLabels</name>
+    <function-class>com.framework.osp.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictLabels(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictLabels(values, type, defaultValue)}</example>  
+  </function>
+
+  <function>
+    <description>获取字典值</description>
+    <name>getDictValue</name>
+    <function-class>com.framework.osp.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.lang.String getDictValue(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:getDictValue(label, type, defaultValue)}</example>  
+  </function>
+  
+  <function>
+    <description>获取字典对象列表</description>
+    <name>getDictList</name>
+    <function-class>com.framework.osp.modules.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getDictList(java.lang.String)</function-signature>
+    <example>${fns:getDictList(type)}</example>  
+  </function>
+
+
+
+  <!-- Encodes -->
+  <function>
+    <description>URL编码</description>
+    <name>urlEncode</name>
+    <function-class>com.framework.osp.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String urlEncode(java.lang.String)</function-signature>
+    <example>${fns:urlEncode(part)}</example>  
+  </function>
+  <function>
+    <description>URL解码</description>
+    <name>urlDecode</name>
+    <function-class>com.framework.osp.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String urlDecode(java.lang.String)</function-signature>
+    <example>${fns:urlDecode(part)}</example>  
+  </function>
+  <function>
+    <description>HTML编码</description>
+    <name>escapeHtml</name>
+    <function-class>com.framework.osp.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String escapeHtml(java.lang.String)</function-signature>
+    <example>${fns:escapeHtml(html)}</example>  
+  </function>
+  <function>
+    <description>HTML解码</description>
+    <name>unescapeHtml</name>
+    <function-class>com.framework.osp.common.utils.Encodes</function-class>
+    <function-signature>java.lang.String unescapeHtml(java.lang.String)</function-signature>
+    <example>${fns:unescapeHtml(html)}</example>  
+  </function>
+  
+  <!-- StringUtils -->
+  <function>
+    <description>从后边开始截取字符串</description>
+    <name>substringAfterLast</name>
+    <function-class>org.apache.commons.lang3.StringUtils</function-class>
+    <function-signature>java.lang.String substringAfterLast(java.lang.String, java.lang.String)</function-signature>
+    <example>${fns:substringAfterLast(str,separator)}</example>  
+  </function>
+  <function>
+    <description>判断字符串是否以某某开头</description>
+    <name>startsWith</name>
+    <function-class>org.apache.commons.lang3.StringUtils</function-class>
+    <function-signature>boolean startsWith(java.lang.CharSequence, java.lang.CharSequence)</function-signature>
+    <example>${fns:startsWith(str,prefix)}</example> 
+  </function>
+  <function>
+    <description>判断字符串是否以某某结尾</description>
+    <name>endsWith</name>
+    <function-class>org.apache.commons.lang3.StringUtils</function-class>
+    <function-signature>boolean endsWith(java.lang.CharSequence, java.lang.CharSequence)</function-signature>
+    <example>${fns:endsWith(str,suffix)}</example> 
+  </function>
+  <function>
+    <description>缩写字符串，超过最大宽度用“...”表示</description>
+    <name>abbr</name>
+    <function-class>com.framework.osp.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String abbr(java.lang.String, int)</function-signature>
+    <example>${fns:abbr(str,length)}</example>  
+  </function>
+  <function>
+    <description>替换掉HTML标签</description>
+    <name>replaceHtml</name>
+    <function-class>com.framework.osp.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String replaceHtml(java.lang.String)</function-signature>
+    <example>${fns:replaceHtml(html)}</example>  
+  </function>
+  <function>
+    <description>转换为JS获取对象值，生成三目运算返回结果。</description>
+    <name>jsGetVal</name>
+    <function-class>com.framework.osp.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String jsGetVal(java.lang.String)</function-signature>
+    <example>${fns:jsGetVal('row.user.id')}  返回：!row?'':!row.user?'':!row.user.id?'':row.user.id</example>  
+  </function>
+    <!-- projectUtils -->
+   <function>
+    <description>获取超时信息</description>
+    <name>getTaskOverTimeStatus</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskOverTimeStatus(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getTaskOverTimeStatus(deptid,stageid)}</example>  
+  </function>
+  <function>
+    <description>获取超时信息</description>
+    <name>getTaskOverTimeStatusByTaskId</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskOverTimeStatus(java.lang.String)</function-signature>
+    <example>${fns:getTaskOverTimeStatusByTaskId(taskId)}</example>
+  </function>
+  <function>
+    <description>获取审批中事项数</description>
+    <name>getTaskPressingStatus</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskPressingStatus(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getTaskPressingStatus(deptid,stageid)}</example>
+  </function>
+  <function>
+    <description>获取所有项数</description>
+    <name>getTaskByDepId</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskByDepId(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getTaskByDepId(deptid,stageid,dType)}</example>
+  </function>
+  <!-- DateUtils -->
+  <function>
+    <description>获取当前日期</description>
+    <name>getDate</name>
+    <function-class>com.framework.osp.common.utils.DateUtils</function-class>
+    <function-signature>java.lang.String getDate(java.lang.String)</function-signature>
+    <example>${fns:getDate(pattern)}</example>  
+  </function>
+  <function>
+    <description>获取过去的天数</description>
+    <name>pastDays</name>
+    <function-class>com.framework.osp.common.utils.DateUtils</function-class>
+    <function-signature>long pastDays(java.util.Date)</function-signature>
+    <example>${fns:pastDays(date)}</example>  
+  </function>
+  
+  <!-- JsonMapper -->
+  <function>
+    <description>对象转换JSON字符串</description>
+    <name>toJson</name>
+    <function-class>com.framework.osp.common.mapper.JsonMapper</function-class>
+    <function-signature>java.lang.String toJsonString(java.lang.Object)</function-signature>
+    <example>${fns:toJson(object)}</example>  
+  </function>
+  
+  <function>
+    <description>获取所有启用的项目阶段</description>
+    <name>getStageList</name>
+    <function-class>com.framework.osp.modules.web.util.StageUtils</function-class>
+    <function-signature>java.util.List findListByType(java.lang.String)</function-signature>
+    <example>${fns:getStageList(stageType)}</example>
+  </function>
+  <function>
+    <description>获取审批中信息</description>
+    <name>getTaskApprovalStatus</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskApprovalStatus(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getTaskApprovalStatus(deptid,stageid)}</example>  
+  </function>
+  <function>
+    <description>获取已办结信息</description>
+    <name>getTaskAchieveStatus</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskAchieveStatus(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getTaskAchieveStatus(deptid,stageid,dType)}</example>  
+  </function>
+  <function>
+    <description>获取暂停中信息</description>
+    <name>getTaskPauseStatus</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getTaskPauseStatus(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getTaskPauseStatus(deptid,stageid)}</example>  
+  </function>
+  
+  <function>
+    <description>根据getPrjTaskDefineVo 获取网上办事阶段事项实例</description>
+    <name>getAllTaskByInstanceStageAndFormInfo</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.util.List getAllTaskByInstanceStageAndFormInfo(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getAllTaskByInstanceStageAndFormInfo(id,id)}</example>
+  </function>
+
+
+  <function>
+    <description>下任务数:项目跟踪中可看到的所有状态的项目总数（选定的时间范围内）</description>
+    <name>getAllPrjInTime</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getAllPrjInTime(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getAllPrjInTime(type,dType,reportDate)}</example>
+  </function>
+
+   <!--<function>-->
+    <!--<description>获取办理数=审批中+完成数+终止数</description>-->
+    <!--<name>getAllProcess</name>-->
+    <!--<function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>-->
+    <!--<function-signature>java.lang.Integer getAllProcess(java.lang.String,java.lang.String,java.lang.String)</function-signature>-->
+    <!--<example>${fns:getAllProcess(type,dType,reportDate)}</example>-->
+  <!--</function>-->
+  <function>
+    <description>完成项目数（completeType 1）、终止项目数(completeType 9)</description>
+    <name>getProcessOverOrStop</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getProcessOverOrStop(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getProcessOverOrStop(type,completeType)}</example>
+  </function>
+  <function>
+    <description>审批中的项目数</description>
+    <name>getAllProcessing</name>
+    <function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>
+    <function-signature>java.lang.Integer getAllProcessing(java.lang.String)</function-signature>
+    <example>${fns:getAllProcessing(type)}</example>
+  </function>
+   <!--<function>-->
+    <!--<description>获取已办结信息</description>-->
+    <!--<name>getTaskAchieveStatus</name>-->
+    <!--<function-class>com.lpcode.modules.service.impl.project.util.ProjectUtil</function-class>-->
+    <!--<function-signature>java.lang.Integer getTaskAchieveStatus(java.lang.String,java.lang.String,java.lang.String)</function-signature>-->
+    <!--<example>${fns:getTaskAchieveStatus(deptid,stageid,dType)}</example>-->
+  <!--</function>-->
+
+
+</taglib>

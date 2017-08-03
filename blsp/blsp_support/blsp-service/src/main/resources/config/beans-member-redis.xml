@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+  <!-- redis连接配置 start-->
+  <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+    <property name="maxIdle" value="${redis.maxIdle}"/>
+    <property name="maxTotal" value="${redis.maxTotal}"/>
+    <property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}"/>
+    <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+  </bean>
+
+  <!-- redis连接配置 end-->
+  <bean id="hostAndSet1" class="redis.clients.jedis.HostAndPort">
+      <constructor-arg index="0" value="${redis.host1}"/>
+      <constructor-arg index="1" value="${redis.port1}"/>
+  </bean>
+  <bean id="hostAndSet2" class="redis.clients.jedis.HostAndPort">
+      <constructor-arg index="0" value="${redis.host2}"/>
+      <constructor-arg index="1" value="${redis.port2}"/>
+  </bean>
+  <bean id="hostAndSet3" class="redis.clients.jedis.HostAndPort">
+      <constructor-arg index="0" value="${redis.host3}"/>
+      <constructor-arg index="1" value="${redis.port3}"/>
+  </bean>
+ <!--  <bean id="hostAndSet4" class="redis.clients.jedis.HostAndPort">
+      <constructor-arg index="0" value="${redis.host4}"/>
+      <constructor-arg index="1" value="${redis.port4}"/>
+  </bean> -->
+  <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
+    <constructor-arg index="0">
+        <set>
+            <ref bean="hostAndSet1"/>
+            <ref bean="hostAndSet2"/>
+            <ref bean="hostAndSet3"/>
+            <!-- <ref bean="hostAndSet4"/> -->
+        </set>
+    </constructor-arg>
+    <constructor-arg index="1" value="${redis.clusterTimeout}"/>
+    <constructor-arg index="2">
+       <ref bean="poolConfig"/>
+    </constructor-arg>
+  </bean>
+
+  <bean id="redisUtil" class="com.framework.core.utils.ClusterRedisUtil"/>
+
+</beans>

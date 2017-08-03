@@ -1,0 +1,153 @@
+﻿@charset "gb2312";
+/* 全局控制 */
+body{background:#fff; font-size:12px;}
+body, div, ol, form, a, h1, h2, h3, h4, h5,p { font-family:Arial, Helvetica, sans-serif; margin:0; padding:0; table-layout:fixed; word-break:break-all; }
+h1,h2,h3,h4,h5,h6 {  font-size:100%;   font-weight:normal;}
+img { border:0; }
+ul, li, select { margin:0; padding:0; list-style:none; }
+dl, dt, dd { margin:0; padding:0; }
+em{font-style:normal;}
+a{text-decoration:none;color:#317BFF;}
+a:hover{text-decoration:none;color:#FD9807;}
+/* 通用容器 */
+.clear { clear:both; }
+.t10 { padding-top: 10px; }
+.l10 { padding-left: 10px; }
+.l20 { padding-left: 20px; }
+.link { color: #FF8345; }
+.f14 { font-size: 14px; }
+.fl{float:left;}
+.fr{float:right;}
+.txtC{text-align:center;}
+.txtR{text-align:right;}
+.h0{line-height:0;height:0;font-size:0;}
+button{cursor:pointer;}
+/* 头部文件 */
+.banner{ background:url(../img/banner.jpg) no-repeat; width:1000px; height:113px; margin:0 auto; }
+.banner h1{ display:none;}
+#nav{
+  width: 610px;
+  text-align: center;
+padding-left:90px;
+  font-size: 11px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#nav ul{
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+#nav li{  
+  float: left;
+  }
+#nav li a{
+	font-family: "微软雅黑";
+	font-size: 12pt;
+	text-decoration: none;
+	font-weight:bold;
+	color: #FFFfff;	
+	background: url(../img/menubg.jpg) no-repeat 0px 0px;
+	width: 100px;
+	line-height: 36px;
+	display: block;
+}
+
+#nav li a:hover{
+	font-family: "微软雅黑";
+	text-decoration: none;
+	font-size: 12pt;
+	font-weight:bold;
+	color: #012a6d;  
+	text-decoration: none; 
+	background: url(../img/menubg.jpg) no-repeat 0px -36px;  
+}
+
+#nav li a:active{
+	font-family: "微软雅黑";
+	text-decoration: none;
+	font-size: 12pt;
+	font-weight:bold;
+	color: #012a6d;  
+	text-decoration: underline; 
+	background: url(../img/menubg.jpg) no-repeat 0px -36px;  
+}
+#nav .link{	font-family: "微软雅黑";font-size: 12pt;
+	text-decoration: none;
+	font-weight:bold;
+	color: #fff; 
+	background: url(../img/menubg1.jpg) no-repeat 0px -36px;  
+}
+.menu{height:37px;font-size:14px;	background:url(../img/topbanner1.jpg) 0 0 no-repeat;width:1000px;margin:0 auto;}
+.menu a{font-family: "微软雅黑";font-size:14px; font-weight:bold;	}
+.line{text-decoration: none;width:1px;height:36px;background-color:#cccccc;}
+.position{width:990px; height:32px;margin:0 auto; background:url(../img/position.jpg) repeat-x ;font:14px/32px 'MicroSoft YaHei'; color:#333; padding-left:10px;}
+.position a{color:#2784C9;font-family:'MicroSoft YaHei';}
+.position  table{ float:right; padding-right:15px; }
+/* 全局 */
+.main{width:1000px; margin:0 auto; overflow:hidden; background-color:#FFF;}
+.l_top{background:url(../img/srh_bg.jpg) no-repeat;height:32px;margin-bottom:5px;padding:8px 5px 0;}
+.l_top .search{background:url(../img/search_txtbg.gif) no-repeat;height:27px;}
+.l_top .keyword{background:none;border:0 none;color:#666666;float:left;height:27px;line-height:27px;padding:0 0 0 90px;width:265px;}
+.l_top .submit{background:none;border:0 none;cursor:pointer;float:left;height:27px;margin:0;padding:0;width:70px;}
+.search .zd_hotkey{color:#666666;font-size:12px;margin-left:5px;font-weight:bold;height:27px;line-height:27px;}
+.search .zd_hotkey a {color:#317cff;font-size: 12px;text-decoration:none;font-weight:normal;}
+.search .zd_hotkey a:hover{color:#fd9807;}
+.position IMG { cursor:pointer;}
+.xinxin_font {COLOR: #999; FONT-SIZE: 11pt; FONT-WEIGHT: bold}
+
+
+/*===== 树形目录 10.19 =====*/
+.tree_div{margin:60px 20px;}
+.tree_div h2{text-align:center;font-size:24px;font-weight:bold;}
+.tree_menu{color:#000;}
+.tree_menu a{color:#000;}
+.tree_menu dt{height:35px;line-height:35px;cursor:pointer;font-weight:bold;font-size:18px;}
+.tree_menu dd{display:none;}
+.tree_menu dd em{display:block;height:32px;cursor:pointer;font:bold 14px/32px '宋体',Arial;padding-left:38px;}
+.tree_menu dd em span{float:left;width:10px;height:10px;margin:11px 10px 0 0;background:url(/wsbs/img/icon_up2.gif) no-repeat;}
+.tree_menu dd em .open{background:url(/wsbs/img/icon_open2.gif) no-repeat 0 3px;}
+.tree_menu dd ul{_overflow:hidden;margin-left:42px;}
+.date dd ul{display:none;}
+.tree_menu .dd_1{display:block;}
+.tree_menu li {background:url(/img/li_bg.gif) no-repeat;padding-left:20px;}
+.tree_menu li.li_bg_btm{background:url(/wsbs/img/li_bg_btm.gif) no-repeat;}
+.tree_menu li.curr{position:relative;z-index:2;}
+.tree_menu li a{height:26px;display:inline-block;padding-left:5px;font:normal 12px/26px "simsun";}
+.tree_menu li a:hover{color:#fd9807;}
+.bottomword{ line-height:16px; font-size:13px;}
+
+
+
+/*在线咨询*/
+.postqurry{padding:10px 0; width:1000px; margin:0 auto;}
+
+.box_title{height:45px;background: url(../img/title_bg.png) repeat-x top;border:1px solid #c4ccd1;}
+.box_title h1{line-height:45px;vertical-align:middle;font-size:18px; font-weight:bold; text-align:center; color:#006999;}
+
+.postqurry_content{height:auto;border:1px solid #c4ccd1;}
+
+.postqurry_title{height:35px; padding:0 10px;}
+.postqurry_title h1{line-height:35px;}
+.postqurry_title b{color:#F00;}
+
+.input_01{ width:300px;background:#fff; border:1px solid #7f9db9; height:25px; line-height:25px; padding:0 5px; }
+.input_02{ width:98%;background:#fff; border:1px solid #7f9db9;  line-height:25px; padding:5px; }
+.input_03{ width:313px;background:#fff; border:1px solid #d3dde3; height:25px; line-height:25px; padding:0 5px; }
+
+.postqurry_botton{text-align:center; padding:10px;}
+.postqurry_botton input{ width:80px; height:27px;text-align:center; margin:0 5px; background:url(../img/inbt_bg.png) bottom repeat-x #FFF; color:#fff; border:0; font-family: "微软雅黑";}
+
+/*表格G*/
+.table_G{width:98%;margin:0 auto;border-collapse:collapse;}
+.table_G th{padding:0 10px 0 0; color:#333;background:#d5dfec; line-height:30px; border:1px solid #a2b7cb; text-align:center; font-size:14px; font-weight:normal;}
+.table_G td{padding:0 0 0 10px; background:#f0f6f7; border:1px solid #b9cee2; text-align:left;}
+.table_G td span{color:#999;}
+.table_G td b{color:#F00; font-weight:normal; font-size:12px;}
+.table_G td a{color:#35649e;}
+.table_G td a:hover{color:#ff7800;}
+
+
+
+.normal-button{ width:80px; height:27px;text-align:center; margin:0 5px; background:url(../img/inbt_bg.png) bottom repeat-x #FFF; color:#fff; border:0; font-family: "微软雅黑";cursor:pointer;}
+
+

@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>珠海市金湾区网上办事大厅</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/myCss.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-1.4.2.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.fold div').click(function(){
+					if($(this).is('.minus')){
+						var foldId = $(this).parents('tr').attr('id');
+						$('#editTable tr.'+foldId).hide();
+						$(this).removeClass('minus');
+						$(this).addClass('add');
+					}else{
+						var foldId = $(this).parents('tr').attr('id');
+						$('#editTable tr.'+foldId).show();
+						$(this).removeClass('add');
+						$(this).addClass('minus');
+					}
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<table id="editTable" class="editTable" style="width: 960px" border="0" cellspacing="0" cellpadding="0">
+			<tr id="fold_1" class="fold" >
+				<td colspan="6" class="content">
+					标题1
+					<div class="add"></div>
+				</td>
+			</tr>
+			<tr class="hidden fold_1">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr class="hidden fold_1">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr class="hidden fold_1">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr id="fold_2" class="fold" >
+				<td colspan="6" class="content">
+					标题2
+					<div class="add"></div>
+				</td>
+			</tr>
+			<tr class="hidden fold_2">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr class="hidden fold_2">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr class="hidden fold_2">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr class="hidden fold_2">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+			<tr class="hidden fold_2">
+				<td class="title" >
+					项目名称
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					项目类别
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+				<td class="title" >
+					电话
+				</td>
+				<td>
+					<input type="text"></input>
+				</td>
+			</tr>
+		</table>
+		<table class="editTable" style="width: 960px" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="content" colspan="2" align="center">
+					<input type="button" class="btnNoimg" value="保存" onclick="alert('保存成功');">
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

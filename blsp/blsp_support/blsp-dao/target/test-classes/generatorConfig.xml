@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<properties resource="application.properties" />
+	<classPathEntry location="/Users/wisdom/lp/lpframe/jeesite_oa/target/jeesite_oa/WEB-INF/lib/mysql-connector-java-5.1.37.jar"/>
+	<context id="context" targetRuntime="com.framework.mybatis.plugin.MyIntrospectedTableMyBatis3Impl">
+
+		<plugin type="com.framework.mybatis.plugin.PaginationPlugin" />
+		<plugin type="com.framework.mybatis.plugin.OtherMapperMethodPlugin" />
+
+		<!--<jdbcConnection driverClass="${jdbc.driverClassName}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />-->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://10.0.5.237:3306/blspdb?useUnicode=true"
+						userId="blspdb"
+						password="lpcode123*"/>
+
+		<javaModelGenerator targetPackage="com.lpcode.modules.blsp.entity" targetProject="src/main/java" >
+			<property name="rootClass" value="com.framework.mybatis.interceptor.Identity" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.lpcode.modules.blsp.mapper" targetProject="src/main/resources" />
+
+		<javaClientGenerator targetPackage="com.lpcode.modules.blsp.mapper" targetProject="src/main/java" type="XMLMAPPER" />
+		
+		
+		<!--<table tableName="dim_holiday" domainObjectName="DimHoliday" >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="dim_material" domainObjectName="DimMaterial"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="dim_pause_type" domainObjectName="DimPauseType" >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="dim_workflow_time_limit" domainObjectName="DimWorkflowTimeLimit"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_rf_bjsh" domainObjectName="FormRfBjsh"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_rf_jsxmqkb" domainObjectName="FormRfJsxmqkb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_rf_ydjs_bjsp" domainObjectName="FormRfYdjsBjsp"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_rf_ydjs_jgsb" domainObjectName="FormRfYdjsJgsb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_instance" domainObjectName="PrjInstance"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_stage" domainObjectName="PrjStage"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_stage_define" domainObjectName="PrjStageDefine"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_stage_material" domainObjectName="PrjStageMaterial"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_stage_material_define" domainObjectName="PrjStageMaterialDefine" >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task" domainObjectName="PrjTask"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_define" domainObjectName="PrjTaskDefine"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_dependency" domainObjectName="PrjTaskDependency"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_material_def" domainObjectName="PrjTaskMaterialDef"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_pause_detail" domainObjectName="PrjTaskPauseDetail"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_timer_define" domainObjectName="PrjTaskTimerDefine"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_transfer_detail" domainObjectName="PrjTaskTransferDetail"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_reject_material" domainObjectName="PrjTaskRejectMaterial"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_build_company" domainObjectName="PrjBuildCompany"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_define" domainObjectName="FormDefine"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_form_task_real" domainObjectName="PrjFormTaskReal"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_xf_jsgc_sjshsbb" domainObjectName="FormXfJsgcSjshsbb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_xf_jsgc_sjshsbb_dw" domainObjectName="FormXfJsgcSjshsbbDw"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_xf_jsgc_sjshsbb_jz" domainObjectName="FormXfJsgcSjshsbbJz"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gt_sqwts_frdbzms" domainObjectName="FormGtSqwtsFrdbzms"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_sgqy_nmggz" domainObjectName="FormZjSgqyNmggz"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_gczl_zszrcns" domainObjectName="FormZjGczlZszrcns"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_fddbrsqs" domainObjectName="FormZjFddbrsqs"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_jsgc_xmjnk" domainObjectName="FormZjJsgcXmjnk"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_jsgc_zljdzcb" domainObjectName="FormZjJsgcZljdzcb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_jsgc_zljdzcb_jl" domainObjectName="FormZjJsgcZljdzcbJl"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_jsgc_zljdzcb_js" domainObjectName="FormZjJsgcZljdzcbJs"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_zj_jsgc_zljdzcb_sg" domainObjectName="FormZjJsgcZljdzcbSg"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_ghxksqb" domainObjectName="FormGhJsgcGhxksqb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_ghxksqb_sj" domainObjectName="FormGhJsgcGhxksqbSj"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_ghyssqb" domainObjectName="FormGhJsgcGhyssqb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_ghyssqb_cl" domainObjectName="FormGhJsgcGhyssqbCl"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_ghyssqb_jg" domainObjectName="FormGhJsgcGhyssqbJg"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_sz_ghxk" domainObjectName="FormGhJsgcSzGhxk"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_sz_ghxk_gx" domainObjectName="FormGhJsgcSzGhxkGx"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_sz_ghys" domainObjectName="FormGhJsgcSzGhys"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsgc_sz_ghys_cl" domainObjectName="FormGhJsgcSzGhysCl"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+
+		<!--<table tableName="prj_code_generator" domainObjectName="PrjCodeGenerator"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_business_accept" domainObjectName="PrjBusinessAccept"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_appointment" domainObjectName="PrjAppointment"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_rf_jgyszhb" domainObjectName="FormRfJgyszhb"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsxm_ghxz" domainObjectName="FormGhJsxmGhxz"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="form_gh_jsyd_ghxk" domainObjectName="FormGhJsydGhxk"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_message" domainObjectName="PrjTaskMessage"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_pause_rel_define" domainObjectName="PrjTaskPauseRelDefine"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_task_msg_rel_define" domainObjectName="PrjTaskMsgRelDefine" >-->
+		<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="mg_log_email" domainObjectName="LogEmail"  >-->
+			<!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="mg_log_operate" domainObjectName="LogOperate"  >-->
+			<!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="mg_log_sms" domainObjectName="LogSms"  >-->
+		<!--</table>-->
+		<!--<table tableName="mg_log_tpl" domainObjectName="LogTpl"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="mg_message_queue" domainObjectName="MessageQueue"  >-->
+		<!--</table>-->
+		<!--<table tableName="mg_message_tpl" domainObjectName="MessageTpl"  >-->
+			<!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="mg_message_tpl_para" domainObjectName="MessageTplPara"  >-->
+			<!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="sys_file_preview" domainObjectName="FilePreview"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="sys_user_office_view" domainObjectName="UserOfficeView"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="prj_stage_material_supplement" domainObjectName="PrjMaterialSupplement"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+
+		<!--<table tableName="prj_instance_snapshot" domainObjectName="PrjInstanceSnapshot"  >-->
+			<!--<generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()" />-->
+		<!--</table>-->
+		<!--<table tableName="service_basicinfo_push_log" domainObjectName="ServiceBasicinfoPushLog"  />-->
+		<!--<table tableName="service_sb_log" domainObjectName="ServiceSbLog"  />-->
+		<!--<table tableName="prj_fetch_view" domainObjectName="PrjFetchView"  />-->
+		<table tableName="service_sb_queue" domainObjectName="ServiceSbQueue"  />
+	</context>
+
+</generatorConfiguration>

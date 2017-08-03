@@ -1,0 +1,13 @@
+{<#rt>
+'sblsh':'${serviceReport.sblsh!""}',<#rt>
+'sxbm':'${serviceReport.sxbm!""}',<#rt>
+'bjgzfcrx':'${serviceReport.bjgzfcrx!""}',<#rt>
+'bjgzyy':'${serviceReport.bjgzyy!""}',<#rt>
+'bjclqd':'${serviceReport.bjclqd!""}',<#rt>
+'bjgzsj':'${serviceReport.bjgzsj!""}',<#rt>
+'xzqhdm':'440404',<#rt>
+'transactor':'${serviceReport.transactorname!""}',<#rt>
+'bz':'',<#rt>
+'byzd':'',<#rt>
+'bjsx':'0'<#rt>
+}<#rt>

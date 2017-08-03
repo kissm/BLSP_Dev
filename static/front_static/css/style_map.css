@@ -1,0 +1,19 @@
+/* CSS Document */
+bdoy{ text-align:center; margin:0; padding:0;}
+.map-content{ width:950px; margin:0 auto; text-align:center;  border:1px solid #ddd; overflow:hidden; _padding-bottom:12px; }
+img{ border:none;}
+.maps{ text-align:center;}
+.map-link { overflow:hidden; padding:10px 12px 12px 0;_padding-top:5px;}
+.map-link li{ float:right;list-style:none; margin:0px 3px 3px 0; _margin-bottom:0;width:90px; background-color:#e8e8e8; text-align:center;}
+.map-link a{ text-decoration:none; color:#68c; background-color:#e8e8e8; font-size:14px; line-height:26px; display:block;}
+.map-link a:hover{ background-color:#ddd;}
+.dw2{ width:690px; float:right;}
+.map-link2 { overflow:hidden; padding:10px 12px 12px 0;_padding-top:5px}
+.map-link2 li{ float:right;list-style:none; margin:0px 3px 3px 0; _margin-bottom:0;width:90px;;background-color:#e8e8e8; text-align:center;}
+.map-link2 a{ text-decoration:none; color:#FF0000; background-color:#e8e8e8;;font-size:14px; line-height:26px; display:block;}
+.map-link2 a:hover{ background-color:#ddd;}
+
+.map-link1 { overflow:hidden; padding:10px 12px 12px 0;_padding-top:5px;}
+.map-link1 li{ float:left;list-style:none; margin:0px 3px 3px 0; _margin-bottom:0;width:90px; background-color:#e8e8e8; text-align:center;}
+.map-link1 a{ text-decoration:none; color:#68c; background-color:#e8e8e8; font-size:14px; line-height:26px; display:block;}
+.map-link1 a:hover{ background-color:#ddd;}

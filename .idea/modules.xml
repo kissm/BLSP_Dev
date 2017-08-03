@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/framework/FileInterface/FileInterface.iml" filepath="$PROJECT_DIR$/framework/FileInterface/FileInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/blsp.iml" filepath="$PROJECT_DIR$/.idea/blsp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blsp/blsp_support/blsp-dao/blsp-dao.iml" filepath="$PROJECT_DIR$/blsp/blsp_support/blsp-dao/blsp-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blsp/blsp_support/blsp-service/blsp-service.iml" filepath="$PROJECT_DIR$/blsp/blsp_support/blsp-service/blsp-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blsp/blsp_support/blsp-service-api/blsp-service-api.iml" filepath="$PROJECT_DIR$/blsp/blsp_support/blsp-service-api/blsp-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blsp/blsp_support/blsp-support.iml" filepath="$PROJECT_DIR$/blsp/blsp_support/blsp-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/common-core/common-core.iml" filepath="$PROJECT_DIR$/framework/common-core/common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/mybatis-generator-ext/mybatis-generator-ext.iml" filepath="$PROJECT_DIR$/framework/mybatis-generator-ext/mybatis-generator-ext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blsp/blsp-web/osp-blsp-web.iml" filepath="$PROJECT_DIR$/blsp/blsp-web/osp-blsp-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/osp-common-core/osp-common-core.iml" filepath="$PROJECT_DIR$/framework/osp-common-core/osp-common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blsp/blsp-wsbs-web/osp-wsbsblsp-web.iml" filepath="$PROJECT_DIR$/blsp/blsp-wsbs-web/osp-wsbsblsp-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/quartz-monitor/quartz-monitor.iml" filepath="$PROJECT_DIR$/framework/quartz-monitor/quartz-monitor.iml" />
+    </modules>
+  </component>
+</project>

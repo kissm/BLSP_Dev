@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>珠海市金湾区网上办事大厅</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/newcss.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<script src="js/jquery-1.4.2.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+		<script type=text/javascript>
+			$(document).ready(function(){
+				var flag = true;
+				$('.tab ul li').each(function(i){
+					$(this).click(function(){
+						if($(this).hasClass('current')){
+							return;
+						}else{
+							if(flag){
+								flag = false;
+								$('.tab ul li.current').removeClass('current');
+								$(this).addClass('current');
+								$('.tab div.tab_c.current').fadeOut('slow',function(){
+									$(this).removeClass('current');
+									$($('.tab div.tab_c')[i]).fadeIn('slow',function(){
+										$(this).addClass('current');
+										flag = true;
+									});
+								});
+							}
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+					<tr>
+						<td width="17%" align="left">
+							<a href="http://www.zhwsbs.gov.cn" class="h-perv">返回市办事大厅</a>
+						</td>
+						<td width="3%">
+							&nbsp;
+						</td>
+						<td width="67%" class="h-link">
+							<a href="http://www.jinwan.gov.cn" target="_blank" >区府首页</a>
+							<a href="zwgk.html" >政务公开</a>
+							<a href="legalIndex.html" >法人事项</a>
+							<a href="index.html" class="selected" >个人事项</a>
+							<a href="zmhd.html" >政民互动</a>
+							<a href="xnjcFwsxjzqk.html" >效能监督</a>
+						</td>
+						<td width="13%" align="right" class="h-info">
+								<a href="###" class="loginButton" style="color: White">
+									<span style="font-size: 16px">用户登录</span>
+								</a>
+								<!--
+								<span style="color:white">
+									欢迎您！<strong></strong>
+									<a href="#" class="h-exit" onclick="doExit();return false;">退出</a>
+								</span>
+								-->
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="logo"></div>
+			<div class="weizi">
+				<div class="w-left">
+					<strong>您现在的位置：</strong><a href="default.html">首页</a> > 个人事项</div>
+				<div class="w-right"></div>
+			</div>
+		</div>
+		
+		<div class="main">
+			<div class="main_l">
+				<div class="main_l_c">
+					<a href="img/timeInfo.jpg" target="_blank">
+                        <div class="time time2"></div>
+                    </a>
+					<div class="main_l_t">
+						建设项目用地预审
+					</div>
+					<table class="abstract">
+						<tr>
+							<td class="a_p" style="width:80px">
+								主管部门：
+							</td>
+							<td>
+								金湾区国土资源局
+							</td>
+						</tr>
+						<tr>
+							<td class="a_p">
+								受理机构：
+							</td>
+							<td>
+								珠海市国土资源局金湾分局
+							</td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td class="a_p" style="width:80px">
+								收费标准：
+							</td>
+							<td>
+								<span class="charge_f">不收费</span>
+							</td>
+							<td rowspan="4" style="width: 260px;">
+								<a class="zxbl"></a>
+								<a class="jrsc"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="a_p">
+								收费标准：
+							</td>
+							<td>
+								<span class="charge">收费</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="a_p">
+								承诺期限：
+							</td>
+							<td>
+								<span class="time">工作日13天</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="a_p">
+								法定期限：
+							</td>
+							<td>
+								<span class="time">工作日13天</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<iframe width="300" height="26" scrolling="no" frameborder="0" src="http://61.145.231.107:80/star/webpart/subjectStarInfo.do?serviceCode=& showEvaluate=true">
+								</iframe>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="main_l_c_t">
+					<div class="tab">
+						<ul>
+							<li class="fist current">办事指南</li>
+							<li>表格下载</li>
+							<li>速递服务</li>
+						</ul>
+						<div class="tab_c current">
+							<div class="infoBox">
+								<div class="boxTitle">办理对象</div>
+								<div class="boxContent">
+									取得项目用地蓝线图或红线图的企业、单位及个人。
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">办理条件</div>
+								<div class="boxContent">规划部门出具的选址意见及其用地红线图或蓝线图（复印件需单位盖章）（所提供建设项目用地的坐标必须为西安80坐标）
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">所需材料</div>
+								<div class="boxContent">
+									1.建设项目用地预审报告<br>
+									证件:原件<br>
+									材料份数:原件1份<br>
+									备注说明:该附件在省国土资源网上下载。重点项目需要填报。<br>
+									2.项目建议书批复文件、项目可行性研究报告<br>
+									证件:复印件<br>
+									材料份数:复印件1份<br>
+									备注说明:直接审批可行性研究报告的审批类建设项目，需提供省发展改革委有关同意项目直接组织编制项目可行性研究报告的函件和可行性研究报告。<br>
+									3.地质灾害危险性评估报告、专家评估意见和备案证明<br>
+									证件:复印件<br>
+									料份数:复印件1份<br>
+									备注说明:1、已批准项目建议书与需备案的建设项目，拟选址于地质灾害防治规划确定的地质灾害易发区，需提供。2、直接森普可行性研究报告的，不需提供。<br>
+									4.是否压覆重要矿产资源的证明材料<br>
+									证件:复印件<br>
+									材料份数:复印件1份<br>
+									备注说明:1、已批准项目建议书与需备案的建设项目，需提供。2、直接审批可行性研究报告的，不需提供。<br>
+									5.身份证：法人代表，受委托人<br>
+									证件:原件、复印件<br>
+									材料份数:原件1份、复印件1份<br>
+									6.关于建设项目用地预审的申请<br>
+									证件:原件<br>
+									材料份数:原件1份<br>
+									7.建设用地土地预审测绘成果资料<br>
+									证件:复印件<br>
+									材料份数:复印件1份<br>
+									8.测绘成果资料光盘<br>
+									证件:原件<br>
+									材料份数:原件1份<br>
+									9.规划部门出具的选址意见及其用地红线图或蓝线图<br>
+									证件:复印件、电子文件<br>
+									材料份数:复印件1份、电子文件1份<br>
+									备注说明:（复印件需单位盖章）（所提供建设项目用地的坐标必须为西安80坐标）<br>
+									10.法人代表身份证（复印件）、委托书、经办人身份证（复印件）<br>
+									证件:原件<br>
+									材料份数:原件1份<br>
+									11.机构代码证、营业执照副本<br>
+									证件:复印件<br>
+									材料份数:复印件1份
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">窗口办理流程</div>
+								<div class="boxContent">
+									1、窗口申请，申请人携带材料，直接到窗口申请，申请人也可以通过邮寄材料，达到申请的效果；<br>
+									2、受理，网上通过预受理进入受理过程信息，或实体窗口收件受理过程信息；<br>
+									3、承办，表示审批过程中的第一个环节；<br>
+									4、审查，表示审批过程中的第二个环节；<br>
+									5、审核，表示审批过程中的第三个环节；<br>
+									6、审批，表示审批过程中的第四个环节；<br>
+									7、办结，一般流程直接发文，特殊流程（重点项目）需上报市局，办结期限不计算在内；
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">网上办理流程</div>
+								<div class="boxContent">
+									1、网上申请，申请人访问广东省网上办事大厅珠海市金湾分厅，在网上提交资料，达到申请的效果；<br>
+									2、预受理，对申请人网上提交申请进行预受理审核的信息。当出现申请人超过期限不来现场提交材料的情况时，后续应产生办结信息（办结结果代码为作废办结）。当需要申请人网上补交补正材料时，预受理状态应为补交补正材料，系统发出补交补正短信告知，由申请人网上补交补正材料，产生新的申办信息。如事项无网上预受理环节，则可以没有此信息。；<br>
+									3、受理，网上通过预受理进入受理过程信息，或实体窗口收件受理过程信息；<br>
+									4、承办，表示审批过程中的第一个环节；<br>
+									5、审查，表示审批过程中的第二个环节；<br>
+									6、审核，表示审批过程中的第三个环节；<br>
+									7、审批，表示审批过程中的第四个环节；<br>
+									8、办结，一般流程直接发文，特殊流程（重点项目）需上报市局，办结期限不计算在内；
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">办理时限</div>
+								<div class="boxContent">
+									法定期限：工作日13天<br>
+									承诺期限：工作日13天
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">办事窗口</div>
+								<div class="boxContent">
+										金湾区行政服务中心<br>
+										工作时间：周一至 周五 上午:09时00至 12时00 下午:14时00至 17时10; 法定节假日除外;<br>
+										地址：金湾区行政服务中心<br>
+										联系电话：0756 - 7260549,<br>
+										交通指引：请乘坐201路、207路、504路、704路公共汽车在“西湖城区”站下车，步行200米。或乘坐813、815环线到“金湾服务大厅”。
+								</div>
+							</div>
+							
+							<div class="infoBox">
+								<div class="boxTitle">办理依据</div>
+								<div class="boxContent">
+									1、《建设项目用地预审管理办法》第十二条。
+								</div>
+							</div>
+							
+							<div class="infoBox last">
+								<div class="boxTitle">收费标准</div>
+								<div class="boxContent">
+									无
+								</div>
+							</div>
+						</div>
+						<div class="tab_c">
+							<table cellspacing="0" cellpadding="0" border="0" width="100%" class="tblGray">
+								<thead>
+									<tr>
+										<th scope="col">
+											&nbsp;
+										</th>
+										<th scope="col">
+											表格名称
+										</th>
+										<th scope="col">
+											下载
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td width="5%" class="tCenter">
+											1
+										</td>
+										<td width="80%">
+											建设项目用地预审申请表
+										</td>
+										<td class="tCenter" width="15%">
+											<a class="btn28" href="http://www.zhwsbs.gov.cn/table/d5a442f3-f9f3-49f6-a2e1-f8b99f712faa.doc" target="_blank">
+												<span>下载</span>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td width="5%" class="tCenter">
+											2
+										</td>
+										<td width="80%">
+											建设项目申请用地预审报告
+										</td>
+										<td class="tCenter" width="15%">
+											<a class="btn28" href="http://www.zhwsbs.gov.cn/table/c7722d86-6b29-4daa-bf13-5651e56884a4.doc" target="_blank">
+												<span>下载</span>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td width="5%" class="tCenter">
+											3
+										</td>
+										<td width="80%">
+											授权委托书
+										</td>
+										<td class="tCenter" width="15%">
+											<a class="btn28" href="http://www.zhwsbs.gov.cn/table/12b23794-5855-4930-8a7f-5a35350445f6.doc" target="_blank">
+												<span>下载</span>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td width="5%" class="tCenter">
+											4
+										</td>
+										<td width="80%">
+											委托书样本
+										</td>
+										<td class="tCenter" width="15%">
+											<a class="btn28" href="http://www.zhwsbs.gov.cn/table/6a1b0454-7bcd-4c16-981a-9026a4596b4d.doc" target="_blank">
+												<span>下载</span>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tab_c">
+							<div class="infoBox">
+								<div class="boxTitle">邮政速递</div>
+								<div class="boxContent">
+									邮政速递联系人：罗运龙<br>
+									联系人电话：15626930511<br>
+									邮政速递业务查询电话：0756-8993670<br>
+									上门服务时间：9：00-18：00<br>
+									资费方式：自费<br>
+									资费说明：双向25元，单向18元
+								</div>
+							</div>
+							
+							<div class="infoBox last">
+								<div class="boxTitle">常见问题解答</div>
+									<div class="boxContent">
+									   无
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_r">
+				<div class="main_r_c">
+					<a href="zxsb.html?id=200271000G1849886X14440404" target="_blank" class="button zxsb">
+						<!--在线申办-->
+					</a>
+					<a href="#download" class="button bgxz">
+						<!--表格下载-->
+					</a>
+					<a href="wszx.html?id=200271000G1849886X14440404" target="_blank" class="button wszx">
+						<!--网上咨询-->
+					</a>
+					<a href="http://www.zhwsbs.gov.cn/sblsh/index.action" target="_blank" class="button jdcx">
+						<!--进度查询-->
+					</a>
+					<a href="http://www.zhwsbs.gov.cn/sblsh/index.action" target="_blank" class="button jgcx">
+						<!--结果查询-->
+					</a>
+				</div>
+				<div class="main_r_c two">
+					<div class="main_r_t">
+						相关服务
+					</div>
+					<ul>
+						<li title="建设项目用地预审">
+							<a href="subjectDetail.html">1&nbsp;建设项目用地预审</a>
+						</li>
+						<li title="建设项目用地预审">
+							<a href="subjectDetail.html">2&nbsp;建设项目用地预审</a>
+						</li>
+						<li title="建设项目用地预审建设项目用地预审">
+							<a href="subjectDetail.html">3&nbsp;建设项目用地预审建设项目用地预审</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="contents">
+			<img src="img/kf.gif" width="1000" height="115"  border="0" usemap="#Mapfoot" />
+			<map name="Mapfoot" id="Mapfoot">
+				<area shape="rect" coords="4,3,256,109" href="wszx.html"  />
+				<area shape="rect" coords="259,4,506,109" href="http://www.zhwsbs.gov.cn/sblsh/index.action" target="_blank" />
+				<area shape="rect" coords="512,5,754,111" href="http://61.145px.231.107/star/" target="_blank" />
+				<area shape="rect" coords="758,5,994,109" href="http://www.jinwan.gov.cn/ConsultingInfo.aspx?flag=1" target="_blank" />
+			</map>
+		</div>
+		<div class="footer">
+			<span class="f-left">版权所有 &copy;珠海市金湾区人民政府<br>备案号：粤ICP备05026025-1</span>
+		</div>
+	</body>
+</html>

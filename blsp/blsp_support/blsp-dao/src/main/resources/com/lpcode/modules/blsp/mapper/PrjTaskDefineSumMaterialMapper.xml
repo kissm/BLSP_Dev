@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lpcode.modules.blsp.mapper.PrjTaskDefineSumMaterialMapper" >
+  <select id="sumMaterialByStageId" resultType="com.lpcode.modules.blsp.vo.PrjTaskDefineSumMaterialVO">
+		SELECT td.stage_id AS "stageId",
+		       tmd.MATERIAL_ID AS "materialId",
+		       sum(ORIGINAL_NUM) AS "originalNum",
+		       sum(COPY_NUM) AS "copyNum",
+		       tmd.IS_MANDATORY AS "isMandatory",
+		       tmd.IS_BY_CONDITION AS "isByCondition",
+		       tmd.LAND_TYPE AS "landType",
+		       tmd.IS_NEED_PRE_AUDIT AS "isNeedPreAudit",
+	               tmd.IS_SPECIAL_PROJECT AS "isSpecialProject",
+	               tmd.IS_WITH_BASE_PART AS "isWithBasePart",
+	               tmd.IS_IT_TYPE AS "isItType",
+	               tmd.IS_GOV_TYPE AS "isGovType"
+		FROM prj_task_define td
+		JOIN prj_task_material_def tmd ON td.id = tmd.task_id
+		WHERE td.stage_id = #{stageId} and td.is_valid = '1' and td.is_delete = '0'
+		GROUP BY td.stage_id,
+		         tmd.MATERIAL_ID,
+		         tmd.IS_MANDATORY,
+		         tmd.LAND_TYPE,
+		         tmd.IS_NEED_PRE_AUDIT,
+	                 tmd.IS_SPECIAL_PROJECT,
+	                 tmd.IS_WITH_BASE_PART,
+	                 tmd.IS_IT_TYPE,
+	                 tmd.IS_GOV_TYPE
+  </select>
+</mapper>

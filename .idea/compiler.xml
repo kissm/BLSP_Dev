@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="blsp-dao" />
+        <module name="blsp-service" />
+        <module name="blsp-service-api" />
+        <module name="common-core" />
+        <module name="FileInterface" />
+        <module name="mybatis-generator-ext" />
+        <module name="osp-blsp-web" />
+        <module name="osp-common-core" />
+        <module name="osp-wsbsblsp-web" />
+        <module name="quartz-monitor" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="blsp-dao" target="1.8" />
+      <module name="blsp-service" target="1.8" />
+      <module name="blsp-service-api" target="1.8" />
+      <module name="blsp-support" target="1.7" />
+      <module name="common-core" target="1.7" />
+      <module name="FileInterface" target="1.7" />
+      <module name="mybatis-generator-ext" target="1.7" />
+      <module name="osp-blsp-web" target="1.8" />
+      <module name="osp-common-core" target="1.8" />
+      <module name="osp-wsbsblsp-web" target="1.8" />
+      <module name="quartz-monitor" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,28 @@
+在pom.xml里面增加mybatis.generator.version版本定义：
+		<mybatis.generator.version>1.3.2</mybatis.generator.version>
+		<mybatis-generator-ext>1.0.0</mybatis-generator-ext>
+
+在build中增加plugin：
+
+<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>${mybatis.generator.version}</version>
+				<executions>
+					<execution>
+						<id>Generate MyBatis Artifacts</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.framework</groupId>
+						<artifactId>mybatis-generator-ext</artifactId>
+						<version>${common-core}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+运行 mybatis-generator:generate 自动生成文件

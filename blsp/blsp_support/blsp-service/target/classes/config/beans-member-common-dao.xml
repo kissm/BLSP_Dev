@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!-- MyBatis begin -->
+  <bean id="sqlSessionFactory" class="com.framework.mybatis.ext.SqlSessionFactoryBeanExt">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="mapperLocations">
+      <list>
+        <value>classpath*:com/lpcode/modules/blsp/mapper/*Mapper.xml</value>
+      </list>
+    </property>
+    <property name="configLocation" value="classpath:/config/mybatis-config.xml"></property>
+    <property name="configurationProperties">
+        <props>
+            <prop key="dialect">mysql</prop>
+        </props>
+    </property>
+  </bean>
+
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.lpcode.modules.blsp.mapper,com.framework.osp.modules.sys.dao"/>
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+  </bean>
+
+  <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="transactionSynchronization" value="1"/>
+  </bean>
+
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="get*" propagation="REQUIRED" read-only="false"/>
+      <tx:method name="select*" propagation="REQUIRED" read-only="false"/>
+      <tx:method name="find*" propagation="REQUIRED" read-only="false"/>
+      <tx:method name="bind*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="set*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="create*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="modify*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="cancle*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="merge*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="remove*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="overtime*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="manualCancle*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="des*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="reg*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="pay*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="confirm*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="return*" propagation="REQUIRED" rollback-for="Exception"/>
+      <tx:method name="*" propagation="SUPPORTS" read-only="false"/>
+    </tx:attributes>
+  </tx:advice>
+
+  <aop:config>
+    <aop:pointcut id="serviceMethods"
+                  expression="execution(* com.lpcode.modules.service.*.*(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+  </aop:config>
+
+</beans>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="60 seconds">
+	<timestamp key="date" datePattern="yyyyMMdd" />
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/tmp/logs/blsp/blsp-web.log</File>
+		<!-- 日志文件rolling策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>/tmp/logs/blsp/blsp-web_%d{yyyy-MM-dd_HH}.log
+			</FileNamePattern>
+			<maxHistory>24</maxHistory>
+		</rollingPolicy>
+
+		<!-- 日志输出格式 -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}] %level %logger{80} [%thread] %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+	<!--<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">-->
+		<!--<smtpHost>mail.lpcode.com</smtpHost>-->
+		<!--<username>pengshuai</username>-->
+		<!--<password>00000000</password>-->
+		<!--<smtpPort>25</smtpPort>-->
+		<!--&lt;!&ndash;唐园园的测试邮箱,用来接收短信邮件&ndash;&gt;-->
+		<!--<to>1292761021@qq.com</to>-->
+		<!--<from>pengshuai@lpcode.com</from>-->
+		<!--<subject>${catalina.home} %logger{20} - %m</subject>-->
+		<!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+			<!--<pattern>%d{HH:mm:ss.SSS}[%thread] %-5level %logger{1}-%msg%n</pattern>-->
+		<!--</layout>-->
+	<!--</appender>-->
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.apache" level="INFO" />
+	<logger name="org.mybatis" level="INFO" />
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="net.sf.ehcache" level="INFO" />
+	<logger name="com.framework.osp.common.security.shiro.session" level="INFO" />
+	<logger name="dao" level="INFO"/>
+
+  <logger name="java.sql.Connection" level="INFO"/>
+  <logger name="java.sql.Statement" level="INFO"/>
+  <logger name="java.sql.PreparedStatement" level="INFO"/>
+  
+  
+	<root level="DEBUG">
+		<appender-ref ref="Console" />
+		<appender-ref ref="FILE" />
+	</root>
+	<!--<root level="ERROR">-->
+		<!--<appender-ref ref="EMAIL" />-->
+	<!--</root>-->
+</configuration>

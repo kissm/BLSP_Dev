@@ -1,0 +1,10 @@
+{<#rt>
+"sqrZjlx":"${serviceReuseDto.zjlx!""}",<#rt>
+"sbName":"${serviceReuseDto.xm!""}",<#rt>
+"sqrZjhm":"${serviceReuseDto.zjhm!""}",<#rt>
+"address":"${serviceReuseDto.dz!""}",<#rt>
+"lxrTelphone":"${serviceReuseDto.gddh!""}",<#rt>
+"lxrMobile":"${serviceReuseDto.sj!""}",<#rt>
+"email":"${serviceReuseDto.dzyx!""}",<#rt>
+"zipcode":"${serviceReuseDto.yb!""}"<#rt>
+}<#rt>

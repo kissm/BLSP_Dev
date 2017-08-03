@@ -1,0 +1,15 @@
+{<#rt>
+"zjlx":"${servicePushDto.zjlx!""}",<#rt>
+"xm":"${servicePushDto.xm!""}",<#rt>
+"zjhm":"${servicePushDto.zjhm!""}",<#rt>
+"xb":"${servicePushDto.xb!""}",<#rt>
+"dz":"${servicePushDto.dz!""}",<#rt>
+"gddh":"${servicePushDto.gddh!""}",<#rt>
+"sj":"${servicePushDto.sj!""}",<#rt>
+"dzyx":"${servicePushDto.dzyx!""}",<#rt>
+"yb":"${servicePushDto.yb!""}",<#rt>
+"mz":"${servicePushDto.mz!""}",<#rt>
+"csrq":"${servicePushDto.csrq!""}",<#rt>
+"hjdxzjd":"${servicePushDto.hjdxzjd!""}",<#rt>
+"wzdz":"${servicePushDto.wzdz!""}"<#rt>
+}<#rt>

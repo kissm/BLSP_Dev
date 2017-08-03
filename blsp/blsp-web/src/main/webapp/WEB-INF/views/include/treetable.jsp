@@ -1,0 +1,2 @@
+<link href="${ctxStaticModern}/vendors/treeTable/themes/treeTable.css" rel="stylesheet" type="text/css" />
+<script src="${ctxStaticModern}/vendors/treeTable/jquery.treeTable.min.js" type="text/javascript"></script>

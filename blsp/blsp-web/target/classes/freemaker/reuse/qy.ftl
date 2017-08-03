@@ -1,0 +1,9 @@
+{<#rt>
+"company":"${serviceReuseDto.qymc!""}",<#rt>
+"companyAddr":"${serviceReuseDto.dz!""}",<#rt>
+"companyCode":"${serviceReuseDto.frzjhm!""}",<#rt>
+"legalEntity":"${serviceReuseDto.frxm!""}",<#rt>
+"entityMphone":"${serviceReuseDto.sj!""}",<#rt>
+"entityPhone":"${serviceReuseDto.gddh!""}",<#rt>
+"sqrZjlx":"${serviceReuseDto.zjlx!""}"<#rt>
+}<#rt>

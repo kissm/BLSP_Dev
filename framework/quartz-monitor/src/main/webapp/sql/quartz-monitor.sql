@@ -1,0 +1,43 @@
+create table TASK_SCHEDULE_JOB
+(
+  JOB_ID          NUMBER(10) not null,
+  JOB_GROUP       VARCHAR2(255),
+  JOB_NAME        VARCHAR2(255),
+  JOB_STATUS      VARCHAR2(255),
+  CRON_EXPRESSION VARCHAR2(255),
+  DESCRIPTION     VARCHAR2(255),
+  IS_CONCURRENT   VARCHAR2(255),
+  URL             VARCHAR2(255),
+  PARAS           VARCHAR2(255),
+  PARATYPE        VARCHAR2(255),
+  CREATE_TIME     TIMESTAMP(6),
+  UPDATE_TIME     TIMESTAMP(6)
+)
+
+create table TASK_EXCUTE_DETAIL
+(
+  ID            NUMBER not null,
+  STATUS        VARCHAR2(100),
+  DESC_CODE     VARCHAR2(30),
+  DESC_MSG      VARCHAR2(200),
+  RECEIPT_PARAS VARCHAR2(200),
+  RECEIPT_IP    VARCHAR2(200),
+  JOB_ID        NUMBER,
+  CREATE_DATE   TIMESTAMP(6),
+  UPDATE_DATE   TIMESTAMP(6)
+)
+
+-- Create sequence 
+create sequence SEQ_TASK_EXCUTE_DETAIL
+minvalue 1000
+maxvalue 9999999999999999999999999999
+start with 1400
+increment by 1
+cache 20;
+-- Create sequence 
+create sequence SEQ_TASK_SCHEDULE_JOB
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1020
+increment by 1
+cache 20;

@@ -1,0 +1,2 @@
+<link href="${ctxStaticModern}/vendors/jquery-ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css"/>
+<script src="${ctxStaticModern}/vendors/jquery-ztree/js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>

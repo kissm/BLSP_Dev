@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+    <!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Material Admin</title>
+    
+        <!-- Vendor CSS -->
+        <link href="vendors/animate-css/animate.min.css" rel="stylesheet">
+		<link href="vendors/sweet-alert/sweet-alert.min.css" rel="stylesheet">
+        <!-- CSS -->
+        <link href="css/app.min.css" rel="stylesheet">
+		<style>
+			.editTable {
+				width: 100%;
+			}
+			.editTable > tbody > tr > td {
+				border: 1px solid #ccc;
+			}
+			.editTable td.title {
+				padding: 6px;
+				text-align: center;
+				background: #F7F7F7;
+			}
+			.editTable td.content {
+				padding: 6px;
+			}
+			.editTable input[type='text'] {
+				width: 100%;
+				height: 100%;
+				border: none;
+				padding: 0px 6px;
+				resize: none;
+			}
+		</style>
+    </head>
+    
+    <body>
+        <header id="header">
+            <ul class="header-inner">
+                <li id="menu-trigger" data-trigger="#sidebar">
+                    <div class="line-wrap">
+                        <div class="line top"></div>
+                        <div class="line center"></div>
+                        <div class="line bottom"></div>
+                    </div>
+                </li>
+            
+                <li class="logo hidden-xs">
+                    <a href="index.html">Material Admin</a>
+                </li>
+                
+                <li class="pull-right">
+                <ul class="top-menu">
+                    <li id="toggle-width">
+                        <div class="toggle-switch">
+                            <input id="tw-switch" type="checkbox" hidden="hidden">
+                            <label for="tw-switch" class="ts-helper"></label>
+                        </div>
+                    </li>
+                    <li id="top-search">
+                        <a class="tm-search" href=""></a>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-message" href=""><i class="tmn-counts">6</i></a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="listview">
+                                <div class="lv-header">
+                                    Messages
+                                </div>
+                                <div class="lv-body c-overflow">
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">David Belle</div>
+                                                <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Jonathan Morris</div>
+                                                <small class="lv-small">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Fredric Mitchell Jr.</div>
+                                                <small class="lv-small">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Glenn Jecobs</div>
+                                                <small class="lv-small">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Bill Phillips</div>
+                                                <small class="lv-small">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a class="lv-footer" href="">View All</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-notification" href=""><i class="tmn-counts">9</i></a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="listview" id="notifications">
+                                <div class="lv-header">
+                                    Notification
+                    
+                                    <ul class="actions">
+                                        <li class="dropdown">
+                                            <a href="" data-clear="notification">
+                                                <i class="md md-done-all"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="lv-body c-overflow">
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">David Belle</div>
+                                                <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Jonathan Morris</div>
+                                                <small class="lv-small">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Fredric Mitchell Jr.</div>
+                                                <small class="lv-small">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Glenn Jecobs</div>
+                                                <small class="lv-small">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Bill Phillips</div>
+                                                <small class="lv-small">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                    
+                                <a class="lv-footer" href="">View Previous</a>
+                            </div>
+                    
+                        </div>
+                    </li>
+                    <li class="dropdown hidden-xs">
+                        <a data-toggle="dropdown" class="tm-task" href=""><i class="tmn-counts">2</i></a>
+                        <div class="dropdown-menu pull-right dropdown-menu-lg">
+                            <div class="listview">
+                                <div class="lv-header">
+                                    Tasks
+                                </div>
+                                <div class="lv-body">
+                                    <div class="lv-item">
+                                        <div class="lv-title m-b-5">HTML5 Validation Report</div>
+                    
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                                <span class="sr-only">95% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lv-item">
+                                        <div class="lv-title m-b-5">Google Chrome Extension</div>
+                    
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                                <span class="sr-only">80% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lv-item">
+                                        <div class="lv-title m-b-5">Social Intranet Projects</div>
+                    
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                                <span class="sr-only">20% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lv-item">
+                                        <div class="lv-title m-b-5">Bootstrap Admin Template</div>
+                    
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                <span class="sr-only">60% Complete (warning)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lv-item">
+                                        <div class="lv-title m-b-5">Youtube Client App</div>
+                    
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                                <span class="sr-only">80% Complete (danger)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <a class="lv-footer" href="">View All</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-settings" href=""></a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                            <li>
+                                <a data-action="fullscreen" href=""><i class="md md-fullscreen"></i> Toggle Fullscreen</a>
+                            </li>
+                            <li>
+                                <a data-action="clear-localstorage" href=""><i class="md md-delete"></i> Clear Local Storage</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="md md-person"></i> Privacy Settings</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="md md-settings"></i> Other Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
+                        <a class="tm-chat" href=""></a>
+                    </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <!-- Top Search Content -->
+            <div id="top-search-wrap">
+                <input type="text">
+                <i id="top-search-close">&times;</i>
+            </div>
+        </header>
+        
+        <section id="main">
+            <aside id="sidebar">
+                <div class="sidebar-inner">
+                    <div class="si-inner">
+                        <div class="profile-menu">
+                            <a href="">
+                                <div class="profile-pic">
+                                    <img src="img/profile-pics/1.jpg" alt="">
+                                </div>
+                
+                                <div class="profile-info">
+                                    Malinda Hollaway
+                
+                                    <i class="md md-arrow-drop-down"></i>
+                                </div>
+                            </a>
+                
+                            <ul class="main-menu">
+                                <li>
+                                    <a href=""><i class="md md-person"></i> View Profile</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="md md-settings-input-antenna"></i> Privacy Settings</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="md md-settings"></i> Settings</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="md md-history"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                
+                        <ul class="main-menu">
+                            <li class="sub-menu active toggled">
+                                <a href=""><i class="md md-now-widgets"></i>政府项目审批</a>
+
+                                <ul>
+									<li><a href="add_project.html">新建项目</a></li>
+                                    <li><a class="active" href="example.html">受理</a></li>
+                                    <li><a href="commission.html">我的代办</a></li>
+									<li><a href="detailsSee.html">详情查看</a></li>
+                                </ul>
+                            </li>               
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            
+            <aside id="chat">
+                <ul class="tab-nav tn-justified" role="tablist">
+                    <li role="presentation" class="active"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friends</a></li>
+                    <li role="presentation"><a href="#online" aria-controls="online" role="tab" data-toggle="tab">Online Now</a></li>
+                </ul>
+            
+                <div class="chat-search">
+                    <div class="fg-line">
+                        <input type="text" class="form-control" placeholder="Search People">
+                    </div>
+                </div>
+            
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="friends">
+                        <div class="listview">
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
+                                        <i class="chat-status-busy"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Jonathan Morris</div>
+                                        <small class="lv-small">Available</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">David Belle</div>
+                                        <small class="lv-small">Last seen 3 hours ago</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
+                                        <i class="chat-status-online"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Fredric Mitchell Jr.</div>
+                                        <small class="lv-small">Availble</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
+                                        <i class="chat-status-online"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Glenn Jecobs</div>
+                                        <small class="lv-small">Availble</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img class="lv-img-sm" src="img/profile-pics/5.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Bill Phillips</div>
+                                        <small class="lv-small">Last seen 3 days ago</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img class="lv-img-sm" src="img/profile-pics/6.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Wendy Mitchell</div>
+                                        <small class="lv-small">Last seen 2 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/7.jpg" alt="">
+                                        <i class="chat-status-busy"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Teena Bell Ann</div>
+                                        <small class="lv-small">Busy</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="online">
+                        <div class="listview">
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
+                                        <i class="chat-status-busy"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Jonathan Morris</div>
+                                        <small class="lv-small">Available</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
+                                        <i class="chat-status-online"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Fredric Mitchell Jr.</div>
+                                        <small class="lv-small">Availble</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
+                                        <i class="chat-status-online"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Glenn Jecobs</div>
+                                        <small class="lv-small">Availble</small>
+                                    </div>
+                                </div>
+                            </a>
+            
+                            <a class="lv-item" href="">
+                                <div class="media">
+                                    <div class="pull-left p-relative">
+                                        <img class="lv-img-sm" src="img/profile-pics/7.jpg" alt="">
+                                        <i class="chat-status-busy"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">Teena Bell Ann</div>
+                                        <small class="lv-small">Busy</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        
+        
+            <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>建设工程消防设计审核申报</h2>
+                    </div>
+					
+					<div class="card">
+						<div class="card-body card-padding">
+							<table class="editTable">
+								<tbody>
+									<tr>
+										<td class="title" colspan="2">
+											建设单位
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td class="title">
+											法定代表人/<br/>
+											主要负责人
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td class="title">
+											联系电话
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>	
+									</tr>
+									<tr>
+										<td class="title" colspan="2">
+											工程名称
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td class="title">
+											联系人
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td class="title">
+											联系电话
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+									</tr>
+									<tr>
+										<td class="title" colspan="2">
+											工程地址
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td class="title">
+											计划开工日期
+										</td>
+										<td>
+											<div class="dtp-container dropdown">
+												<input type="text" class="date-picker" data-toggle="dropdown" aria-expanded="false">
+											</div>
+										</td>
+										<td class="title">
+											计划竣工日期
+										</td>
+										<td>
+											<div class="dtp-container dropdown">
+												<input type="text" class="date-picker" data-toggle="dropdown" aria-expanded="false">
+											</div>
+										</td>	
+									</tr>
+									<tr>
+										<td class="title" colspan="2">
+											类&nbsp;&nbsp;别
+										</td>
+										<td class="text-center" colspan="5">
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												新建
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												扩建
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												改建
+											</label>
+											（
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												建筑保温
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												改变用途
+											</label>
+											）
+										</td>
+									</tr>
+									<tr>
+										<td class="title" colspan="2">
+											单位类别
+										</td>
+										<td class="title">
+											单位名称
+										</td>
+										<td class="title">
+											资质等级
+										</td>
+										<td class="title">
+											法定代表人/<br/>
+											主要负责人
+										</td>
+										<td class="title">
+											联系人
+										</td>
+										<td class="title">
+											联系电话
+										</td>	
+									</tr>
+									<tr>
+										<td class="title" colspan="2">
+											设计单位
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+									</tr>
+									<tr id="construction" class="construction">
+										<td class="title" colspan="2">
+											施工单位
+											<button onclick="addRow('construction')" class="btn btn-primary"><i class="md md-add"></i></button>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+									</tr>
+									<tr>
+										<td class="title" colspan="2">
+											监理单位
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+										<td>
+											<input type="text"></input>
+										</td>
+									</tr>
+									<tr>
+										<td class="title" style="width: 38px;padding: 6px 20px;" rowspan="3">
+											使用性质
+										</td>
+										<td class="title" style="width: 38px;padding: 6px 20px;">
+											大型的人员密集场所
+										</td>
+										<td class="content" colspan="5">
+											<b>1．建筑总面积大于500㎡的</b>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												歌舞厅
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												录像厅
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												放映厅
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												卡拉OK厅
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												夜总会
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												游艺厅
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												桑拿浴室
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												网吧
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												酒吧
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												具有娱乐功能的餐馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												具有娱乐功能的茶馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												具有娱乐功能的咖啡厅
+											</label>
+											<br/>
+											<br/>
+											<b>2．建筑总面积大于1000㎡的</b>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												托儿所的儿童用房
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												幼儿园的儿童用房
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												儿童游乐厅 
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												其他室内儿童活动场所
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												养老院
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												福利院
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												医院的病房楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												疗养院的病房楼
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												中小学校的教学楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												中小学校的图书馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												中小学校的食堂
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												学校的集体宿舍
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												劳动密集型企业的员工集体宿舍
+											</label>
+											<br/>
+											<br/>
+											<b>3．建筑总面积大于2500㎡的</b>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												影剧院
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												公共图书馆的阅览室
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												营业性室内健身场馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												营业性室内休闲场馆
+											</label>
+											<br/>
+											 <label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												医院的门诊楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												大学的教学楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												大学的图书馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												大学的食堂
+											</label>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												劳动密集型企业的生产加工车间
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												寺庙
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												教堂
+											</label>
+											<br/>
+											<br/>
+											<b>4．建筑总面积大于10000㎡的</b>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												宾馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												饭店
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												商场
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												市场
+											</label>
+											<br/>
+											<br/>
+											<b>5．建筑总面积大于15000㎡的</b>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												民用机场航站楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												客运车站候车室
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												客运码头候船厅
+											</label>
+											<br/>
+											<br/>
+											<b>6．建筑总面积大于20000㎡的</b>
+											<br/>
+											<label class="checkbox checkbox-inline m-r-10 m-l-25">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												体育场馆
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												会堂
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												公共展览馆的展示厅
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												博物馆的展示厅
+											</label>
+											
+											
+										</td>
+									<tr>
+									<tr>
+										<td class="title" style="width: 38px;padding: 6px 20px;">
+											其他特殊工程
+										</td>
+										<td class="content" colspan="5">
+											<b>1．</b>
+											<label class="checkbox checkbox-inline">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												设有上栏所列大型的人员密集场所的建设工程
+											</label>
+											<br/>
+											<br/>
+											<b>2．</b>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												国家机关办公楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												电力调度楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												电信楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												邮政楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												防灾指挥调度楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												广播电视楼
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												档案楼
+											</label>
+											<br/>
+											<br/>
+											<b>3．除本栏第1项、第2项以外的</b>
+											<label class="checkbox checkbox-inline m-r-10 m-l-15">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												单体建筑面积大于40000㎡的公共建筑
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												建筑高度超过50m的公共建筑
+											</label>
+											<br/>
+											<br/>
+											<b>4．</b>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												国家标准规定的一类高层住宅建筑
+											</label>
+											<br/>
+											<br/>
+											<b>5．</b>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												城市轨道交通工程
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												城市隧道工程
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												大型发电工程
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												大型变配电工程
+											</label>
+											<br/>
+											<br/>
+											<b>6．</b><label>生产、储存易燃易爆危险物品的</label>
+											<label class="checkbox checkbox-inline m-r-10 m-l-15">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												工厂
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												仓库
+											</label>
+											<br/>
+											<label class="m-l-20">装卸易燃易爆危险物品的</label>
+											<label class="checkbox checkbox-inline m-r-10 m-l-15">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												专用车站
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												专用码头
+											</label>
+											<br/>
+											<label class="m-l-20">易燃易爆气体的</label>
+											<label class="checkbox checkbox-inline m-r-10 m-l-15">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												充装站
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												供应站
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												调压站
+											</label>
+											<br/>
+											<label class="m-l-20">易燃易爆液体的</label>
+											<label class="checkbox checkbox-inline m-r-10 m-l-15">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												充装站
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												供应站
+											</label>
+											<label class="checkbox checkbox-inline m-r-10">
+												<input type="checkbox">
+												<i class="input-helper"></i>    
+												调压站
+											</label>
+										</td>
+									<tr>
+								</tbody>
+							</table>
+						</div>
+					 </div>
+					 
+					 <div class="card">
+						<div class="card-body card-padding">
+							<table class="editTable">
+								<tr>
+									<td class="title" style="width: 200px;" colspan="2" rowspan="2">
+										单体建筑名称
+									</td>
+									<td class="title" rowspan="2">
+										结构类型
+									</td>
+									<td class="title" rowspan="2">
+										耐火等级
+									</td>
+									<td class="title" colspan="2">
+										层&nbsp;&nbsp;数
+									</td>
+									<td class="title" rowspan="2">
+										建筑高度（m）
+									</td>
+									<td class="title" rowspan="2">
+										占地面积（㎡）
+									</td>
+									<td class="title" colspan="2">
+										建筑面积（㎡）
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										地上
+									</td>
+									<td class="title">
+										地下
+									</td>
+									<td class="title">
+										地上
+									</td>
+									<td class="title">
+										地下
+									</td>
+								</tr>
+								<tr id="building" class="building" >
+									<td>
+										<button onclick="addRow('building')" class="btn btn-primary">
+											<i class="md md-add"></i>
+										</button>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="title" rowspan="3">
+										储罐
+									</td>
+									<td class="title">
+										设置位置
+									</td>
+									<td colspan="5">
+										<input type="text"></input>
+									</td>
+									<td class="title" colspan="2">
+										总容量（m³）
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										设置型式
+									</td>
+									<td class="content" colspan="8">
+										浮顶罐
+										（
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											外
+										</label>
+										<label class="checkbox checkbox-inline">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											内
+										</label>
+										）
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											固定顶罐
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											卧式罐
+										</label>
+										<br/>
+										球形罐
+										（
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											液体
+										</label>
+										<label class="checkbox checkbox-inline">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											气体
+										</label>
+										）
+										可燃气体储罐
+										（
+										  
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											干式
+										</label>
+										<label class="checkbox checkbox-inline">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											湿式
+										</label>
+										）
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											其他
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										储存形式
+									</td>
+									<td class="content" colspan="3">
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											地上
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											半地下
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											地下
+										</label>
+									</td>
+									<td class="title" colspan="2">
+										储存物质名称
+									</td>
+									<td colspan="3">
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										储罐
+									</td>
+									<td class="title">
+										储&nbsp;&nbsp;量
+									</td>
+									<td colspan="5">
+										<input type="text"></input>
+									</td>
+									<td class="title" colspan="2">
+										储存物质名称
+									</td>
+									<td>
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="content text-center" colspan="2">
+										<label class="checkbox checkbox-inline">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											建筑保温
+										</label>
+									</td>
+									<td class="title">
+										材料类别
+									</td>
+									<td class="content" colspan="4">
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											A
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											B1
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											B2
+										</label>
+									</td>
+									<td class="title">
+										保温层数
+									</td>
+									<td colspan="2">
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="content text-center" colspan="2" rowspan="3">
+										<label class="checkbox checkbox-inline">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											装修工程
+										</label>
+									</td>
+									<td class="title">
+										装修部位
+									</td>
+									<td class="content" colspan="7">
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											顶棚
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											墙面
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											地面
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											隔断
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											固定家具
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											装饰织物
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											其他
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										装修面积（㎡）
+									</td>
+									<td colspan="4">
+										<input type="text"></input>
+									</td>
+									<td class="title">
+										装修层数
+									</td>
+									<td colspan="2">
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										使用性质
+									</td>
+									<td colspan="4">
+										<input type="text"></input>
+									</td>
+									<td class="title">
+										原有用途
+									</td>
+									<td colspan="2">
+										<input type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="title">
+										消防<br/>设施
+									</td>
+									<td class="content" colspan="9">
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											室内消火栓系统
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											室外消火栓系统
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											火灾自动报警系统
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											自动喷水灭火系统
+										</label>
+										<br/>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											气体灭火系统&nbsp;&nbsp;&nbsp;&nbsp;
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											泡沫灭火系统&nbsp;&nbsp;&nbsp;&nbsp;
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											其他灭火系统
+										</label>
+										<br/>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											疏散指示标志&nbsp;&nbsp;&nbsp;&nbsp;
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											消防应急照明&nbsp;&nbsp;&nbsp;&nbsp;
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											防烟排烟系统&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											消防电梯
+										</label> 
+										<br/>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											灭火器&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										</label>
+										<label class="checkbox checkbox-inline m-r-10">
+											<input type="checkbox">
+											<i class="input-helper"></i>    
+											其他：
+										</label>
+										<input style="width:100px;height: auto;border-bottom: 1px solid #ccc;" type="text"></input>
+									</td>
+								</tr>
+								<tr>
+									<td class="content" colspan="10">
+										<b>同时提交的材料：</b>
+										<br/>
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										1．建设单位的工商营业执照等合法身份证明文件；
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										2．设计单位资质证明文件；
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										3．消防设计文件，数量：<input style="width:50px;height: auto;border-bottom: 1px solid #ccc;" type="text"></input>份（大写）；
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										4．专家评审申报材料（特殊消防设计文件，或者设计采用的国际标准、境外消防技术标准的中文文本，其他有关消防设计的应用实例、产品说明等技术资料），数量：<input style="width:50px;height: auto;border-bottom: 1px solid #ccc;" type="text"></input>份（大写）；
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										5．建设工程规划许可证明文件；
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										6．城乡规划主管部门批准的临时性建筑证明文件；
+										<br/>
+										<label class="checkbox checkbox-inline m-l-25">
+											<input type="checkbox">
+											<i class="input-helper"></i>
+										</label> 
+										7．法律、行政法规规定的其他材料；
+										<br/>
+									</td>
+								</tr>
+								<tr>
+									<td class="content" colspan="10">
+										其他需要说明的情况：<br/>
+										<div class="fg-line">
+											<textarea class="form-control auto-size" placeholder="请输入..."></textarea>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+                </div>
+				
+				 
+				 
+            </section>
+        </section>
+    
+        <!-- Older IE warning message -->
+        <!--[if lt IE 9]>
+            <div class="ie-warning">
+                <h1 class="c-white">IE SUCKS!</h1>
+                <p>You are using an outdated version of Internet Explorer, upgrade to any of the following web browser <br/>in order to access the maximum functionality of this website. </p>
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="img/browsers/chrome.png" alt="">
+                            <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="img/browsers/firefox.png" alt="">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="img/browsers/opera.png" alt="">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="img/browsers/safari.png" alt="">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="img/browsers/ie.png" alt="">
+                            <div>IE (New)</div>
+                        </a>
+                    </li>
+                </ul>
+                <p>Upgrade your browser for a Safer and Faster web experience. <br/>Thank you for your patience...</p>
+            </div>   
+        <![endif]-->
+
+        <!-- Javascript Libraries -->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="vendors/nicescroll/jquery.nicescroll.min.js"></script>
+		<script src="vendors/auto-size/jquery.autosize.min.js"></script>
+        <script src="vendors/waves/waves.min.js"></script>
+		<script src="vendors/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="vendors/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+        <script src="vendors/sweet-alert/sweet-alert.min.js"></script>
+		<script src="vendors/moment/moment.min.js"></script>
+		<script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+        <script src="js/functions.js"></script>
+    
+        <!-- Following is only for demo purpose to trigger colored modals. You may ignore this when you implement -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('body').on('click', '#btn-color-targets > .btn', function(){
+                    var color = $(this).data('target-color');
+                    $('#modalColor').attr('data-modal-color', color);
+                });
+				add();
+				$('#add').click(function(){
+					add();
+				});
+				$('#delete').click(function(){
+					$('#contentTable tbody tr input:checkbox:checked').parents("tr").remove();
+				});
+				
+				
+				
+            });
+			
+			function addRow(id){
+				var tr = $('#'+id).clone();
+				$(tr).removeAttr('id');
+				$(tr).find('input').val('');
+				$(tr).find('button div').remove();
+				$(tr).find('button').removeAttr('onclick').removeClass('btn-primary').addClass('btn-danger').bind("click", function(){
+					$(this).parents('tr').remove();
+				});
+				$(tr).find('button i.md').removeClass('md-add').addClass('md-clear');
+				
+				$('.'+id+':last').after(tr);
+			}
+			
+			
+			function add(){
+				var tr = $('#cloneHtml tr').clone();
+				$(tr).find('select').selectpicker();
+				bindDatetimepicker($(tr).find('.date-picker'),'YYYY-MM-DD');
+				$('#contentTable tbody').append(tr);
+			}
+			
+			
+			
+        </script>
+    
+    </body>
+</html>

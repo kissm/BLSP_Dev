@@ -1,0 +1,137 @@
+drop table if exists tec_ent_fin_relate;
+
+/*==============================================================*/
+/* Table: tec_ent_fin_relate                                    */
+/*==============================================================*/
+create table tec_ent_fin_relate
+(
+   ID                   varchar(64) not null,
+   ENT_ID               VARCHAR(64),
+   method               VARCHAR(3),
+   fund_main            VARCHAR(3),
+   scale                VARCHAR(200),
+   PHASE                VARCHAR(3),
+   date_line            timestamp,
+   legal_person_phone   VARCHAR(64),
+   fin_req_desc         VARCHAR(500),
+   CREATOR              varchar(64),
+   CREATE_TIME          timestamp,
+   UPDATOR              varchar(64),
+   UPDATE_TIME          timestamp,
+   primary key (ID)
+);
+
+alter table tec_ent_fin_relate comment '融资相关';
+
+alter table tec_ent_fin_relate add constraint FK_Reference_52 foreign key (ENT_ID)
+      references TEC_ENTERPRISE (ENT_ID) on delete restrict on update restrict;
+
+
+drop table if exists tec_ent_fin_relate_smt;
+
+/*==============================================================*/
+/* Table: tec_ent_fin_relate_smt                                */
+/*==============================================================*/
+create table tec_ent_fin_relate_smt
+(
+   LOGID                VARCHAR(64) not null,
+   ID                   varchar(64) not null,
+   ENT_ID               VARCHAR(64),
+   method               VARCHAR(3),
+   fund_main            VARCHAR(3),
+   scale                VARCHAR(200),
+   PHASE                VARCHAR(3),
+   date_line            timestamp,
+   legal_person_phone   VARCHAR(64),
+   fin_req_desc         VARCHAR(500),
+   CREATOR              varchar(64),
+   CREATE_TIME          timestamp,
+   UPDATOR              varchar(64),
+   UPDATE_TIME          timestamp,
+   primary key (LOGID)
+);
+
+alter table tec_ent_fin_relate_smt comment '融资相关';
+
+alter table tec_ent_fin_relate_smt add constraint FK_Reference_55 foreign key (ENT_ID)
+      references TEC_ENTERPRISE_SMT (LOGID) on delete restrict on update restrict;
+
+
+drop table if exists tec_ent_park;
+
+/*==============================================================*/
+/* Table: tec_ent_park                                          */
+/*==============================================================*/
+create table tec_ent_park
+(
+   ID                   varchar(64) not null,
+   ENT_ID               VARCHAR(64),
+   park_level           VARCHAR(3),
+   park_type            VARCHAR(3),
+   industry_orientate   VARCHAR(3),
+   park_area            int,
+   setup_time           timestamp,
+   ent_count            int,
+   CREATOR              varchar(64),
+   CREATE_TIME          timestamp,
+   UPDATOR              varchar(64),
+   UPDATE_TIME          timestamp
+);
+
+alter table tec_ent_park comment '园区表';
+
+alter table tec_ent_park add constraint FK_Reference_53 foreign key (ENT_ID)
+      references TEC_ENTERPRISE (ENT_ID) on delete restrict on update restrict;
+
+
+drop table if exists tec_ent_park_smt;
+
+/*==============================================================*/
+/* Table: tec_ent_park_smt                                      */
+/*==============================================================*/
+create table tec_ent_park_smt
+(
+   LOGID                VARCHAR(64) not null,
+   ID                   varchar(64),
+   ENT_ID               VARCHAR(64),
+   park_level           VARCHAR(3),
+   park_type            VARCHAR(3),
+   industry_orientate   VARCHAR(3),
+   park_area            int,
+   setup_time           timestamp,
+   ent_count            int,
+   CREATOR              varchar(64),
+   CREATE_TIME          timestamp,
+   UPDATOR              varchar(64),
+   UPDATE_TIME          timestamp,
+   primary key (LOGID)
+);
+
+alter table tec_ent_park_smt comment '园区表';
+
+alter table tec_ent_park_smt add constraint FK_Reference_54 foreign key (ENT_ID)
+      references TEC_ENTERPRISE_SMT (LOGID) on delete restrict on update restrict;
+
+
+ALTER TABLE `kjxtdb`.`tec_enterprise` 
+ADD COLUMN `park_id` VARCHAR(64) NULL COMMENT '' AFTER `STAFFS_NUMBER`,
+ADD COLUMN `other_park_name` VARCHAR(200) NULL COMMENT '' AFTER `park_id`,
+ADD COLUMN `server_org_type` VARCHAR(3) NULL COMMENT '服务机构类型\n11  园区\r12   行业组织\r13 金融局/办\r14   会计师事务所\r15  律师事务所' AFTER `other_park_name`;
+
+ALTER TABLE `kjxtdb`.`tec_enterprise_smt` 
+ADD COLUMN `park_id` VARCHAR(64) NULL COMMENT '' AFTER `STAFFS_NUMBER`,
+ADD COLUMN `other_park_name` VARCHAR(200) NULL COMMENT '' AFTER `park_id`,
+ADD COLUMN `server_org_type` VARCHAR(3) NULL COMMENT '服务机构类型\n11  园区\r12   行业组织\r13 金融局/办\r14   会计师事务所\r15  律师事务所' AFTER `other_park_name`;
+
+ALTER TABLE `kjxtdb`.`tec_ent_finance_info` 
+ADD COLUMN `sales_net_profit` DECIMAL(10,2) NULL COMMENT '销售净利润(万元）' AFTER `MAIN_BUSINESS_INCOME`;
+
+
+ALTER TABLE `kjxtdb`.`tec_ent_finance_info_smt` 
+ADD COLUMN `sales_net_profit` DECIMAL(10,2) NULL COMMENT '销售净利润(万元）' AFTER `MAIN_BUSINESS_INCOME`;
+
+ALTER TABLE `kjxtdb`.`tec_enterprise` 
+ADD COLUMN `main_dept` VARCHAR(200) NULL COMMENT '主管部门' AFTER `TAX_CODE`;
+
+ALTER TABLE `kjxtdb`.`tec_enterprise_smt` 
+ADD COLUMN `main_dept` VARCHAR(200) NULL COMMENT '主管部门' AFTER `TAX_CODE`;

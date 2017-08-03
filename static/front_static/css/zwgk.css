@@ -1,0 +1,89 @@
+﻿@charset "utf-8";
+.gov-list {width:998px;margin:0 auto;padding:12px 0px;}
+.gov-list .btn-side {width:270px;margin-right:15px;float:left;}
+.gov-list .main-side {width:696px;float:left;}
+.btn-side .left-btn {width:270px;height:48px;display:block;margin-bottom:15px;}
+.btn-side .btn-1 {background:url(../img/leftbutten_1.jpg) no-repeat;background-position:0 0;}
+.btn-side .btn-2 {background:url(../img/leftbutten_2.jpg) no-repeat;background-position:0 0;}
+.btn-side .btn-3 {background:url(../img/leftbutten_3.jpg) no-repeat;background-position:0 0;}
+.btn-side .btn-4 {background:url(../img/leftbutten_4.jpg) no-repeat;background-position:0 0;}
+.btn-side .btn-5 {background:url(../img/leftbutten_5.jpg) no-repeat;background-position:0 0;}
+.main-side .gov-list-title {background:url(../img/pic-gov-list-title-bg.png) no-repeat;width:700px;height:43px;padding:0 8px;}
+.gov-list-title h3 {font-family:"微软雅黑";font-size:20px;font-weight:normal;line-height:43px;color:#1F659F;}
+.gov-list-title .push-down {background:url(../img/gov-list/pic-gov-list-down-bg.png) no-repeat;width:194px;height:29px;line-height:29px;margin-top:6px;padding-left:5px;cursor:pointer;float:right;position:relative;}
+.gov-list-title .push-down span {font-size:14px;font-weight:bold;color:#1A83DC;}
+.push-down .push-down-list {background:#F5F8FD;border:#CCC solid 1px;width:306px;height:120px;padding:20px;padding-top:0;position:absolute;top:29px;right:0;cursor:default;display:none;}
+.push-down .push-down-list h4 {border-bottom:#CCC solid 1px;width:306px;height:50px;line-height:50px;color:#2365A1;}
+.push-down .push-down-list h4 #close {background:url(../img/gov-list/ico-close.png) no-repeat;width:12px;height:12px;display:block;margin-top:20px;float:right;}
+.push-down .push-down-list .push-down-main {line-height:200%;padding-top:10px;}
+.push-down .push-down-list .push-down-main a {color:#666;margin-right:30px;}
+.push-down .push-down-list .push-down-main a:hover {color:#1A83DC;}																		 
+.main-side .gov-list-main {/*background:url(../img/gov-list/pic-gov-list-main-bg.png) repeat-y right top;*/
+                           border:#CCCCCC solid 1px;border-top:none;width:714px;-moz-border-radius:0 0 4px 4px;-webkit-border-radius:0 0 4px 4px;border-radius:0 0 4px 4px;}
+.gov-list-main .list-left {width:498px;margin-right:1px;float:left;font-family:"微软雅黑";}
+.gov-list-main .list-right {width:215px;float:left;}
+/****************************************************************************************************************************************/
+.gov-list-main h4 {text-align:center;color:#1F659F;height:30px;line-height:28px;margin-bottom:8px;font-size:14px}
+.gov-list-main table {width:100%;}
+.gov-list-main table td {padding:6px 0px 2px 10px;vertical-align:top;}
+.click_arrow1,.click_arrow2 {text-align: center; position: relative; bottom: -5px; overflow: hidden;}
+.list-height .click_arrow1 a,.list-height .click_arrow2 a {
+	padding: 0px;
+	margin: 0px auto;
+	width: 87px;
+	height: 21px;
+	cursor: pointer;
+	background: transparent url(../img/xclick_arrow1.png) no-repeat;
+}
+.list-height .click_arrow2 a {
+	background: transparent url(../img/xclick_arrow2.png) no-repeat;
+}
+.list-height a {
+    border: medium none;
+    color: #2365A1;
+    outline: medium none;
+    text-decoration: none;
+    font-size:14px;
+	display: block;
+	padding:8px 0px 4px 11px;
+	vertical-align:top;
+}
+.gov-list-main .list-left .bottom-btn {background:url(../img/gov-list/pic-gov-list-bottom-btn-bg.png) no-repeat;width:85px;height:17px;display:block;margin:8px auto 0 auto;}
+.gov-list-main .list-left .open-btn {background-position:0 0;}
+.gov-list-main .list-left .close-btn {background-position:0 -17px;}
+.gov-service-title {background:url(../img/gov-list/pic-gov-service-title-bg.png) no-repeat;width:952px;height:43px;line-height:43px;padding:0 12px;}
+.gov-service-title h3 {font-family:"微软雅黑";font-size:20px;font-weight:normal;color:#1F659F;}
+.gov-service-title .service-tab {font-family:"微软雅黑";font-size:15px;color:#676767;float:right;}
+.gov-service-title .service-tab span {margin:0 10px;}
+.gov-service-title .service-tab a {color:#676767;}
+.gov-service-title .service-tab a:hover {color:#1A83DC;}
+.gov-service-title .service-tab a.selcet {color:#2365A1;}
+.gov-service-main {background:#FFF;border:#CCC solid 1px;border-top:none;width:950px;padding:12px;-moz-border-radius:0 0 4px 4px;-webkit-border-radius:0 0 4px 4px;}
+.gov-service-main .service-txt {margin-bottom:12px;}
+.gov-service-main .service-txt .back-to {background:url(../img/gov-list/ico-back.png) no-repeat;padding-left:20px;float:right;}
+.gov-service-main table {width:100%;}
+.gov-service-main table th {background:#EEE;border:#DDD solid 1px;padding:6px 8px;vertical-align:middle;color:#2365A1;}
+.gov-service-main table td {background:#FFF;border:#DDD solid 1px;padding:14px 8px;vertical-align:middle;height:22px;line-height:22px;}
+.gov-service-main table .second-tr td {background:#F1F6FE;}
+.gov-service-main table td .ico-txt {background:url(../img/gov-list/ico-txt.png) no-repeat 0 2px;padding-left:20px;height:22px;display:block;}
+.gov-service-main table tfoot.page td {text-align:center;}
+.gov-service-main table tfoot.page td a {margin:0 10px;text-decoration:none;color:#c9c9c9;}
+.gov-service-main table tfoot.page td a.active {color:#317cff;}
+.gov-window {background:#F3F7FE;border:#E9E9E9 solid 1px;width:888px;padding:30px 30px 0 30px;}
+.gov-window h4 {border-bottom:#CCC solid 1px;font-size:16px;padding-bottom:12px;margin-bottom:20px;}
+.gov-window h4 span {font-size:14px;font-weight:normal;margin-left:40px;}
+.gov-window .window-main {border-bottom:#DDD dotted 1px;margin-bottom:20px;padding-bottom:20px;font-size:14px;}
+.gov-service-main .window-main table td {background:none;border:none;padding:6px 0;height:auto;line-height:150%;vertical-align:top;}
+.gov-service-main .window-main table td span {color:#999;}
+.gov-window table td span .input-map {padding:2px 12px;margin:0 12px;}
+.gov-guide-title {background:url(../img/gov-list/pic-gov-service-title-bg.png) no-repeat 0 12px;width:952px;height:43px;line-height:43px;padding:12px 12px 0 12px;margin:0 auto;}
+.gov-window table td span.window-name {font-size:14px;font-weight:normal;color:#E18B46}
+.gov-guide-title h3 {font-family:"微软雅黑";font-size:20px;font-weight:normal;color:#1F659F;}
+.gov-guide-title a {padding-left:20px;margin-left:20px;float:right;}
+.gov-guide-title a.back {background:url(../img/gov-list/ico-back.png) no-repeat 0 13px;}
+.gov-guide-title a.guide {background:url(../img/gov-list/ico-guide.gif) no-repeat 0 13px;}
+.guide-info {background:#F3F7FE;border:#E9E9E9 solid 1px;width:976px;margin-left: 11px;-moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;border-radius:4px 4px 0 0;padding:20px 0;}
+.guide-info table {width:100%;}
+.guide-info table td {vertical-align:middle;padding:8px 0;}
+.guide-info table td span {color:#999;}
+.guide-body-1 {margin-bottom: 12px;}

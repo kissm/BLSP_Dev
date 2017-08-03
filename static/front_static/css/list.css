@@ -1,0 +1,215 @@
+body{
+	margin:0;
+	background-repeat: repeat-x;
+	background-position: top;
+	background-color: #fff;
+	font-size:12px;
+	text-align:left;	
+	scrollbar-face-color:#CBE5FC;
+	scrollbar-shadow-color:#297AE8; 
+	scrollbar-highlight-color:#569FE5;
+	scrollbar-3dlight-color:#ffffff;
+	scrollbar-darkshadow-color:#ffffff;
+	scrollbar-track-color:#F0F8FF;
+	scrollbar-arrow-color:#297AE8; 
+}
+html
+{
+	overflow-x:hidden;
+	overflow-y:scroll;
+} 
+
+a:link {font-size:12px; text-decoration:none; color:#06527d;}
+a:visited {font-size:12px; text-decoration:none; color:#1970c2;}
+a:hover {font-size:12px; text-decoration:none; color:#FF0000;}
+
+.table_search
+{
+	line-height:28px;height:28px;background:url(../img/bg2.gif) repeat-x left top;color:#FFF
+}
+.text_normal
+{
+   border:1px solid #000;border-width:0 0 1px
+    
+}
+#pp1{text-align:center;}
+#pp1 a{color:blue;background:url(../img/bg1.gif) no-repeat left top;width:71px;height:22px;display:inline-block;line-height:22px;text-align:center;margin:0 6px;}
+
+#pp2 td{height:27px;padding-left:8px;padding-right:8px;color:#505050;}
+#pp2 td select option{color:#347CBF;background-color:#e8f4fe;}
+#pp2 td input{border:1px solid #000;border-width:0 0 1px}
+
+.timeInput
+{
+		BORDER-RIGHT: 0px; BORDER-TOP: 0px; BACKGROUND: url(../img/common/image/datepicker.gif) #ebfaff no-repeat right 50%; BEHAVIOR: url("../common/htc/calendar.htc"); FONT: 12px 宋体; BORDER-LEFT: 0px; WIDTH: 86px; CURSOR: hand; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+
+/*******GridView_CSS*******/
+.gridview_normal
+{
+    background-color:  #ffffff;
+    color:#000000;
+}
+.gridview_normal td,th
+{
+border-collapse: collapse;
+border:solid 1px #b1d0f8;
+}
+
+.gridview_itemstyle_over
+{
+    color: #ffffff;
+    background-color: #ffffff;
+    padding-left:3px;
+}
+.gridview_AlternatingRowStyle
+{
+	background-color: #ffffff;	
+	padding-left:3px;
+	height:21px;
+}
+.gridview_itemstyle_normal
+{
+    color: #000000;
+    background-color: #ffffff;
+    padding-left:3px;
+    height:21px;
+}
+
+
+.gridview_headerstyle_normal
+{  
+    background-color: #F3F3F3;
+    height:23px;
+    padding-left:3px;    
+   
+    
+}
+.selected
+{  
+    background-color:#F4F1AE;
+}
+
+.listHover
+{
+	background-color:#D8EEBB;	
+}
+
+
+.showDiv
+{
+	background-image:url('../img/comment.gif'); 
+	background-repeat:no-repeat; background-position:right bottom; 
+	position:relative; bottom:-2px	
+}
+
+ #myshadow{     
+    position:absolute;　     
+    left:0;     
+    top:0;     
+    width:100%;       
+    background-color:#0060C0;     
+    filter:alpha(opacity=20);     
+ }     
+ #dialogCase{     
+    position:absolute;       
+ }
+ 
+ .btn {
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: 
+#2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: 
+progid:DXImageTransform.Microsoft.Gradient(GradientType=0, 
+StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 
+1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; 
+BORDER-BOTTOM: #2C59AA 1px solid
+}
+
+.ButtonCss{ background-image:url(../img/botton.gif); width:64px; height:23px; border:0; background-color: transparent;}
+.FileUploadImport {
+	BORDER-RIGHT: #666666 1px solid;
+	 BORDER-TOP: #666666 1px solid;
+	  FONT-SIZE: 10pt; BORDER-LEFT: #666666 1px solid; 
+	  WIDTH: 400px; BORDER-BOTTOM: #666666 1px solid;
+	   FONT-FAMILY: 宋体; HEIGHT: 20px
+}
+
+.myTdLabel
+{
+	background-color:#F3F3F3;
+}
+
+
+/******************显示隐藏DIV样式*********************************/
+@media all {
+      IE\:clientCaps {behavior:url(#default#clientcaps)}
+}
+#Layer1{
+	position:absolute;
+	width:300px;
+	z-index:1;
+	margin-top:30px;
+	margin-left:30px !important; margin-left:10px;
+	display:none;
+}
+.intro-top-line{
+	width:100%; background:url(../img/black-line.gif) repeat-x 0 13px;
+}
+.intro-arrow{
+	width:100%; background:url(../img/intro_arrow.gif) no-repeat 5px 0; height:14px; overflow:hidden;
+}
+.intro-content{
+	border:1px black solid; border-top:0; background:#FFFFCC;
+}
+.intro-content-text{
+	margin:10px !important; margin:5px; text-align:left; font:normal 12px 宋体,arial;
+}
+
+.OnlyBottom
+{
+	 BORDER-Bottom: #b7d0e4 1px solid;			 
+}
+.NoRight
+{
+	 BORDER-Left: #b7d0e4 1px solid;		
+	 BORDER-Bottom: #b7d0e4 1px solid;			
+}
+.NoBottom
+{
+	 BORDER-Left: #b7d0e4 1px solid;		
+}
+
+/*选项卡样式*/
+.sec0 { filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ffffff endColorStr=#D1D1D1, gradientType=0); cursor: hand; color: #5B88B3; border-left: 1px solid #DDDDDD; border-top: 1px solid #DDDDDD; border-right: 1px solid #DDDDDD; height:25px;  text-align:center; font-weight:bold; }
+.sec1 { background-color: #F4F4F4; cursor: hand;font-weight:bold; color: #898989; border-left: 1px solid #DDDDDD; border-top: 1px solid #DDDDDD; border-right: 1px solid #DDDDDD;border-bottom: 1px solid #DDDDDD; height:25;  text-align:center; }
+.sec2 { background-color: #F8F8F8; color: #000000; border-left: 1px solid #ffffff; border-bottom: 1px solid #DDDDDD;font-weight: bold; height:25;}
+
+/*按钮样式开始*/
+/* onmouseout 样式*/
+.button_normal
+{
+	border: 1px solid #709FEF;
+    font-size: 9pt;
+    background: url(../img/mail_bg02_morenban.gif) repeat-x 0px -110px;
+    vertical-align: middle;
+    cursor: hand;
+    color: #000000;
+    font-family: 宋体;
+    text-align: center;
+    font-variant: small-caps;
+    line-height:15px;
+}
+/* onmouseover  样式*/
+.button_focus
+{
+    border: 1px solid #709FEF;
+    font-size: 9pt;
+    background: url(../img/mail_bg02_morenban.gif) repeat-x 0px -83px;
+    vertical-align: middle;
+    cursor: hand;
+    color: #000000;
+    font-family: 宋体;
+    text-align: center;
+    font-variant: small-caps;
+    line-height:15px;
+}
+/*按钮样式结束*/

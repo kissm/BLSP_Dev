@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lpcode.modules.blsp.mapper.PrjTaskAdapterMapper" >
+  
+  <sql id="taskTodeColumns">
+		task.id AS "prjTaskInstId",
+		prj.prj_code AS "prjCode",
+		prj.prj_name AS "prjName",
+		def.task_name AS "taskName",
+		task.task_status AS "taskStatus",
+		task.task_start_time AS "taskStartTime",
+		task.task_end_time AS "taskEndTime"
+	</sql>
+	
+  <sql id="taskOvertimeVOColumns">
+		t1.id as taskInstId,t4.prj_code as prjCode,
+t4.prj_name as prjName,t5.task_name taskName,t5.task_code taskCode,
+t1.task_start_time taskStartTime,t1.task_end_time taskEndTime,
+t1.TASK_PAUSE_DURATION taskPauseDuration,t1.task_due_duration taskDueDuration,
+t2.mobile mobile,t2.id userId,t1.TIME_TYPE timeType
+	</sql>
+	
+  <sql id="taskPauseDueVOColumns">
+		t1.id as taskInstId,t3.id as pauseInstId,t4.prj_code as prjCode,
+t4.prj_name as prjName,t5.task_name taskName,t5.task_code taskCode,
+t1.task_start_time taskStartTime,t1.task_end_time taskEndTime,
+t1.TASK_PAUSE_DURATION taskPauseDuration,t1.task_due_duration taskDueDuration,t3.DURATION pauseDuration,
+t2.mobile mobile,t2.id userId,t1.TIME_TYPE timeType
+	</sql>
+  
+  
+  <select id="findList" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+  			<include refid="taskTodeColumns"/>
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+	 	<where>
+	 		(task.task_status = 1 or task.task_status = 2)  
+	 		<if test="obj.userId != null and obj.userId != ''">
+	 			AND task.curr_user = #{obj.userId}
+	 		</if>
+	 		<if test="obj.prjCode != null and obj.prjCode != ''">
+	 			AND prj.prj_code = #{obj.prjCode}
+	 		</if>
+	 		<if test="obj.prjName != null and obj.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{obj.prjName}, '%') 
+	 		</if>
+	 		<if test="obj.taskName != null and obj.taskName != ''">
+	 			AND task.task_name = #{obj.taskName}
+	 		</if>
+	 		<if test="obj.taskStatus != null and obj.taskStatus != ''">
+	 			AND task.task_status = #{obj.taskStatus}
+	 		</if>
+			<if test="obj.beginCreateDate != null and obj.beginCreateDate != ''">
+				AND task.task_start_time <![CDATA[ >= #{obj.beginCreateDate} ]]>
+			</if>
+			<if test="obj.endCreateDate != null and obj.endCreateDate != ''">
+				AND task.task_start_time <![CDATA[ <= #{obj.endCreateDate} ]]>
+			</if>	 		
+	 	</where>
+	 	<choose>
+			<when test="orderBy !=null and orderBy != ''">
+				ORDER BY task.${orderBy}
+			</when>
+			<otherwise>
+				ORDER BY task.update_time DESC,task.creat_time DESC 
+			</otherwise>
+		</choose>
+	    <if test="page != null and page >= 0" >
+	      LIMIT #{page} , #{limit}
+	    </if>
+
+  </select>
+  
+  <select id="countBy"  resultType="java.lang.Integer" >
+  		SELECT count(*)
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+	 	<where>
+	 		(task.task_status = 1 or task.task_status = 2)  
+	 		<if test="obj.userId != null and obj.userId != ''">
+	 			AND task.curr_user = #{obj.userId}
+	 		</if>
+	 		<if test="obj.prjCode != null and obj.prjCode != ''">
+	 			AND prj.prj_code = #{obj.prjCode}
+	 		</if>
+	 		<if test="obj.prjName != null and obj.prjName != ''">
+	 			AND prj.prj_name = #{obj.prjName}
+	 		</if>
+	 		<if test="obj.taskName != null and obj.taskName != ''">
+	 			AND task.task_name = #{obj.taskName}
+	 		</if>
+	 		<if test="obj.taskStatus != null and obj.taskStatus != ''">
+	 			AND task.task_status = #{obj.taskStatus}
+	 		</if>
+			<if test="obj.beginCreateDate != null and obj.beginCreateDate != ''">
+				AND task.task_start_time <![CDATA[ >= #{obj.beginCreateDate} ]]>
+			</if>
+			<if test="obj.endCreateDate != null and obj.endCreateDate != ''">
+				AND task.task_start_time <![CDATA[ <= #{obj.endCreateDate} ]]>
+			</if>	 		
+	 	</where>
+  </select>
+  
+  <select id="pagedSelectByEntity" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+  			<include refid="taskTodeColumns"/>
+  			, task.time_type AS "timeType" 
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+	 	<where>
+	 		(task.task_status = 1 or task.task_status = 2)  
+	 		AND prj.IS_PRJ_COMPLETE != 9 
+	 		<if test="record.userId != null and record.userId != ''">
+	 			AND task.curr_user = #{record.userId}
+	 		</if>
+	 		<if test="record.prjCode != null and record.prjCode != ''">
+	 			AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%') 
+	 		</if>
+	 		<if test="record.prjName != null and record.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%') 
+	 		</if>
+	 		<if test="record.taskName != null and record.taskName != ''">
+	 			AND task.task_id = #{record.taskName}
+	 		</if>
+	 		<if test="record.taskStatus != null and record.taskStatus != ''">
+	 			AND task.task_status = #{record.taskStatus}
+	 		</if>
+			<if test="record.beginCreateDate != null">
+				AND task.task_start_time <![CDATA[ >= #{record.beginCreateDate} ]]>
+			</if>
+			<if test="record.endCreateDate != null">
+				AND task.task_start_time <![CDATA[ <= #{record.endCreateDate} ]]>
+			</if>	 		
+	 	</where>
+	 	<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY task.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY task.update_time DESC,task.creat_time DESC 
+			</otherwise>
+		</choose>
+
+  </select>
+  <!-- <select id="pagedSelectByEntityForMyTask" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+  				task.id AS "prjTaskInstId",
+				prj.prj_code AS "prjCode",
+				prj.prj_name AS "prjName",
+				def.task_name AS "taskName",
+				tran.creat_time AS "taskStartTime",
+				tran.update_time AS "taskEndTime"
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+			JOIN prj_task_transfer_detail AS tran ON task.id = tran.prj_task_inst_id
+	 	<where>
+	 			tran.id IN 
+	 			<foreach item="item" index="index" collection="record.prjTaskInstIds" 
+                         open="(" separator="," close=")">
+                        #{item}
+                </foreach>
+	 		<if test="record.prjCode != null and record.prjCode != ''">
+	 			AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%') 
+	 		</if>
+	 		<if test="record.prjName != null and record.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%') 
+	 		</if>
+	 		<if test="record.taskName != null and record.taskName != ''">
+	 			AND task.task_id = #{record.taskName}
+	 		</if>
+	 		<if test="record.taskStatus != null and record.taskStatus != ''">
+	 			AND task.task_status = #{record.taskStatus}
+	 		</if>
+			<if test="record.beginCreateDate != null">
+				AND tran.creat_time <![CDATA[ >= #{record.beginCreateDate} ]]>
+			</if>
+			<if test="record.endCreateDate != null">
+				AND tran.creat_time <![CDATA[ <= #{record.endCreateDate} ]]>
+			</if>	 		
+	 		
+	 	</where>
+	 	<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY task.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY tran.update_time DESC,tran.creat_time DESC 
+			</otherwise>
+		</choose>
+
+  </select> -->
+  
+  <select id="pagedSelectByEntityForMyTaskFinish" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+			<include refid="taskTodeColumns"/>
+			, task.task_real_endtime AS "taskRealEndTime" 
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+			JOIN prj_task_transfer_detail AS tran ON task.id = tran.prj_task_inst_id
+	 	<where>
+	 			prj.IS_PRJ_COMPLETE != 9 
+	 			AND tran.id IN 
+	 			<foreach item="item" index="index" collection="record.prjTaskInstIds" 
+                         open="(" separator="," close=")">
+                        #{item}
+                </foreach>
+	 		<if test="record.prjCode != null and record.prjCode != ''">
+	 			AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%') 
+	 		</if>
+	 		<if test="record.prjName != null and record.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%') 
+	 		</if>
+	 		<if test="record.taskName != null and record.taskName != ''">
+	 			AND task.task_id = #{record.taskName}
+	 		</if>
+	 		<if test="record.taskStatus != null and record.taskStatus != ''">
+	 			AND task.task_status = #{record.taskStatus}
+	 		</if>
+			<if test="record.beginCreateDate != null">
+				AND task.task_start_time <![CDATA[ >= #{record.beginCreateDate} ]]>
+			</if>
+			<if test="record.endCreateDate != null">
+				AND task.task_start_time <![CDATA[ <= #{record.endCreateDate} ]]>
+			</if>	 		
+	 	</where>
+	 	<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY task.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY task.update_time DESC,task.creat_time DESC 
+			</otherwise>
+		</choose>
+  </select>
+  
+    <select id="pagedSelectByEntityForCert" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT DISTINCT 
+			<include refid="taskTodeColumns"/>
+			, task.task_real_endtime AS "taskRealEndTime" 
+			, stagedef.stage_name AS "taskStageName" 
+			, task.audit_attach_addr AS "auditAttachAddr"
+			, task.audit_attach_name AS "auditAttachName"
+			, task.audit_attach_code_addr AS "auditAttachCodeAddr"
+			, task.audit_attach_code_name AS "auditAttachCodeName" 
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+			JOIN prj_task_transfer_detail AS tran ON task.id = tran.prj_task_inst_id
+			JOIN prj_stage AS stage ON task.prj_stage_inst_id = stage.id
+			JOIN prj_stage_define AS stagedef ON stage.stage_id = stagedef.id
+	 	<where>
+	 			prj.IS_PRJ_COMPLETE != 9 
+	 			AND tran.id IN 
+	 			<foreach item="item" index="index" collection="record.prjTaskInstIds" 
+                         open="(" separator="," close=")">
+                        #{item}
+                </foreach>
+                
+                AND task.is_with_cert = 1 
+            <!-- 去掉对已上传批文的信息的过滤 -->
+            <!-- <if test="record.company != 'code'">     
+                AND (task.audit_attach_addr = '' OR task.audit_attach_addr is null)  
+            </if> -->
+	 		<if test="record.userId != null and record.userId != ''">
+	 			AND task.curr_user = #{record.userId}
+	 		</if>
+	 		<if test="record.prjCode != null and record.prjCode != ''">
+	 			AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%') 
+	 		</if>
+	 		<if test="record.prjName != null and record.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%') 
+	 		</if>
+	 	</where>
+	 	<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY task.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY task.update_time DESC,task.creat_time DESC 
+			</otherwise>
+		</choose>
+  </select>
+
+	<select id="pagedSelectByEntityForCert_count" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT task.id)
+		FROM prj_task task
+		JOIN prj_instance AS prj ON task.prj_id = prj.id
+		JOIN prj_task_define AS def ON task.task_id = def.id
+		JOIN prj_task_transfer_detail AS tran ON task.id = tran.prj_task_inst_id
+		JOIN prj_stage AS stage ON task.prj_stage_inst_id = stage.id
+		JOIN prj_stage_define AS stagedef ON stage.stage_id = stagedef.id
+		<where>
+			prj.IS_PRJ_COMPLETE != 9
+			AND tran.id IN
+			<foreach item="item" index="index" collection="record.prjTaskInstIds"
+					 open="(" separator="," close=")">
+				#{item}
+			</foreach>
+
+			AND task.is_with_cert = 1
+			<!-- 去掉对已上传批文的信息的过滤 -->
+			<!-- <if test="record.company != 'code'">
+				AND (task.audit_attach_addr = '' OR task.audit_attach_addr is null)
+			</if> -->
+			<if test="record.userId != null and record.userId != ''">
+				AND task.curr_user = #{record.userId}
+			</if>
+			<if test="record.prjCode != null and record.prjCode != ''">
+				AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%')
+			</if>
+			<if test="record.prjName != null and record.prjName != ''">
+				AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%')
+			</if>
+		</where>
+	</select>
+
+
+  <select id="findPauseDueList" resultType="com.lpcode.modules.blsp.vo.PrjTaskPauseDueVO">
+      select
+      <include refid="taskPauseDueVOColumns"/>
+      FROM prj_task t1,sys_user t2,prj_task_pause_detail t3,prj_instance t4,prj_task_define t5
+      where t1.curr_user=t2.id and t1.id=t3.prj_task_inst_id and
+      date(t3.pause_overtime)=current_date and t3.PAUSE_END_TIME is null
+      and t5.id=t1.task_id and t1.PRJ_ID = t4.id and t1.task_status='2'
+  </select>
+  
+  <select id="findOvertimeList" resultType="com.lpcode.modules.blsp.vo.PrjTaskOvertimeVO">
+      select
+      <include refid="taskOvertimeVOColumns"/>
+      FROM prj_task t1,sys_user t2,prj_instance t4,prj_task_define t5
+      where t1.curr_user=t2.id 
+      and t5.id=t1.task_id and t1.PRJ_ID = t4.id and t1.task_status=1
+      and date_add(date(t1.task_end_time),INTERVAL 1 day) = current_date
+  </select>
+  
+    <select id="pagedSelectForPrjCert" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+			prj.id AS "prjTaskInstId",
+			prj.prj_code AS "prjCode",
+			prj.prj_name AS "prjName",
+			prj.company AS "company" 
+		FROM prj_instance AS prj 
+	 	<where>
+	 		prj.is_with_cert = '1' AND prj.channel = '0' AND prj.IS_PRJ_COMPLETE != 9  
+	 		<if test="record.prjCode != null and record.prjCode != ''">
+	 			AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%') 
+	 		</if>
+	 		<if test="record.prjName != null and record.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%') 
+	 		</if>
+	 	</where>
+	 	<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY prj.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY prj.update_time DESC,prj.creat_time DESC 
+			</otherwise>
+		</choose>
+  </select>
+  
+	<select id="pagedSelectForRejectBackList" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+		SELECT DISTINCT
+			prj.id AS "prjTaskInstId",
+			prj.prj_code AS "prjCode",
+			prj.prj_name AS "prjName",
+			prj.company AS "company"
+		FROM
+			prj_instance AS prj,
+			prj_task AS task,
+			prj_task_reject_material AS rej
+		<where>
+				task.prj_id = prj.id
+			AND rej.prj_task_inst_id = task.id
+			AND (task.task_status = '6' OR rej.is_fetched = '1' )
+			<if test="record.prjCode != null and record.prjCode != ''">
+				AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%')
+			</if>
+			<if test="record.prjName != null and record.prjName != ''">
+				AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%')
+			</if>
+		</where>
+		<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY prj.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY task.update_time DESC,task.creat_time DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="pagedSelectForRejectBackList_count" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT(prj.id))
+		FROM
+		prj_instance AS prj,
+		prj_task AS task,
+		prj_task_reject_material AS rej
+		<where>
+			task.prj_id = prj.id
+			AND rej.prj_task_inst_id = task.id
+			AND (task.task_status = '6' OR rej.is_fetched = '1' )
+			<if test="record.prjCode != null and record.prjCode != ''">
+				AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%')
+			</if>
+			<if test="record.prjName != null and record.prjName != ''">
+				AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%')
+			</if>
+		</where>
+		<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY prj.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY task.update_time DESC,task.creat_time DESC
+			</otherwise>
+		</choose>
+	</select>
+
+  <select id="findTaskDependencyList" resultType="com.lpcode.modules.blsp.vo.PrjTaskDependencyListVO">
+      SELECT t3.name AS deptName, 
+		      t5.task_name AS taskName, 
+		      t2.name AS finishedMan, 
+		      t4.update_time AS finishedTime, 
+		      t4.description AS auditDesc, 
+		      t1.audit_attach_name AS auditAttachName, 
+		      t1.audit_attach_addr AS auditAttachAddr 
+      FROM prj_task t1, 
+		      sys_user t2, 
+		      sys_office t3, 
+		      prj_task_transfer_detail t4, 
+		      prj_task_define t5
+      WHERE t1.dept_id = t3.id 
+	      AND t1.task_id = t5.id 
+	      AND (t4.prj_task_inst_id = t1.id AND (t4.is_finished = 1  OR t4.is_finished = 7) 
+	      		AND t4.updator = t2.id)
+		  AND t1.prj_id = #{prjId} 
+		  AND t1.task_id = #{taskId}
+  </select>
+  
+  <select id="findCertLpcodeInfo" resultType="com.lpcode.modules.blsp.vo.CertLpcodeVO">
+      SELECT 
+			t2.prj_code AS "prjCode",
+			t2.prj_name AS "prjName",
+			t1.cert_dept AS "fzjg",	
+			t1.cert_date AS "fzsj",	
+			t1.cert_code AS "wh",	
+			t1.cert_title AS "bt",	
+			t3.is_finished AS "spjg",	
+			t1.id AS "sxid",	
+			t3.id AS "spid",	
+			t4.name AS "spr",	
+			t5.name AS "spbm",	
+			t3.update_time AS "spsj",	
+			t3.description AS "spyj" 	
+      FROM prj_task t1, 
+		   prj_instance t2,
+		   prj_task_transfer_detail t3, 
+		   sys_user t4, 
+		   sys_office t5  
+      WHERE t1.id = #{prjTaskInstId} 
+	      AND t1.prj_id = t2.id 
+	      AND t1.id = t3.prj_task_inst_id AND t3.is_finished = #{status}  
+	      AND t3.updator = t4.id 
+	      AND t1.dept_id = t5.id 
+  </select>
+  
+   <select id="findTaskForOffLineFinish" resultType="com.lpcode.modules.blsp.vo.PrjTaskForOffLineFinishVO">
+      SELECT  t3.name AS deptName, 
+		      t5.task_name AS taskName, 
+		      t1.id AS id 
+      FROM 	  prj_task t1, 
+		      sys_office t3, 
+		      prj_task_define t5
+      WHERE t1.task_status = '0'
+		  AND t1.dept_id = t3.id 
+	      AND t1.task_id = t5.id 
+		  AND t1.prj_id = #{prjInsId} 
+		  AND t1.prj_stage_inst_id = #{stageInsId}
+  </select>
+  
+   <select id="countPauseTimes"  resultType="java.lang.Integer" >
+		SELECT
+			COUNT(DISTINCT(p.PRJ_TASK_INST_ID))
+		FROM
+			prj_task_pause_detail p
+		JOIN prj_task t ON t.id = p.PRJ_TASK_INST_ID
+		WHERE
+			t.PRJ_ID = #{prjId} 
+		AND p.pause_type = "1"
+   </select>
+   
+   <select id="findPauseForMater" resultType="com.lpcode.modules.blsp.vo.PrjTaskPauseTimesVO">
+		SELECT 
+			t.id AS 'taskInstId',
+			d.TASK_NAME , 
+			t.PAUSE_NUM_MAT,
+			p.PAUSE_START_TIME,
+			(SELECT p3.PROVIDE_END_TIME FROM prj_task_pause_detail p3 WHERE p3.PRJ_TASK_INST_ID = t.ID AND p3.pause_type='1' AND p3.PROVIDE_END_TIME is NOT NULL ORDER BY p3.PROVIDE_END_TIME LIMIT 1) AS 'PROVIDE_END_TIME', 
+		  CASE 
+			WHEN t.AUDIT_ATTACH_ADDR='' THEN NULL
+		  	WHEN t.AUDIT_ATTACH_ADDR IS NULL THEN NULL
+			ELSE (SELECT p2.PAUSE_END_TIME FROM prj_task_pause_detail p2 WHERE p2.PRJ_TASK_INST_ID = t.ID AND p2.pause_type='1' AND p2.PAUSE_END_TIME is NOT NULL ORDER BY p2.CREAT_TIME DESC LIMIT 1) 
+			END AS `PAUSE_END_TIME`
+		FROM
+			prj_task_pause_detail p
+		JOIN prj_task t ON t.id = p.PRJ_TASK_INST_ID
+		LEFT JOIN prj_task_define d ON d.ID = t.TASK_ID
+		WHERE
+			t.PRJ_ID = #{prjId} 
+		AND p.pause_type = "1" 
+		GROUP BY d.TASK_NAME 
+		ORDER BY p.CREAT_TIME    		
+   </select>
+
+	<select id="findTaskForUnPass" resultType="com.lpcode.modules.blsp.vo.PrjTaskForOffLineFinishVO">
+		SELECT  t3.name AS deptName,
+		t5.task_name AS taskName,
+		t1.id AS id
+		FROM 	  prj_task t1,
+		sys_office t3,
+		prj_task_define t5
+		WHERE t1.task_status = '6'
+		AND t1.dept_id = t3.id
+		AND t1.task_id = t5.id
+		AND t1.prj_id = #{prjInsId}
+		AND t1.prj_stage_inst_id = #{stageInsId}
+	</select>
+	<select id="pagedSelectByEntityForMyTask" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+  				<include refid="taskTodeColumns" />
+  				,su.name AS "userName"
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+			JOIN prj_task_transfer_detail AS tran ON task.id = tran.prj_task_inst_id
+			JOIN sys_user AS su ON task.curr_user = su.id
+	 	<where>
+	 			prj.IS_PRJ_COMPLETE != 9 
+	 			AND tran.id IN 
+	 			<foreach item="item" index="index" collection="record.prjTaskInstIds" 
+                         open="(" separator="," close=")">
+                        #{item}
+                </foreach>
+	 		<if test="record.prjCode != null and record.prjCode != ''">
+	 			AND prj.prj_code LIKE CONCAT('%', #{record.prjCode}, '%') 
+	 		</if>
+	 		<if test="record.prjName != null and record.prjName != ''">
+	 			AND prj.prj_name LIKE CONCAT('%', #{record.prjName}, '%') 
+	 		</if>
+	 		<if test="record.taskName != null and record.taskName != ''">
+	 			AND task.task_id = #{record.taskName}
+	 		</if>
+	 		<if test="record.taskStatus != null and record.taskStatus != ''">
+	 			AND task.task_status = #{record.taskStatus}
+	 		</if>
+			<if test="record.beginCreateDate != null">
+				AND tran.creat_time <![CDATA[ >= #{record.beginCreateDate} ]]>
+			</if>
+			<if test="record.endCreateDate != null">
+				AND tran.creat_time <![CDATA[ <= #{record.endCreateDate} ]]>
+			</if>	 		
+	 		
+	 	</where>
+	 	<choose>
+			<when test="record.orderBy !=null and record.orderBy != ''">
+				ORDER BY task.${record.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY tran.update_time DESC,tran.creat_time DESC 
+			</otherwise>
+		</choose>
+
+  	</select>
+  	<!-- 获取待办列表 -->
+  	<select id="selectBacklogListByEntity" resultType="com.lpcode.modules.blsp.vo.PrjTaskTodoListVO">
+  		SELECT 
+  			<include refid="taskTodeColumns"/>
+  			, task.time_type AS "timeType" 
+		FROM prj_task task 
+			JOIN prj_instance AS prj ON task.prj_id = prj.id 
+			JOIN prj_task_define AS def ON task.task_id = def.id
+	 	<where>
+	 		(task.task_status = 1 or task.task_status = 2) 
+	 		<!-- 过滤已终止的项目 -->
+	 		AND prj.IS_PRJ_COMPLETE != 9 
+	 		<if test="record.userId != null and record.userId != ''">
+	 			AND task.curr_user = #{record.userId}
+	 		</if>
+	 	</where>
+  </select>
+  	
+</mapper>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="osp-wsbsblsp-web:war">
+    <output-path>$PROJECT_DIR$/blsp/blsp-wsbs-web/target</output-path>
+    <root id="archive" name="osp-wsbsblsp-web.war">
+      <element id="artifact" artifact-name="osp-wsbsblsp-web:war exploded" />
+    </root>
+  </artifact>
+</component>

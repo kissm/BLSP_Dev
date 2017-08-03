@@ -1,0 +1,27 @@
+@charset "utf-8";
+.map-title{text-align:center; font-size:30px; letter-spacing:3px; color:#1d87b7; height:90px; line-height:90px; padding-bottom:30px;}
+.map-out{text-align:center; overflow:hidden;width: 990px}
+
+.maps{ width:546px; height:638px; float:left; margin-left:45px;}
+.map-name{ float: right; padding-top:30px; margin-right:45px;}
+
+
+
+.map-name a{ display:inline-block; width:90px; height:30px; background:#eee; line-height:30px;}
+.map-name a:hover{background:#2aa3da;color:#fff;}
+.map-name li{ margin-bottom:10px; width:90px;list-style: none;}
+.map-list{ padding-top:30px; width:235px; float:left; position:relative;}
+
+
+
+.map-list .ztfw{position:absolute;right:0px; +right:-14px; z-index:99999; width:270px;}
+.map-list .ztfw a{float:right;width:75px;height:30px;line-height:30px;background:#2aa3da;color:#fff;text-align:center;text-decoration:none;margin:0 3px 4px 3px;}
+.ztfw a:hover{background:#ff9966}
+.mt{ margin-top:40px;}
+
+
+
+
+
+
+

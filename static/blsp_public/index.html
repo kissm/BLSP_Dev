@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>珠海市金湾区网上办事大厅</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/myCss.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-1.4.2.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.investTab').each(function(i){
+					$(this).click(function(){
+						$('.investTab').removeClass('sel');
+						$(this).addClass('sel');
+						$('.tzspDiv').hide();
+						$($('.tzspDiv')[i]).show();
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div align="center">
+			<table style="width: 960px" border="0" cellspacing="0" cellpadding="0">
+				<tbody>
+					<tr>
+						<td colspan="3">
+							<img src="img/portal/shadow_T.png">
+						</td>
+					</tr>
+					<tr>
+						<td style="background-image: url(img/portal/shadow_R.png); background-repeat: repeat-y" height="300" width="2">
+							<img id="form:j_id34" class="rich-spacer " alt="" src="img/portal/spacer.gif" width="2" height="1">
+						</td>
+						<td style="width: 956px" valign="top">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tbody>
+									<tr>
+										<td style="padding-left: 20px; font-size: 15px; padding-top: 10px; width: 80%;" align="left">
+											<span style="color: Black; font-size: 16pt">
+												建设工程并联审批
+											</span>
+										</td>
+										<td  style="padding-top: 10px;">
+											<input type="button" class="btnNoimg" value="查看完整流程图" onclick='window.open("img/tzsp/flow_full.png")'>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" style="font-size: 15px; padding: 10px;">金湾区投资建设并联审批机制是金湾区行政服务中心投资建设综合服务窗口牵头，以优化办理流程、缩短办理时限，方便群众办事为目标，通过“优化流程、综合受理、统一接件、信息共享、部门联动、全程督办”的方式，全面开展我区投资建设项目综合服务工作。
+											<br/><br/> 并联审批分 5 个阶段：点击按钮可进入任意阶段：
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div align="center">
+												<input type="button" name="Button1" id="Button1" class="investTab btnlx sel">
+												<input type="button" name="Button2" id="Button2" class="investTab btnyd">
+												<input type="button" name="Button3" id="Button3" class="investTab btnbj">
+												<input type="button" name="Button4" id="Button4" class="investTab btnsg">
+												<input type="button" name="Button5" id="Button5" class="investTab btnjg">
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							   
+							<div style="height: 10px"></div>
+							<hr style="height:1px;border:none;border-top:1px solid #555555;"/>
+							<div  align="center" class="tzspDiv">
+							   <img src='img/tzsp/lxjd.png' width="800px"/>
+							</div>
+							<div  align="center" class="tzspDiv" style="display:none;">
+								<img src='img/tzsp/ydsp.png' width="800px"/>
+							</div>
+							 <div  align="center" class="tzspDiv" style="display:none;">
+							  <img src='img/tzsp/ghbj.png' width="800px"/>
+							</div>
+							<div  align="center" class="tzspDiv" style="display:none;">
+							   <img src='img/tzsp/sgxk.png' width="800px"/>
+							</div>
+							<div  align="center" class="tzspDiv" style="display:none;">
+							   <img src='img/tzsp/jgys.png' width="800px"/>
+							</div>
+									 
+						</td>
+						<td style="background-image: url(img/portal/shadow_R.png); background-repeat: repeat-y"
+							height="300" width="2">
+							<img id="form:j_id204" class="rich-spacer " alt="" src="img/portal/spacer.gif"
+								width="2" height="1">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<img src="img/portal/shadow_B.png">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="chart-links">
+            <div class="dt-title"><span>请选择企业登记类型</span></div>
+            <div>
+                <dl class="clear">
+                    <dd><a href="add.html" class="da01">政府投资项目</a></dd>
+					<dd><a href="basic.html" class="da02">企业投资项目</a></dd>
+                </dl>
+            </div>
+        </div>
+		
+		<div class="chart-search clear">
+            <div class="sea-left"></div>
+            <div class="sea-center clear">
+                <input type="text" id="txtSearchNo" placeholder="" class="sea-txt">
+                <input type="button" id="btnSearch" class="sea-btn" onclick="window.location.href='search.html'">
+            </div>
+            <div class="sea-right"></div>
+            <div class="sea-tips">如已成功申办可在这里查询进度</div>
+        </div>
+		
+	</body>
+</html>

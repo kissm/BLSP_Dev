@@ -1,0 +1,394 @@
+﻿.gridview_normal a{padding-left:3px; color:#6688CC; font-size:14px;font-family: "Microsoft YaHei" , "微软雅黑" , "Segoe UI" , Arial;}
+.gridview_normal a:hover{ color:red; font-size:14px; font-family: "Microsoft YaHei" , "微软雅黑" , "Segoe UI" , Arial;}
+
+.btnSearch
+{
+	background: url(../img/portal/search.gif) no-repeat 0 0;
+	width: 87px;
+	height: 29px;
+	cursor:pointer;
+}
+.LetterButtonLink
+{
+	border-bottom: 0px;
+	border-left: 0px;
+	background-color: white;
+	font-family: "Microsoft YaHei" , "微软雅黑" , "Segoe UI" , Arial;
+	color: #003399;
+	font-size: 14px;
+	border-top: 0px;
+	cursor: pointer;
+	font-weight: bold;
+	border-right: 0px;
+}
+
+
+/*******GridView_CSS*******/
+.gridview_normal
+{
+	background-color: #ffffff;
+	color: #000000;
+	padding-left: 3px;
+}
+.gridview_itemstyle_over
+{
+	color: #ffffff;
+	background-color: #ffffff;
+	padding-left: 3px;
+}
+.gridview_AlternatingRowStyle
+{
+	background-color: #F1F6FE;
+	padding-left: 3px;
+	height: 40px;
+}
+.gridview_itemstyle_normal
+{
+	color: #000000;
+	background-color: #ffffff;
+	padding-left: 3px;
+	height: 40px;
+}
+
+
+.gridview_headerstyle_normal
+{
+	height: 34px;
+	padding-left: 3px;
+	background-image:url(../img/portal/bg_table_head.gif);
+}
+
+.gridview_normal div
+{
+	padding-left: 3px;
+}
+
+
+.title_grbs {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: 0px 3px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_grbs_selected {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: 0px -28px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_grbs_hover {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: 0px -56px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_qybs {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -116px 3px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_qybs_selected {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -116px -28px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_qybs_hover {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -116px -56px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_bmfw {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -232px 3px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_bmfw_selected {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -232px -28px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_bmfw_hover {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -232px -56px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_zjfw {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -348px 3px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title_cjfw {
+	BACKGROUND: url(../img/portal/titles.png) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 116px; BACKGROUND-POSITION: -464px 3px; HEIGHT: 26px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.ddlCss
+{
+	 font-weight:bold;
+	 font-size:13px;
+	 color:#196297;	
+}
+
+
+.title2Tab {
+	BACKGROUND: url(../img/portal/btn_invest_disabled2.gif) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 114px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 27px; COLOR: black; FONT-SIZE: 11pt; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand
+}
+.title2Tab:hover {
+	BACKGROUND: url(../img/portal/btn_invest_disabled2.gif) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 114px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 27px; COLOR: red; FONT-SIZE: 11pt; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: pointer
+}
+.title2TabSelected {
+	BACKGROUND: url(../img/portal/btn_invest_enabled2.gif) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 114px; HEIGHT: 27px; COLOR: white; FONT-SIZE: 11pt; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: pointer
+}
+
+.investTab {
+	BACKGROUND: url(../img/portal/btn_zf_invest_disabled.gif) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 161px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 58px; COLOR: black; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: hand; FONT-WEIGHT: 500
+}
+.investTab:hover {
+	BACKGROUND: url(../img/portal/btn_zf_invest_enabled.gif) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 161px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 58px; COLOR: white; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: pointer; FONT-WEIGHT: 900
+}
+.investTabSelected {
+	BACKGROUND: url(../img/portal/btn_zf_invest_enabled.gif) no-repeat 0 0; TEXT-ALIGN: center; WIDTH: 161px; BACKGROUND-POSITION: 0px 0px; HEIGHT: 58px; COLOR: white; VERTICAL-ALIGN: middle; OVERFLOW: hidden; CURSOR: pointer; FONT-WEIGHT: 900
+}
+
+.uploadify-button {
+	background-color: #3d9ee9;
+	text-align: center;
+	color: #fff;
+	font-family:"Microsoft Yahei";
+	height:26px !important;
+	line-height:26px !important;
+	padding-bottom:2px;
+	cursor: pointer;
+}
+.uploadify-button:hover  {
+	background-color: #606060;
+	background-image: linear-gradient(top, #76CC00 0%, #76CC00 100%);
+	background-image: -o-linear-gradient(top, #76CC00 0%, #76CC00 100%);
+	background-image: -moz-linear-gradient(top, #76CC00 0%, #76CC00 100%);
+	background-image: -webkit-linear-gradient(top, #76CC00 0%, #76CC00 100%);
+	background-image: -ms-linear-gradient(top, #76CC00 0%, #76CC00 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #76CC00),
+		color-stop(1, #76CC00)
+	);
+	background-position: center bottom;
+}
+
+.btnTj{border:0;cursor:pointer;background:url(../img/online8.gif) no-repeat; width:95px; height:31px; display:inline-block;}
+.btnTj:hover{background-position: 0px -35px}
+.btnDraft{border:0;cursor:pointer;background:url(../img/online7.gif) no-repeat; width:95px; height:31px; display:inline-block;}
+.btnDraft:hover{background-position: 0px -35px}
+
+.investTab.btnlx,.investTab.btnyd,.investTab.btnbj,.investTab.btnsg,.investTab.btnjg {
+	height:60px;
+	width:168px;
+	border: none;
+}
+.investTab.btnlx{
+	background: url(../img/tzsp/btnlx.png) no-repeat;
+}
+.investTab.btnyd{
+	background: url(../img/tzsp/btnyd.png) no-repeat;
+}
+.investTab.btnbj{
+	background: url(../img/tzsp/btnbj.png) no-repeat;
+}
+.investTab.btnsg{
+	background: url(../img/tzsp/btnsg.png) no-repeat;
+}
+.investTab.btnjg{
+	background: url(../img/tzsp/btnjg.png) no-repeat;
+}
+.investTab.btnlx.sel {
+	background: url(../img/tzsp/btnlxsel.png) no-repeat;
+}
+.investTab.btnyd.sel {
+	background: url(../img/tzsp/btnydsel.png) no-repeat;
+}
+.investTab.btnbj.sel {
+	background: url(../img/tzsp/btnbjsel.png) no-repeat;
+}
+.investTab.btnsg.sel {
+	background: url(../img/tzsp/btnsgsel.png) no-repeat;
+}
+.investTab.btnjg.sel {
+	background: url(../img/tzsp/btnjgsel.png) no-repeat;
+}
+.btnNoimg {
+    background: #4990DA;
+    width: 150px;
+    height: 36px;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+	margin-right: 10px;
+	border-radius: 6px;
+}
+.btnNoimg:hover {
+	background: #A5DFF5;
+	color: #000000;
+}
+
+table.top-title td {
+	padding: 21px;
+	border-bottom: 1px solid #EEEEEE;
+}
+table.t-o td {
+	padding: 2px;
+	border-bottom: 1px solid #EEEEEE;
+}
+table.t-o img {
+	float: left;
+}
+.t-o .t-o-t {
+	padding-top: 18px;
+	font-size: 16px;
+	color: #000;
+	font-weight: 600;
+	margin-left: 20px;
+}
+.t-o .t-o-s {
+	padding-bottom: 13px;
+	margin-left: 20px;
+}
+.t-o font {
+	color: #ff0000;
+}
+.i-s-l {
+	height: 32px;
+	line-height: 32px;
+	border: none;
+	padding: 0px;
+	background: url(../img/portal/i-s-l.png) left no-repeat;
+	outline: none;
+	padding-left: 20px;
+	float: left;
+}
+.i-s-r {
+	height: 32px;
+	line-height: 32px;
+	width: 40px;
+	display: block;
+	float: left;
+	background: url(../img/portal/i-s-r.png) right no-repeat;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.m-list {
+	border-collapse: collapse;
+}
+.m-list th {
+	height: 38px;
+	line-height: 38px;
+	background: #FBFBFB;
+	text-align: left;
+	font-size: 16px;
+	padding: 0px 26px;
+}
+.m-list th.sort {
+	text-align: right;
+	background: #FBFBFB url(../img/portal/sort.png) 20px center no-repeat;
+}
+.m-list th.sort a {
+	font-size: 14px;
+	cursor: pointer;
+}
+.m-list th.operate {
+	text-align: center;
+	font-size: 14px;
+}
+.m-list th.operate .checkbox {
+	vertical-align: middle;
+}
+.m-list .parent {
+	background: #EEF6FF;
+}
+.m-list .parent td {
+	padding: 6px 12px;
+	font-size: 14px;
+	color: #4779ae;
+	font-weight: 600;
+}
+.m-list .tLeft {
+	text-align: left;
+}
+.m-list .tCenter {
+	text-align: center;
+}
+.m-list .zxsb,.m-list .zxsb_l,.m-list .zxsb_d {
+	display: inline-block;
+	width: 106px;
+	height: 35px;
+	padding: 0px;
+}
+.m-list .zxsb {
+	background: url(../img/portal/zxsb.png) center no-repeat;
+}
+.m-list .zxsb_l {
+	background: url(../img/portal/zxsb_l.png) center no-repeat;
+}
+.m-list .zxsb_d {
+	background: url(../img/portal/zxsb_d.png) center no-repeat;
+}
+.m-list .bszn {
+	display: inline-block;
+	width: 90px;
+	height: 35px;
+	background: url(../img/portal/bszn.png) center no-repeat;
+	padding: 0px;
+}
+.m-list td {
+	padding: 16px 0px;
+	border-bottom: 1px solid #EEEEEE;
+}
+.m-list td a {
+	font-size: 14px;
+	display: inline-block;
+	padding-left: 20px;
+	background: url(../img/portal/file.png) left center no-repeat;
+	color: #4268B9;
+}
+.m-list .t-i {
+	font-size: 12px;
+	color: #AEAEAE;
+	padding: 0px 13px;
+}
+.m-list .t-i-b {
+	margin-left: 30px;
+}
+.m-list .t-i-b span {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 30px;
+	margin: 24px 19px 12px;
+}
+.m-list .t-i-b .charge {
+	width: 40px;
+	background: url(../img/portal/charge.png) left center no-repeat;
+}
+.m-list .t-i-b .charge_f {
+	width: 40px;
+	background: url(../img/portal/charge_f.png) left center no-repeat;
+}
+.m-list .t-i-b .time {
+	background: url(../img/portal/time.png) left center no-repeat;
+}
+.m-list .t-i-b .qx {
+	padding-left: 0px;
+	width: 30px;
+	height: 26px;
+	text-align: center;
+	color: #fff;
+	background: url(../img/portal/qx.png) center no-repeat;
+	vertical-align: bottom;
+}
+
+/**附件相关*/		
+.UploadFileList
+{
+    line-height: 20px;
+    margin: 2px;
+    border:solid 1px #95b8e7;
+    padding-left:19px;
+    background:rgb(224, 236, 255) url(gimages/attach.png) no-repeat left;
+    font-size:12px;
+}
+.UploadFileList span
+{
+    padding-left:8px;
+    color:#000
+}
+.UploadFileList a
+{
+    text-decoration:none;
+    color:#ff6a00
+}
+
+.UploadFileList a:hover
+{
+    color:red;
+}
+
