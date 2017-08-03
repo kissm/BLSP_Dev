@@ -99,9 +99,10 @@ public class ProjectBizAcceptController extends BaseController {
 			return new ProjectChangeForm();
 		}
 	}
-
+//创建Page对象，拿到网页传过来的pageNo,pageSize参数，判断，设立默认值。拿项目基本信息实体，设置类型。保存项目基本信息实体。调用业务层查到分页的参数列表
 	@RequestMapping(value = "list")
 	public String list(Project project, HttpServletRequest request, HttpServletResponse response, Model model) {
+		先做分页处理，默认页数是1，显示10条
 		Page<Project> page = new Page<Project>();
 		String pageNo = request.getParameter("pageNo");
 		if (!StringUtils.isBlank(pageNo)) {
@@ -116,12 +117,14 @@ public class ProjectBizAcceptController extends BaseController {
 			page.setPageSize(10);
 		}
 		page.setOrderBy("creat_Time desc");
+		拿项目实体信息
 		PrjInstanceVo vo = project.getPrjInstanceVo();
 		if (vo == null) {
 			vo = new PrjInstanceVo();
 			vo.setPrjType("2"); // 企业项目
 			project.setPrjInstanceVo(vo);
 		}
+
 		projectServiceInf.getProjectPage(project, page);
 		model.addAttribute("page", page);
 		model.addAttribute("project", project);
@@ -174,11 +177,13 @@ public class ProjectBizAcceptController extends BaseController {
 //		return "modules/project/accept/index";
 //	}
 
+    创建一个新的企业项目,第一次创建项目，url传 next标记，跳到toMaterial方法。  http://wsbs.lpcode.com/osp-blsp-web/a/project/bizaccept/toMaterial?projectId=942&supplementMater=false&action=save
 	@RequestMapping(value = "basic")
 	public String basic(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		String view = "modules/project/bizaccept/enterPrjForm";
 		model.addAttribute("project", project);
 		String newStageId = request.getParameter("stageId");
+
 		String action = request.getAttribute("action") == null ? request.getParameter("action") : (String) request.getAttribute("action");
 		String type = request.getAttribute("type") == null ? request.getParameter("type") : (String) request.getAttribute("type");
 		String url = request.getAttribute("url") == null ? request.getParameter("url") : (String) request.getAttribute("url");
@@ -250,12 +255,14 @@ public class ProjectBizAcceptController extends BaseController {
 		return basic(project, request, response, model);
 	}
 
+	选完项目阶段所需的材料列表
 	@RequestMapping(value = "material")
 	public String material(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		String view = "modules/project/bizaccept/bizMaterial";
 		model.addAttribute("project", project);
 		String action = request.getAttribute("action") == null ? request.getParameter("action") : (String) request.getAttribute("action");
 		String url = request.getAttribute("url") == null ? request.getParameter("url") : (String) request.getAttribute("url");
+		强制返回建立企业项目
 		if (project.getPrjInstanceVo() == null) {
 			return "modules/project/bizaccept/enterPrjForm";
 		}
@@ -265,6 +272,7 @@ public class ProjectBizAcceptController extends BaseController {
 		Map<Long,MaterialDto> mapMaterial = ProjectStepUtil.getAllMaterial();
 		//判断是否有补交材料
 		boolean supplementMater = supplementService.existsSuplementMaterial(project.getPrjInstanceVo());
+
 		model.addAttribute("supplementMater", supplementMater);
 		if (StringUtils.equals(action, "save")) {
 			if (list != null && list.size() > 0) {
@@ -729,10 +737,12 @@ public class ProjectBizAcceptController extends BaseController {
 
 		return prjFormVO.getModuleUrl();
 	}
-	
+	给材料
 	@RequestMapping("/toMaterial")
 	public String toMaterial(HttpServletRequest request, HttpServletResponse response, Model model){
+	    拿到项目ID
 		String projectId = request.getParameter("projectId");
+	    项目表格变动？
 		ProjectChangeForm project = new ProjectChangeForm();
 		if (StringUtils.isNotBlank(projectId)) {
 			PrjInstanceVo vo = ProjectStepUtil.getInstance(Long.parseLong(projectId));
@@ -742,18 +752,30 @@ public class ProjectBizAcceptController extends BaseController {
 		model.addAttribute("project", project);
 		return "modules/project/bizaccept/bizMaterial";
 	}
-	
+
+
+
 	private ProjectChangeForm getProjectChangeForm(ProjectChangeForm project,Model model){
+	    拿到所有材料
 		Map<Long,MaterialDto> mapMaterial = ProjectStepUtil.getAllMaterial();
+	    拿当前项目阶段的ID
 		Long stageId = project.getPrjInstanceVo().getStageId() ;
+	    如果对应的阶段ID是空，就拿这个阶段的ID，不为空就是取到的阶段ID
 		stageId = (stageId == null ? ProjectStepUtil.getFirstStage(project.getPrjInstanceVo().getPrjType()).getId() : stageId);
 		Long projectId = project.getPrjInstanceVo().getId();
+        获取当前阶段配置需要的所有材料
 		Map<Long, PrjMaterialVO> materialDefMapDefine = ProjectStepUtil.getStageDefineMaterList(projectId, stageId);
+        获取当前阶段配置需要的所有材料
 		Map<Long, Map<Long, PrjMaterialVO>> taskDefMapDefine = ProjectStepUtil.getStageDefineTaskList(projectId, stageId);
+        获取某阶段所有审批事项
 		Map<Long, String> taskMap = ProjectStepUtil.getAllTaskjInstance(projectId);
+        通过项目ID得到事项的所有状态
 		Map<Long,String> prjTaskStatusMap = ProjectStepUtil.getPrjTaskStatusMap(projectId);
+
+        第一次创建肯定没有材料和事项，所以是空，保存的action状态是save。  所以有个If判断
 		if(prjTaskStatusMap != null)
 			project.setPrjTaskStatus(prjTaskStatusMap);
+        获取此项目目前阶段所有上传的材料
 		List<PrjStageMaterialVo> maList = ProjectStepUtil.getStageMaterList(projectId,stageId);
 		if (maList == null || maList.size() == 0) {
 			project.setMaterialDefMap(materialDefMapDefine);
@@ -763,11 +785,14 @@ public class ProjectBizAcceptController extends BaseController {
 			model.addAttribute("action", "update");
 			Map<Long, PrjStageMaterialVo> map = new HashMap<Long, PrjStageMaterialVo>();
 			Map<String, PrjStageMaterialVo> maps = new HashMap<String, PrjStageMaterialVo>();
-			for (PrjStageMaterialVo vo : maList) {
+			for (PrjStageMaterialVo vo : maList) {  遍历阶段材料集合，拿到阶段材料
+			    新的阶段材料
 				PrjStageMaterialVo newVo = new PrjStageMaterialVo();
 				BeanCopy.copyProperties(vo, newVo);
+				阶段加事项ID为key
 				String key = vo.getMaterialId().toString() + "-" + vo.getTaskId().toString();
 				maps.put(key, newVo);
+				获取原件和拷贝资料的数量
 				if (map.get(vo.getMaterialId()) != null) {
 					PrjStageMaterialVo m = map.get(vo.getMaterialId());
 					if (mapMaterial.get(vo.getMaterialId()).getIsOriginalCumulation().equals("1")) {
@@ -781,8 +806,10 @@ public class ProjectBizAcceptController extends BaseController {
 					map.put(vo.getMaterialId(), vo);
 				}
 			}
+			如果材料定义存在
 			if (materialDefMapDefine != null && materialDefMapDefine.size() > 0) {
 				for (Long key : materialDefMapDefine.keySet()) {
+				    取出map中的阶段材料
 					PrjStageMaterialVo vo = map.get(key);
 					if (vo != null) {
 						PrjMaterialVO v = materialDefMapDefine.get(key);

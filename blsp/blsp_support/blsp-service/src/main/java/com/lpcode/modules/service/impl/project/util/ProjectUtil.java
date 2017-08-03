@@ -25,6 +25,7 @@ import com.lpcode.modules.service.project.inf.PrjStageDefineService;
 import com.lpcode.modules.service.project.inf.PrjTaskService;
 import org.apache.commons.lang.StringUtils;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -846,7 +847,9 @@ public class ProjectUtil {
         List<PrjInstance> list = null;
         List<PrjInstanceVo> listvo = new ArrayList<PrjInstanceVo>();
         List<Project> project = new ArrayList<Project>();
+        项目实体对象
         PrjInstance record = new PrjInstance();
+        如果vo是空，那么创建一个项目实体
         if (vo == null) {
             vo = new PrjInstanceVo();
             vo.setPrjType("1");
@@ -855,6 +858,7 @@ public class ProjectUtil {
         Page<PrjInstance> page = new Page<PrjInstance>();
         PrjInstanceExample example = new PrjInstanceExample();
         Criteria c = example.createCriteria();
+        //
         if (vo.getPrjCode() != null) {
             c.andPrjCodeLike("%" + vo.getPrjCode() + "%");
         }
@@ -873,6 +877,7 @@ public class ProjectUtil {
             c.andPrjTypeEqualTo(vo.getPrjType());
         c.andIsDeleteNotEqualTo("1");
         c.andChannelEqualTo("0");//0为后台窗口录入,1为前台用户提交
+        条数从0开始，10结束，按创建时间降序排
         example.setStart(pages.getPageSize() * (pages.getPageNo() - 1));
         example.setPageSize(pages.getPageSize());
         example.setOrderByClause(pages.getOrderBy());
@@ -884,10 +889,14 @@ public class ProjectUtil {
             BeanCopy.copyPropertiesForList(list, listvo, PrjInstanceVo.class);
         for (PrjInstanceVo v : listvo) {
             Project p = new Project();
+            根据项目ID获取阶段定义放入project
             PrjStageDefineVo de = getStageByProId(v.getId().toString());
             p.setPrjStageDefineVo(de);
+            根据项目ID获得阶段实例
             p.setPrjStageVo(getStageInstanceByProId(v.getId()));
+            放入项目基本实体
             p.setPrjInstanceVo(v);
+            添加到集合
             project.add(p);
             
             // 建设单位监控，查询暂停事项数
@@ -898,7 +907,6 @@ public class ProjectUtil {
         }
         pages.setCount(page.getCount());
         pages.setList(project);
-
     }
 
     /**

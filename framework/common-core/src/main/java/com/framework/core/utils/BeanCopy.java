@@ -57,7 +57,6 @@ public abstract class  BeanCopy extends org.springframework.beans.BeanUtils {
 			return;
 		}
 		PropertyDescriptor[] targetPds = getPropertyDescriptors(targetClass);
-
 		try {
 		for (Object src : source) {
 			T bean = targetClass.newInstance();

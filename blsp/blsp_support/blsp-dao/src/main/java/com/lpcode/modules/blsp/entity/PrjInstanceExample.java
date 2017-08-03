@@ -51,6 +51,7 @@ public class PrjInstanceExample {
      *
      * @mbggenerated Tue Nov 29 16:57:24 CST 2016
      */
+
     public PrjInstanceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }

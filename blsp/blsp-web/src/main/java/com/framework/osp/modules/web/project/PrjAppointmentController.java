@@ -18,7 +18,7 @@ import com.lpcode.modules.service.project.dto.PrjAppointmentQueryDTO;
 import com.lpcode.modules.service.project.inf.PrjAppointmentService;
 
 /**
- * 我的代办Controller
+ * 我的待办Controller
  * 
  * @author lpcode
  *
@@ -33,7 +33,6 @@ public class PrjAppointmentController {
 	@RequestMapping(value = "/list")
 	public String findPage(PrjAppointmentQueryDTO dto, HttpServletRequest request, HttpServletResponse response,
 			Model model) {
-
 		RequestDTOPage<PrjAppointmentQueryDTO> requestPage = new RequestDTOPage<>();
 		Page<PrjAppointmentQueryDTO> queryPage = new Page<PrjAppointmentQueryDTO>(request, response);
 		requestPage.setObj(dto);
@@ -46,7 +45,6 @@ public class PrjAppointmentController {
 		page.setCount(resultPage.getObj().getCount());
 		page.setList(resultPage.getObj().getList());
 		model.addAttribute("page", page);
-
 		return "modules/project/prjAppointmentList";
 	}
 

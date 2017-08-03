@@ -654,10 +654,12 @@ public class ProjectService implements ProjectServiceInf {
 		return ProjectUtil.getProject(project.getPrjInstanceVo());
 	}
 
+/////////////////////////////////////////////////////////////获取项目分页列表，传项目基本信息实体和page对象
 	@Override
 	public void getProjectPage(Project project, Page<Project> page) {
 		ProjectUtil.getProjectPage(project.getPrjInstanceVo(), page);
 	}
+///////////////////////////////////////////////////////////
 
 	@Override
 	public void delete(Project project) {
@@ -996,7 +998,7 @@ public class ProjectService implements ProjectServiceInf {
                     map.put(v.getTaskId() == null ? 0L : v.getTaskId(), taskList);
                     taskIds.add(v.getTaskId());
                 } else {
-                    不为空则添加事项阶段材料
+					不为空则添加事项阶段材料；
                     taskList.add(v);
                 }
             }

@@ -535,7 +535,7 @@ public class ProjectController extends BaseController {
 	public String doTask(Project project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		model.addAttribute("project", project);
 		String url = null;
-
+		没有项目实体返回空
 		String pid = project.getPrjInstanceVo().getId().toString();
 		if(StringUtils.isBlank(pid)){
 			return null;
@@ -547,6 +547,7 @@ public class ProjectController extends BaseController {
 		PrjBusinessAcceptVo accept = new PrjBusinessAcceptVo();
         赋值给Project对象
 		project.setPrjInstanceVo(vo);
+        如果项目有事项
 		if (project.getPrjTaskVoList() != null && project.getPrjTaskVoList().size() > 0) {
 			ProjectVo pvo = new ProjectVo();
 			AcceptVo act = new AcceptVo();

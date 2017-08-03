@@ -29,6 +29,8 @@ import com.lpcode.modules.service.project.dto.pinstance.PrjTaskDefineVo;
 import com.lpcode.modules.service.project.inf.PrjTaskService;
 import com.lpcode.modules.service.project.inf.ProjectServiceInf;
 
+
+企业
 @Controller
 @RequestMapping(value = "${adminPath}/enterprise/project")
 public class EnterpriseProjectController extends BaseController {
@@ -147,14 +149,16 @@ public class EnterpriseProjectController extends BaseController {
 		return "modules/project/enterPrjForm";
 	}
 
-	
+	查看一个企业的具体信息
 	@RequestMapping(value = "view")
 	public String view(HttpServletRequest request, HttpServletResponse response, Model model) {
 		String id = request.getParameter("id");
 		if(StringUtils.isBlank(id))
 			return null;
 		Project project = projectServiceInf.getProjectByPrjId(Long.parseLong(id));
+		设置项目阶段实例
 		project.setPrjStageVo(ProjectUtil.getStageInstanceByProId(Long.parseLong(id)));
+		所有阶段实例
 		project.setPrjStageVoList(ProjectUtil.getStageInsListByProId(id));
 		model.addAttribute("project", project);
 		return "modules/project/enterPrjView";
