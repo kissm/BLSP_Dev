@@ -246,7 +246,7 @@
 	}
 	function isCheck() {
 		var all = $("input[data-type='taskId']:checked").length;
-		if (all > 0) {
+		if (all > 0) {+
 			return true;
 		} else {
 			return false;

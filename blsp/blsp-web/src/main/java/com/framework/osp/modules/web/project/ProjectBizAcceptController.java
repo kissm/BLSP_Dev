@@ -69,6 +69,12 @@ import com.lpcode.modules.service.project.inf.ProjectServiceInf;
  * @package com.framework.osp.modules.web.project
  * @fileName ProjectBizAcceptController
  * @date 16/5/23.
+ *
+ * 1，创建企业项目时，后台basic方法会判断action状态，因为是第一次创建，action为空。则设置action为 save， 跳转enterPrjForm页面。表单提交时候action是 save在Bastic方法
+ * 保存项目信息实体，toMATERIAL 跳到了选材料的页面 BizMaterial
+ *
+ *
+ *
  */
 @Controller
 @RequestMapping(value = "${adminPath}/project/bizaccept/")
@@ -177,7 +183,9 @@ public class ProjectBizAcceptController extends BaseController {
 //		return "modules/project/accept/index";
 //	}
 
-    创建一个新的企业项目,第一次创建项目，url传 next标记，跳到toMaterial方法。  http://wsbs.lpcode.com/osp-blsp-web/a/project/bizaccept/toMaterial?projectId=942&supplementMater=false&action=save
+    http://wsbs.lpcode.com/osp-blsp-web/a/project/bizaccept/toMaterial?projectId=942&supplementMater=false&action=save
+    创建新项目时候，企业没有项目实体基本信息id，所以action设置为save状态，仍旧返回enterPrjForm表单，这时候action为save,Url
+    传递Next标记。 则进入toMaterial页面
 	@RequestMapping(value = "basic")
 	public String basic(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		String view = "modules/project/bizaccept/enterPrjForm";
@@ -192,12 +200,14 @@ public class ProjectBizAcceptController extends BaseController {
 //			project = get(projectIdstr);
 //		}
 		if (StringUtils.equals(action, "save")) {
+		    拿到项目编号，生成龙贝码
 			String finalPrjCode = projectAcceptServiceInf.lockPrjCode(project.getPrjCodeGeneratorVo(), project.getPrjInstanceVo().getPrjCode());
 			project.getPrjInstanceVo().setPrjCode(finalPrjCode);
 			// 项目龙贝码
 			// 受理龙贝码
 			lpcode(project.getPrjInstanceVo());
 			project.getPrjInstanceVo().setChannel("0");//供应渠道为0,标识为后台窗口人员录入
+			保存项目基本信息实例
 			projectAcceptServiceInf.savePrjInstance(project.getPrjInstanceVo());
 			if (url != null && url.equals("next")) {
 				request.setAttribute("action", "view");
@@ -218,8 +228,11 @@ public class ProjectBizAcceptController extends BaseController {
 				request.setAttribute("action", "view");
 				return material(project, request, response, model);
 			}
-		} else {
+		}
+		第一次创建项目不是 save和update状态，没有项目实体的id
+		else {
 			if (project.getPrjInstanceVo() == null || project.getPrjInstanceVo().getId() == null) {
+			    如果没有项目实体基本信息，就创建一个新的项目实体信息，否则就用项目的实体信息
 				PrjInstanceVo in = project.getPrjInstanceVo() == null ? new PrjInstanceVo() : project.getPrjInstanceVo();
 				project.setPrjInstanceVo(in);
 				PrjCodeGeneratorVo pvo = ProjectStepUtil.getProjectCode(type);
@@ -228,6 +241,7 @@ public class ProjectBizAcceptController extends BaseController {
 					project.setPrjCodeGeneratorVo(pvo);
 					in.setPrjCode(project.getPrjCodeGeneratorVo().toString());
 				}
+				保存action的save状态、 然后跳到表格页面
 				model.addAttribute("action", "save");
 			} else {
 				model.addAttribute("action", "update");
@@ -255,7 +269,7 @@ public class ProjectBizAcceptController extends BaseController {
 		return basic(project, request, response, model);
 	}
 
-	选完项目阶段所需的材料列表
+	选完项目阶段所需的材料列表,项目对应的阶段ID对应的材料ID
 	@RequestMapping(value = "material")
 	public String material(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		String view = "modules/project/bizaccept/bizMaterial";
@@ -272,7 +286,7 @@ public class ProjectBizAcceptController extends BaseController {
 		Map<Long,MaterialDto> mapMaterial = ProjectStepUtil.getAllMaterial();
 		//判断是否有补交材料
 		boolean supplementMater = supplementService.existsSuplementMaterial(project.getPrjInstanceVo());
-
+        第一次没有补齐材料， false
 		model.addAttribute("supplementMater", supplementMater);
 		if (StringUtils.equals(action, "save")) {
 			if (list != null && list.size() > 0) {
@@ -307,6 +321,7 @@ public class ProjectBizAcceptController extends BaseController {
 				} else if (url.equals("next")) {
 					request.setAttribute("action", "view");
 					request.setAttribute("url", "view");
+					跳转到事项选择和表单填写
 					return forms(project, request, response, model);
 				}
 			}
@@ -392,6 +407,7 @@ public class ProjectBizAcceptController extends BaseController {
 		return view;
 	}
 
+	事项选择与表单填写
 	@RequestMapping(value = "forms")
 	public String forms(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		String view = "modules/project/bizaccept/bizbusiness";
@@ -482,6 +498,7 @@ public class ProjectBizAcceptController extends BaseController {
 		return view;
 	}
 
+	事项
 	@RequestMapping(value = "tasks")
 	public String tasks(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		model.addAttribute("project", project);
@@ -491,14 +508,18 @@ public class ProjectBizAcceptController extends BaseController {
 		if (project.getPrjInstanceVo() == null) {
 			return "modules/project/bizaccept/enterPrjForm";
 		}
+		项目取拿事项集合
 		List<PrjTaskVo> list = project.getPrjTaskVoList();
 		if (StringUtils.equals(action, "save")) {
 			if (url != null) {
 				if (url.equals("pre")) {
 					request.setAttribute("action", "view");
 					return forms(project, request, response, model);
+					之前传递的是next标记
 				} else if (url.equals("next")) {
 					if (list != null && list.size() > 0) {
+
+						
 						for (PrjTaskVo vo : list) {
 							vo.setPrjId(project.getPrjInstanceVo().getId());
 						}
@@ -742,14 +763,15 @@ public class ProjectBizAcceptController extends BaseController {
 	public String toMaterial(HttpServletRequest request, HttpServletResponse response, Model model){
 	    拿到项目ID
 		String projectId = request.getParameter("projectId");
-	    项目表格变动？
 		ProjectChangeForm project = new ProjectChangeForm();
+
 		if (StringUtils.isNotBlank(projectId)) {
+		    拿到项目ID对应的实例
 			PrjInstanceVo vo = ProjectStepUtil.getInstance(Long.parseLong(projectId));
 			project.setPrjInstanceVo(vo);
-		} 
-		getProjectChangeForm(project,model);
-		model.addAttribute("project", project);
+		}
+        getProjectChangeForm(project, model);
+        model.addAttribute("project", project);
 		return "modules/project/bizaccept/bizMaterial";
 	}
 
@@ -775,13 +797,17 @@ public class ProjectBizAcceptController extends BaseController {
         第一次创建肯定没有材料和事项，所以是空，保存的action状态是save。  所以有个If判断
 		if(prjTaskStatusMap != null)
 			project.setPrjTaskStatus(prjTaskStatusMap);
-        获取此项目目前阶段所有上传的材料
+        获取此项目目前阶段所有上传的材料，比如立项阶段的所有材料
 		List<PrjStageMaterialVo> maList = ProjectStepUtil.getStageMaterList(projectId,stageId);
 		if (maList == null || maList.size() == 0) {
 			project.setMaterialDefMap(materialDefMapDefine);
 			project.setTaskDefMap(taskDefMapDefine);
 			model.addAttribute("action", "save");
-		} else {
+		}
+
+
+		更新状态时候阶段对应的材料的数据
+		else {
 			model.addAttribute("action", "update");
 			Map<Long, PrjStageMaterialVo> map = new HashMap<Long, PrjStageMaterialVo>();
 			Map<String, PrjStageMaterialVo> maps = new HashMap<String, PrjStageMaterialVo>();
@@ -806,7 +832,7 @@ public class ProjectBizAcceptController extends BaseController {
 					map.put(vo.getMaterialId(), vo);
 				}
 			}
-			如果材料定义存在
+			如果材料存在
 			if (materialDefMapDefine != null && materialDefMapDefine.size() > 0) {
 				for (Long key : materialDefMapDefine.keySet()) {
 				    取出map中的阶段材料
@@ -849,6 +875,8 @@ public class ProjectBizAcceptController extends BaseController {
 			project.setMaterialDefMap(materialDefMapDefine);
 			project.setTaskDefMap(taskDefMapDefine);
 		}
+
+
 		return project;
 	}
 

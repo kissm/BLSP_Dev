@@ -318,17 +318,21 @@ public class ProjectStepUtil {
 		PrjStageMaterial record = new PrjStageMaterial();
 		record.setPrjId(prjId);
 		record.setStageId(stageId);
+		通过项目ID和阶段ID查到阶段材料集合，如果查到集合不为空，就放入prjStageMaterialVo集合
 		List<PrjStageMaterial> materList = stageMaterialDao.selectByEntitySelective(record);
+
 		if (materList != null)
 			BeanCopy.copyPropertiesForList(materList, list, PrjStageMaterialVo.class);
-
+		根据阶段ID获取所有的事项
 		List<PrjTaskDefineVo> taskList = getAllTaskByStage(stageId);
 		Map<Long, List<PrjStageMaterialVo>> orderMap = new LinkedHashMap<>();
+		有事项就遍历事项，放入ordermap集合
 		if (taskList != null && taskList.size() > 0) {
 			for (PrjTaskDefineVo vo : taskList) {
 				orderMap.put(vo.getId(), new ArrayList<PrjStageMaterialVo>());
 			}
 		}
+		在遍历赋值后的list集合，
 		for (PrjStageMaterialVo de : list) {
 			orderMap.get(de.getTaskId()).add(de);
 		}

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.framework.base.task.dao.TaskExcuteDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.framework.base.task.domain.TaskExcuteDetail" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="DESC_CODE" property="descCode" jdbcType="VARCHAR" />
+    <result column="DESC_MSG" property="descMsg" jdbcType="VARCHAR" />
+    <result column="RECEIPT_PARAS" property="receiptParas" jdbcType="VARCHAR" />
+    <result column="RECEIPT_IP" property="receiptIp" jdbcType="VARCHAR" />
+    <result column="JOB_ID" property="jobId" jdbcType="BIGINT" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="CREATE_DATE_STR" property="createDateStr" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DATE_STR" property="updateDateStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, STATUS, DESC_CODE, DESC_MSG, RECEIPT_PARAS, RECEIPT_IP, JOB_ID, CREATE_DATE, 
+    UPDATE_DATE,date_format(CREATE_DATE,'%Y-%m-%d %H:%i:%s') AS CREATE_DATE_STR,
+    date_format(UPDATE_DATE,'%Y-%m-%d %H:%i:%s') AS UPDATE_DATE_STR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from task_excute_detail
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Long" >
+    delete from task_excute_detail
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  keyColumn="ID"  parameterType="com.framework.base.task.domain.TaskExcuteDetail" >
+    insert into task_excute_detail (STATUS, DESC_CODE, 
+      DESC_MSG, RECEIPT_PARAS, RECEIPT_IP, 
+      JOB_ID, CREATE_DATE, UPDATE_DATE
+      )
+    values ( #{status,jdbcType=VARCHAR}, #{descCode,jdbcType=VARCHAR}, 
+      #{descMsg,jdbcType=VARCHAR}, #{receiptParas,jdbcType=VARCHAR}, #{receiptIp,jdbcType=VARCHAR}, 
+      #{jobId,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+        	<selectKey keyProperty="id" resultType="long" order="AFTER">  
+            SELECT LAST_INSERT_ID();  
+        </selectKey> 
+  </insert>
+  <insert id="insertSelective"   useGeneratedKeys="true" keyProperty="id"  keyColumn="ID" parameterType="com.framework.base.task.domain.TaskExcuteDetail" >
+  	
+    insert into task_excute_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="descCode != null" >
+        DESC_CODE,
+      </if>
+      <if test="descMsg != null" >
+        DESC_MSG,
+      </if>
+      <if test="receiptParas != null" >
+        RECEIPT_PARAS,
+      </if>
+      <if test="receiptIp != null" >
+        RECEIPT_IP,
+      </if>
+      <if test="jobId != null" >
+        JOB_ID,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="descCode != null" >
+        #{descCode,jdbcType=VARCHAR},
+      </if>
+      <if test="descMsg != null" >
+        #{descMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptParas != null" >
+        #{receiptParas,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptIp != null" >
+        #{receiptIp,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    <selectKey keyProperty="id" resultType="long" order="AFTER">  
+            SELECT LAST_INSERT_ID();  
+        </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.framework.base.task.domain.TaskExcuteDetail" >
+    update task_excute_detail
+    <set >
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="descCode != null" >
+        DESC_CODE = #{descCode,jdbcType=VARCHAR},
+      </if>
+      <if test="descMsg != null" >
+        DESC_MSG = #{descMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptParas != null" >
+        RECEIPT_PARAS = #{receiptParas,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptIp != null" >
+        RECEIPT_IP = #{receiptIp,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null" >
+        JOB_ID = #{jobId,jdbcType=BIGINT},
+      </if>
+     <!--  <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if> -->
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.framework.base.task.domain.TaskExcuteDetail" >
+    update task_excute_detail
+    set STATUS = #{status,jdbcType=VARCHAR},
+      DESC_CODE = #{descCode,jdbcType=VARCHAR},
+      DESC_MSG = #{descMsg,jdbcType=VARCHAR},
+      RECEIPT_PARAS = #{receiptParas,jdbcType=VARCHAR},
+      RECEIPT_IP = #{receiptIp,jdbcType=VARCHAR},
+      JOB_ID = #{jobId,jdbcType=BIGINT},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  
+   <select id="queryDetailList" parameterType="com.framework.base.task.domain.TaskExcuteDetail" resultMap="BaseResultMap">
+   select * from (select 
+		<include refid="Base_Column_List" /> 
+		from task_excute_detail 
+		<where>   
+			1=1
+			  <if test="status != null" >
+	        AND STATUS = #{status,jdbcType=VARCHAR}
+	      </if>
+	      <if test="descCode != null" >
+	        AND DESC_CODE = #{descCode,jdbcType=VARCHAR}
+	      </if>
+	      <if test="descMsg != null" >
+	        AND DESC_MSG = #{descMsg,jdbcType=VARCHAR}
+	      </if>
+	      <if test="receiptParas != null" >
+	        AND RECEIPT_PARAS = #{receiptParas,jdbcType=VARCHAR}
+	      </if>
+	      <if test="receiptIp != null" >
+	        AND RECEIPT_IP = #{receiptIp,jdbcType=VARCHAR}
+	      </if>
+	      <if test="jobId != null" >
+	        AND JOB_ID = #{jobId,jdbcType=BIGINT}
+	      </if>
+	      <if test="createDate != null" >
+	        AND CREATE_DATE = #{createDate,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="updateDate != null" >
+	        AND UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP}
+	      </if> 
+    	</where>  
+    	order by create_date DESC) a  limit 0,50
+  </select>
+</mapper>

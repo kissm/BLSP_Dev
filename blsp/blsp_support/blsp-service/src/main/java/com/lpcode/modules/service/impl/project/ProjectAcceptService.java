@@ -82,6 +82,7 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 	public void savePrjInstance(PrjInstanceVo vo) {
 		PrjInstance prjvo = new PrjInstance();
 		BeanCopy.copyProperties(vo, prjvo);
+
 		prjvo.setIsDelete("0");
 		prjvo.setCreator(UserUtils.getUser().getId());
 		prjvo.setCreatTime(new Date());
@@ -97,21 +98,27 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 		prjInstanceMapper.insert(prjvo);
 		vo.setId(prjvo.getId());
 		saveOrUpdateBuild(prjvo);
+		保存到prj_stage表
 		saveStage(prjvo);
 		initTask(prjvo);
 		reportPushService.pushProject(vo);//上报项目基本信息
 	}
-
+	前台传过来的项目实体对象和项目阶段材料集合
 	@Override
 	public void savePrjMaterial(List<PrjStageMaterialVo> list, PrjInstanceVo vo) {
 		// 保存材料
 		List<PrjStageMaterial> records = new ArrayList<PrjStageMaterial>();
 		if (list != null && list.size() > 0) {
+			项目阶段历史
 			PrjStage state = new PrjStage();
+			设置阶段ID和项目ID
 			state.setStageId(vo.getStageId());
 			state.setPrjId(vo.getId());
+			通过项目ID和阶段ID查对应的prjStage对象  表里存项目对应的阶段
 			state = prjStageMapper.selectOneByEntitySelective(state);
+			属性赋值给records
 			BeanCopy.copyPropertiesForList(list, records, PrjStageMaterial.class);
+			遍历赋值后的阶段材料集合，赋值存入
 			for (PrjStageMaterial m : records) {
 				m.setCreator(UserUtils.getUser().getId());
 				m.setCreatTime(new Date());
@@ -122,6 +129,7 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 				if (m.getIsComplete() == null) {
 					m.setIsComplete("0");
 				}
+                prj_stage_material表里是这个项目对应的阶段所需要的材料
 				prjStageMaterialMapper.insert(m);
 			}
 		}
@@ -132,7 +140,7 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 		// TODO Auto-generated method stub
 
 	}
-
+    保存所有事项
 	@Override
 	public void savePrjTask(List<PrjTaskVo> list, PrjInstanceVo vo) {
 		// 保存所有的事项
@@ -515,7 +523,7 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 		}
 		return vo.toString();
 	}
-
+	保存项目当前阶段的数据
 	public void saveStage(PrjInstance vo) {
 		PrjStage state = new PrjStage();
 		state.setPrjId(vo.getId());
@@ -535,6 +543,7 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 		stage.setStageStartTime(new Date());
 		prjStageMapper.updateByPrimaryKeySelective(stage);
 	}
+
 
 	@Override
 	public void updateAccept(PrjBusinessAcceptVo vo) {

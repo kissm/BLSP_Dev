@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.framework.base.task.dao.ScheduleJobMapper" >
+  <resultMap id="BaseResultMap" type="com.framework.base.task.domain.ScheduleJob" >
+    <id column="JOB_ID" property="jobId" jdbcType="BIGINT" />
+    <result column="JOB_GROUP" property="jobGroup" jdbcType="VARCHAR" />
+    <result column="JOB_NAME" property="jobName" jdbcType="VARCHAR" />
+    <result column="JOB_STATUS" property="jobStatus" jdbcType="VARCHAR" />
+    <result column="CRON_EXPRESSION" property="cronExpression" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="IS_CONCURRENT" property="isConcurrent" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="PARAS" property="paras" jdbcType="VARCHAR" />
+    <result column="PARATYPE" property="paratype" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JOB_ID, JOB_GROUP, JOB_NAME, JOB_STATUS, CRON_EXPRESSION, DESCRIPTION, IS_CONCURRENT, 
+    URL, PARAS, PARATYPE, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from task_schedule_job
+    where JOB_ID = #{jobId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Long" >
+    delete from task_schedule_job
+    where JOB_ID = #{jobId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="jobId"  keyColumn="JOB_ID" parameterType="com.framework.base.task.domain.ScheduleJob" >
+    insert into task_schedule_job ( JOB_GROUP, JOB_NAME, 
+      JOB_STATUS, CRON_EXPRESSION, DESCRIPTION, 
+      IS_CONCURRENT, URL, PARAS, 
+      PARATYPE, CREATE_TIME, UPDATE_TIME
+      )
+    values ( #{jobGroup,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, 
+      #{jobStatus,jdbcType=VARCHAR}, #{cronExpression,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{isConcurrent,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{paras,jdbcType=VARCHAR}, 
+      #{paratype,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+      <selectKey keyProperty="jobId" resultType="long" order="AFTER">  
+            SELECT LAST_INSERT_ID();  
+        </selectKey> 
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="jobId"  keyColumn="JOB_ID"  parameterType="com.framework.base.task.domain.ScheduleJob" >
+  	
+    insert into task_schedule_job
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        JOB_ID,
+      </if>
+      <if test="jobGroup != null" >
+        JOB_GROUP,
+      </if>
+      <if test="jobName != null" >
+        JOB_NAME,
+      </if>
+      <if test="jobStatus != null" >
+        JOB_STATUS,
+      </if>
+      <if test="cronExpression != null" >
+        CRON_EXPRESSION,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="isConcurrent != null" >
+        IS_CONCURRENT,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="paras != null" >
+        PARAS,
+      </if>
+      <if test="paratype != null" >
+        PARATYPE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="jobGroup != null" >
+        #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        #{jobStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null" >
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isConcurrent != null" >
+        #{isConcurrent,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="paras != null" >
+        #{paras,jdbcType=VARCHAR},
+      </if>
+      <if test="paratype != null" >
+        #{paratype,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    <selectKey keyProperty="jobId" resultType="long" order="AFTER">  
+            SELECT LAST_INSERT_ID();  
+        </selectKey> 
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.framework.base.task.domain.ScheduleJob" >
+    update task_schedule_job
+    <set >
+      <if test="jobGroup != null" >
+        JOB_GROUP = #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        JOB_NAME = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        JOB_STATUS = #{jobStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null" >
+        CRON_EXPRESSION = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isConcurrent != null" >
+        IS_CONCURRENT = #{isConcurrent,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="paras != null" >
+        PARAS = #{paras,jdbcType=VARCHAR},
+      </if>
+      <if test="paratype != null" >
+        PARATYPE = #{paratype,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where JOB_ID = #{jobId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.framework.base.task.domain.ScheduleJob" >
+    update task_schedule_job
+    set JOB_GROUP = #{jobGroup,jdbcType=VARCHAR},
+      JOB_NAME = #{jobName,jdbcType=VARCHAR},
+      JOB_STATUS = #{jobStatus,jdbcType=VARCHAR},
+      CRON_EXPRESSION = #{cronExpression,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      IS_CONCURRENT = #{isConcurrent,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      PARAS = #{paras,jdbcType=VARCHAR},
+      PARATYPE = #{paratype,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where JOB_ID = #{jobId,jdbcType=BIGINT}
+  </update>
+  
+    <select id="getAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from task_schedule_job
+  </select>
+  
+  <select id="queryTaskList" parameterType="com.framework.base.task.domain.ScheduleJob" resultMap="BaseResultMap">
+  	select
+		<include refid="Base_Column_List" /> 
+		from task_schedule_job 
+		<where>   
+	        <if test="jobName!=null and jobName!='' ">   
+	            JOB_NAME LIKE CONCAT(CONCAT('%', #{jobName}),'%')    
+	        </if>   
+	        <if test="jobGroup!= null and jobGroup!= '' ">   
+	            AND JOB_GROUP = #{jobGroup}    
+	        </if>   
+	        <if test="jobStatus!=null and jobStatus!= ''">   
+	            AND JOB_STATUS = #{jobStatus}    
+	        </if>   
+    	</where>  
+  </select> 
+  
+  <select id="queryTaskListPage" parameterType="com.framework.base.task.domain.ScheduleJob" resultMap="BaseResultMap">
+  	 select
+		<include refid="Base_Column_List" /> 
+		from task_schedule_job 
+		<where>   
+	        <if test="jobName!=null and jobName!='' ">   
+	            JOB_NAME LIKE CONCAT(CONCAT('%', #{jobName}),'%')    
+	        </if>   
+	        <if test="jobGroup!= null and jobGroup!= '' ">   
+	            AND JOB_GROUP = #{jobGroup}    
+	        </if>   
+	        <if test="jobStatus!=null and jobStatus!= ''">   
+	            AND JOB_STATUS = #{jobStatus}    
+	        </if>   
+    	</where> limit #{start}, #{rows}
+  </select>
+  
+  <select id="queryTaskListCount" parameterType="com.framework.base.task.domain.ScheduleJob" resultType="int" >
+  	select count(*) 
+  	  from task_schedule_job 
+		<where>   
+	        <if test="jobName!=null and jobName!='' ">   
+	            JOB_NAME LIKE CONCAT(CONCAT('%', #{jobName}),'%')    
+	        </if>   
+	        <if test="jobGroup!= null and jobGroup!= '' ">   
+	            AND JOB_GROUP = #{jobGroup}    
+	        </if>   
+	        <if test="jobStatus!=null and jobStatus!= ''">   
+	            AND JOB_STATUS = #{jobStatus}    
+	        </if>   
+    	</where>  
+  </select>
+</mapper>
