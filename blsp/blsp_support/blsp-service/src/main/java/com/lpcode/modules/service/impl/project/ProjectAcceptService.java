@@ -145,6 +145,7 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 	public void savePrjTask(List<PrjTaskVo> list, PrjInstanceVo vo) {
 		// 保存所有的事项
 		if (list != null && list.size() > 0) {
+
 			for (PrjTaskVo v : list) {
 				Map<Long, PrjTaskVo> m = ProjectStepUtil.getHasStartTask(vo);
 				if (m.get(v.getTaskId()) == null) {
@@ -153,14 +154,15 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 			}
 			// 更改阶段状态
 			PrjStage record = new PrjStage();
+			项目基本信息实体ID,项目的阶段ID查到的prjStage数据
 			record.setPrjId(vo.getId());
 			record.setStageId(vo.getStageId());
 			record = prjStageMapper.selectOneByEntitySelective(record);
 			if (record != null) {
+                受理关联表的ID prj_business_accept
 				record.setAcceptId(vo.getAcceptId());
 				updateStage(record);
 			}
-
 		}
 	}
 
@@ -538,9 +540,10 @@ public class ProjectAcceptService implements ProjectAcceptServiceInf {
 		prjStageMapper.insert(state);
 	}
 
+	更新阶段为待审批
 	public void updateStage(PrjStage stage) {
-		stage.setStageStatus("1");// 待审批
-		stage.setStageStartTime(new Date());
+		stage.setStageStatus("1");// 待审批   0：待资料补齐    4：办结   其他：审批中
+        stage.setStageStartTime(new Date());
 		prjStageMapper.updateByPrimaryKeySelective(stage);
 	}
 

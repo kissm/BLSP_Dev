@@ -518,8 +518,6 @@ public class ProjectBizAcceptController extends BaseController {
 					之前传递的是next标记
 				} else if (url.equals("next")) {
 					if (list != null && list.size() > 0) {
-
-						
 						for (PrjTaskVo vo : list) {
 							vo.setPrjId(project.getPrjInstanceVo().getId());
 						}
@@ -656,8 +654,10 @@ public class ProjectBizAcceptController extends BaseController {
 	@RequestMapping(value = "printView")
 	public String printView(ProjectChangeForm project, HttpServletRequest request, HttpServletResponse response, Model model) {
 		model.addAttribute("project", project);
+		获取项目实体
 		PrjInstanceVo vo = ProjectStepUtil.getInstance(project.getPrjInstanceVo().getId());
 		project.setPrjInstanceVo(vo);
+		受理关联
 		PrjBusinessAcceptVo accept = new PrjBusinessAcceptVo();
 		accept.setId(project.getPrjInstanceVo().getAcceptId());
 		accept = ProjectStepUtil.getPrjBusinessAccept(accept);
